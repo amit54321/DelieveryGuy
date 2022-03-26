@@ -12,12 +12,25 @@ namespace KartGame.KartSystems {
         public bool Accelerate = false;
         public bool Brake = false;
         public override InputData GenerateInput() {
+
+#if UNITY_EDITOR
             return new InputData
+            {
+                Accelerate = Input.GetButton(AccelerateButtonName),
+                Brake = Input.GetButton(BrakeButtonName),
+                TurnInput = Input.GetAxis("Horizontal")
+            };
+
+#else
+     return new InputData
             {
                 Accelerate = this.Accelerate,
                 Brake = this.Brake,
                 TurnInput=this.TurnInput
             };
+           
+#endif
+
         }
         public void SetAngle(float angle)
         {
