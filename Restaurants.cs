@@ -11,11 +11,15 @@ public class RestaurantData
     public float waitTime;
     public int quantity;
 }
-public class Restaurants : MonoBehaviour
+public class Restaurants : Plot
 {
     public RestaurantData restaurantData;
     private Collider collider;
-   
+
+    public new void OnCLickMethod()
+    {
+        UnityEngine.Debug.LogError("CLICKED REST " + id);
+    }
     void Start()
     {
         collider = GetComponent<Collider>();

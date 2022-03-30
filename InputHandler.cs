@@ -4,11 +4,17 @@ using UnityEngine;
 using KartGame.KartSystems;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
+
+
+
+
+
+
 public class InputHandler : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
 
-
-    
+  
 
     [SerializeField] public KeyboardInput keyboardInput;
     float angle; bool brake; bool accelearate;
@@ -18,8 +24,15 @@ public class InputHandler : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
     void Start()
     {
       
+
+
+
+     
+
         keyboardInput = GameObject.FindWithTag("Player").transform.GetComponent<KeyboardInput>();
     }
+
+   
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (gameObject.CompareTag("LEFT"))
