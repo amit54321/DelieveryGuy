@@ -102,7 +102,10 @@ public class GameManager : MonoBehaviour
     }
     public void ConstructBuilding(int plot_id,int building_id,int cTime)
     {
-        GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), FindPlotById(plot_id).transform);
-     g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime));
+        Plot p = FindPlotById(plot_id);
+        GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
+        g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime));
+        p.enabled = false;
+        p.GetComponent<Collider>().enabled = false;
     }
 }

@@ -13,6 +13,7 @@ public class Plot : MonoBehaviour, OnClick
 
     public void OnCLickMethod()
     {
+        
         GameManager.Instance.clickedPlotId = id;
         InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.constructionPopUp);
         UnityEngine.Debug.LogError("CLICKED  " + id);
