@@ -11,6 +11,14 @@ public class ConstructRestaurant
     public int restaurant_id;
 
 }
+
+public class UpgradeRestaurant
+{
+    public string id;
+    public int level;
+    public int restaurant_id;
+
+}
 public class ConstructionPrefab : MonoBehaviour
 {
     [SerializeField]
@@ -22,19 +30,69 @@ public class ConstructionPrefab : MonoBehaviour
 
     int id;
     int cTime;
+    int currentLevel;
     public void SetData(int id,string titleText,string descText,int costText,int levelText,int timerText )
     {
         this.id = id;
         title.text = titleText;
         desc.text = descText;
         cost.text = "Cost: "+costText.ToString();
-        if(level)
-        level.text = "Level: "+levelText.ToString();
+        if (level)
+        {
+            currentLevel = levelText;
+            buildButton.onClick.AddListener(Upgrade);
+            level.text = "Level: " + levelText.ToString();
+        }
+        else
+        {
+            buildButton.onClick.AddListener(Build);
+        }
         timer.text = "Build Time: "+timerText.ToString()+"s";
         cTime = timerText;
-        buildButton.onClick.AddListener(Build);
+       
 
     }
+
+    private void Upgrade()
+    {
+        GameManager.Instance.UpgradeBuilding( id, cTime);
+        InGame.UIManager.Instance.DisablePopUp();
+        return;
+
+        UpgradeRestaurant constructRestaurant;
+        SocketMaster.instance.socketMaster.Socket.Emit(
+            LobbyConstants.LEAVEROOM,
+            (socket, packet, args) =>
+            {
+                if (args != null && args.Length > 0)
+                {
+                    Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
+
+                    UIManager.instance.ToggleLoader(false);
+                    UpgradeCallBack(
+                        JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])));
+                }
+            },
+            constructRestaurant = new UpgradeRestaurant()
+            {
+                id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
+                level= this.currentLevel,
+                restaurant_id = GameManager.Instance.clickedPlotId
+            });
+    }
+
+    private void UpgradeCallBack(LobbyData.RoomDataCallBack callbackdata)
+    {
+        if (callbackdata.status == 200)
+        {
+            UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
+        }
+        else
+        {
+            UIManager.instance.ShowError(callbackdata.message);
+        }
+    }
+
 
     private void Build()
     {
@@ -52,7 +110,7 @@ public class ConstructionPrefab : MonoBehaviour
                     Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
 
                     UIManager.instance.ToggleLoader(false);
-                    LeaveRoomCallBack(
+                    BuildCallBack(
                         JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])));
                 }
             },
@@ -65,7 +123,7 @@ public class ConstructionPrefab : MonoBehaviour
     }
 
 
-    private void LeaveRoomCallBack(LobbyData.RoomDataCallBack callbackdata)
+    private void BuildCallBack(LobbyData.RoomDataCallBack callbackdata)
     {
         if (callbackdata.status == 200)
         {

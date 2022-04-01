@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public List<Plot> allPlots;
-
+    public List<Restaurants> allRestaurants;
     private void Awake()
     {
         if(Instance==null)
@@ -100,11 +100,33 @@ public class GameManager : MonoBehaviour
         }
         return null;
     }
+
+    public Restaurants FindRestaurantById(int id)
+    {
+        foreach (Restaurants p in allRestaurants)
+        {
+            if (p.id == id)
+            {
+                return p;
+            }
+        }
+        return null;
+    }
     public void ConstructBuilding(int plot_id,int building_id,int cTime)
     {
         Plot p = FindPlotById(plot_id);
         GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
         g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime));
+        p.enabled = false;
+        allRestaurants.Add(g.GetComponent<Restaurants>());
+        p.GetComponent<Collider>().enabled = false;
+    }
+
+    public void UpgradeBuilding( int building_id, int cTime)
+    {
+        Restaurants p = FindRestaurantById(building_id);
+      //  GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
+       p.StartCoroutine(p.StartConstruction(building_id, cTime));
         p.enabled = false;
         p.GetComponent<Collider>().enabled = false;
     }

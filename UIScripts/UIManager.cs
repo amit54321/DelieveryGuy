@@ -9,7 +9,7 @@ namespace InGame
     {
         public static  UIManager Instance;
 
-        public BasePOpUp constructionPopUp;
+        public BasePOpUp constructionPopUp,upgradePopUp;
 
         public BasePOpUp currentPopUp;
         public void EnablePopUp(BasePOpUp popUp)
@@ -23,6 +23,10 @@ namespace InGame
         }
         public void DisablePopUp()
         {
+            if(currentPopUp==null)
+            {
+                return;
+            }
             currentPopUp.gameObject.SetActive(false);
             currentPopUp = null;
         }

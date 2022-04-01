@@ -21,22 +21,42 @@ public class RestaurantDataUIArray
     Button crossButton;
     public ConstructionPrefab constructionPrefab;
     public Transform parent;
+    [SerializeField]
+    bool constructionPopUp;
+
+    [SerializeField]
+    ConstructionPrefab statiConstructionPrefab;
     // Start is called before the first frame update
     void OnEnable()
     {
-        foreach(Transform t in parent)
+        if (constructionPopUp)
         {
-            Destroy(t.gameObject);
-        }
-        crossButton.onClick.AddListener(Cross);
-        TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
-        RestaurantDataUIArray data =  JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
-        foreach(RestaurantDataUI r in data.data)
-        {
-            ConstructionPrefab c = Instantiate(constructionPrefab,parent);
-            c.SetData(r.id, r.title, r.desc, r.cost, 1, r.timer);
+            foreach (Transform t in parent)
+            {
+                Destroy(t.gameObject);
+            }
 
+            TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
+            RestaurantDataUIArray data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
+            foreach (RestaurantDataUI r in data.data)
+            {
+                ConstructionPrefab c = Instantiate(constructionPrefab, parent);
+                c.SetData(r.id, r.title, r.desc, r.cost, 1, r.timer);
+
+            }
         }
+        else
+        {
+            TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
+            RestaurantDataUIArray data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
+            foreach (RestaurantDataUI r in data.data)
+            {
+                if(r.id== GameManager.Instance.clickedPlotId)
+                statiConstructionPrefab.SetData(r.id, r.title, r.desc, r.cost, 1, r.timer);
+            }
+        }
+
+        crossButton.onClick.AddListener(Cross);
     }
 
     void Cross()
