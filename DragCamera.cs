@@ -13,10 +13,22 @@ public class DragCamera : MonoBehaviour
     Vector3 movement;
 
     public float left, right,up,down;
-
-    void Update()
+  
+void CheckIfRayCastHit()
+{
+    RaycastHit hit;
+    if (Physics.Raycast(transform.position, transform.forward, out hit))
     {
-
+        print(hit.collider.gameObject.name + "has been destroyed!");
+        Destroy(hit.collider.gameObject);
+    }
+}
+void Update()
+    {
+        if(InGame.UIManager.Instance.currentPopUp!=null)
+        {
+            return;
+        }
 
 
    //   Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -34,16 +46,18 @@ public class DragCamera : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
+           
+       RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            
+            if (Physics.Raycast(ray, out hit,Mathf.Infinity))
             {
                 if (hit.transform.GetComponent<OnClick>() != null)
                 {
                     hit.transform.GetComponent<OnClick>().OnCLickMethod();
                 }
             }
-        }
+       }
 
         if (cameraDragging)
         {

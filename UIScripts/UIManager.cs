@@ -8,6 +8,24 @@ namespace InGame
     public class UIManager : MonoBehaviour
     {
         public static  UIManager Instance;
+
+        public BasePOpUp constructionPopUp;
+
+        public BasePOpUp currentPopUp;
+        public void EnablePopUp(BasePOpUp popUp)
+        {
+            if(currentPopUp!=null)
+            {
+                currentPopUp.gameObject.SetActive(false);
+            }
+            currentPopUp = popUp;
+            currentPopUp.gameObject.SetActive(true);
+        }
+        public void DisablePopUp()
+        {
+            currentPopUp.gameObject.SetActive(false);
+            currentPopUp = null;
+        }
         private void Awake()
         {
             if(Instance==null)

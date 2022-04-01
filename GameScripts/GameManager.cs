@@ -28,7 +28,19 @@ public class GameManager : MonoBehaviour
 
     public Camera playerCamera, cityCamera;
 
+    public int clickedPlotId;
 
+    public static GameManager Instance;
+
+    public List<Plot> allPlots;
+
+    private void Awake()
+    {
+        if(Instance==null)
+        {
+            Instance = this;
+        }    
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -77,4 +89,20 @@ public class GameManager : MonoBehaviour
        
     }
 
+   public  Plot FindPlotById(int id)
+    {
+        foreach(Plot p in allPlots)
+        {
+            if(p.id==id)
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+    public void ConstructBuilding(int plot_id,int building_id,int cTime)
+    {
+        GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), FindPlotById(plot_id).transform);
+     g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime));
+    }
 }

@@ -1,29 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
-public class RestaurantData 
-{
-    public int level;
-    public int id;
-    public string name;
-    public int dish;
-    public float waitTime;
-    public int quantity;
-}
-public class Restaurants : Plot
-{
-    public RestaurantData restaurantData;
-    private Collider collider;
 
-    public new void OnCLickMethod()
-    {
-        UnityEngine.Debug.LogError("CLICKED REST " + id);
-    }
+public class RestaurantCollider : MonoBehaviour
+{
+    private Collider collider;
+    float waitTime;
+  
+
     void Start()
     {
         collider = GetComponent<Collider>();
-        
+        waitTime = transform.parent.GetComponent<Restaurants>().restaurantData.waitTime;
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -32,13 +21,13 @@ public class Restaurants : Plot
             InGame.UIManager.Instance.HideInputs();
             transform.GetChild(0).gameObject.SetActive(false);
             StartCoroutine(StartTimer());
-          
+
         }
     }
 
     IEnumerator StartTimer()
     {
-        for (int i = 0; i < restaurantData.waitTime; i++)
+        for (int i = 0; i < waitTime; i++)
         {
             yield return new WaitForSeconds(1);
         }
@@ -46,5 +35,4 @@ public class Restaurants : Plot
         collider.enabled = false;
 
     }
-   
 }
