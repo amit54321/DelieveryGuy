@@ -118,6 +118,13 @@ MonoBehaviour:
     dish: 0
     waitTime: 0
     quantity: 0
+  text: {fileID: 0}
+  sprite: {fileID: 0}
+  level: 0
+  quantity: 0
+  waitTime: 0
+  restaurantId: 0
+  restaurantCollider: {fileID: 4828834694263380471}
 --- !u!1 &359315972118388569
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,13 +386,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6359947681280319674}
   - component: {fileID: 6826209300576305828}
+  - component: {fileID: 4828834694263380471}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: PizzaStop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6359947681280319674
 Transform:
   m_ObjectHideFlags: 0
@@ -414,6 +422,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.09, y: 5.35, z: 1.99}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4828834694263380471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041723067890994199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249bb3392c5c98646a2ae7e6c9fed21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9091609122512635385
 GameObject:
   m_ObjectHideFlags: 0

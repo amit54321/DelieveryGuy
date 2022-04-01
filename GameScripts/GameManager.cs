@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     public List<Plot> allPlots;
     public List<Restaurants> allRestaurants;
+
+    public TaskData currentTask;
     private void Awake()
     {
         if(Instance==null)
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if(HomeScreen.status==STATUS.PLAY)
         {
+            InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
             EnablePlayerCamera();
         }
        else if (HomeScreen.status == STATUS.SET)
@@ -130,5 +133,12 @@ public class GameManager : MonoBehaviour
        p.StartCoroutine(p.StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
         p.enabled = false;
         p.GetComponent<Collider>().enabled = false;
+    }
+
+    public void TaskSelected(TaskData task)
+    {
+        currentTask = task;
+        Restaurants r = FindRestaurantById(task.building_id);
+        r.restaurantCollider.gameObject.SetActive(true);
     }
 }

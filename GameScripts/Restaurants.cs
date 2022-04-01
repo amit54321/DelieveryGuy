@@ -20,6 +20,8 @@ public class Restaurants : Plot
     [SerializeField]
     SpriteRenderer sprite;
     public int level,quantity,waitTime,restaurantId;
+
+    public RestaurantCollider restaurantCollider;
     public new void OnCLickMethod()
     {
         UnityEngine.Debug.LogError("CLICKED REST " + id);
@@ -40,6 +42,7 @@ public class Restaurants : Plot
         transform.GetComponent<Collider>().enabled = false;
         sprite.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
+        text.transform.LookAt(GameManager.Instance.cityCamera.transform);
         for(int i=0;i<constructionTime;i++)
         {
             text.text = (constructionTime - i).ToString()+ " s";

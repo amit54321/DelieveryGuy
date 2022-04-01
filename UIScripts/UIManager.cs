@@ -9,7 +9,7 @@ namespace InGame
     {
         public static  UIManager Instance;
 
-        public BasePOpUp constructionPopUp,upgradePopUp;
+        public BasePOpUp constructionPopUp,upgradePopUp,tasksPopUp;
 
         public BasePOpUp currentPopUp;
         public void EnablePopUp(BasePOpUp popUp)
