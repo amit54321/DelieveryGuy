@@ -19,6 +19,7 @@ public class Restaurants : Plot
     TextMeshPro text;
     [SerializeField]
     SpriteRenderer sprite;
+    public int level,quantity,waitTime,restaurantId;
     public new void OnCLickMethod()
     {
         UnityEngine.Debug.LogError("CLICKED REST " + id);
@@ -29,9 +30,13 @@ public class Restaurants : Plot
         
     }
     
-    public IEnumerator StartConstruction(int id,int constructionTime)
+    public IEnumerator StartConstruction(int id,int constructionTime,int level,int quantity,int waitTime,int resId)
     {
         this.id = id;
+        this.level = level;
+        this.quantity = quantity;
+        this.waitTime = waitTime;
+        this.restaurantId = resId;
         transform.GetComponent<Collider>().enabled = false;
         sprite.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
@@ -45,6 +50,8 @@ public class Restaurants : Plot
         transform.GetComponent<Collider>().enabled = true;
 
         GameManager.Instance.FindPlotById(id).enabled = false;
+
+
     }
 
 

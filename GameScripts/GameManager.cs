@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
+   
     public Restaurants FindRestaurantById(int id)
     {
         foreach (Restaurants p in allRestaurants)
@@ -112,21 +113,21 @@ public class GameManager : MonoBehaviour
         }
         return null;
     }
-    public void ConstructBuilding(int plot_id,int building_id,int cTime)
+    public void ConstructBuilding(int plot_id,int building_id,int cTime,int quantity,int waitTime,int level)
     {
         Plot p = FindPlotById(plot_id);
         GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
-        g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime));
+        g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
         p.enabled = false;
         allRestaurants.Add(g.GetComponent<Restaurants>());
         p.GetComponent<Collider>().enabled = false;
     }
 
-    public void UpgradeBuilding( int building_id, int cTime)
+    public void UpgradeBuilding( int plot_id,int building_id, int cTime,int quantity,int waitTime,int level)
     {
-        Restaurants p = FindRestaurantById(building_id);
+        Restaurants p = FindRestaurantById(plot_id);
       //  GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
-       p.StartCoroutine(p.StartConstruction(building_id, cTime));
+       p.StartCoroutine(p.StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
         p.enabled = false;
         p.GetComponent<Collider>().enabled = false;
     }

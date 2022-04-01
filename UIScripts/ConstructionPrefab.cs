@@ -29,14 +29,17 @@ public class ConstructionPrefab : MonoBehaviour
     Button buildButton;
 
     int id;
-    int cTime;
+    int cTime,quantity, cookTime;
     int currentLevel;
-    public void SetData(int id,string titleText,string descText,int costText,int levelText,int timerText )
+    public void SetData(int id,string titleText,string descText,int costText,int levelText,int timerText ,int quantity,int cookTime)
     {
         this.id = id;
         title.text = titleText;
         desc.text = descText;
+        this.quantity = quantity;
+        this.cookTime = cookTime;
         cost.text = "Cost: "+costText.ToString();
+        currentLevel = levelText;
         if (level)
         {
             currentLevel = levelText;
@@ -55,7 +58,7 @@ public class ConstructionPrefab : MonoBehaviour
 
     private void Upgrade()
     {
-        GameManager.Instance.UpgradeBuilding( id, cTime);
+        GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel) ;
         InGame.UIManager.Instance.DisablePopUp();
         return;
 
@@ -96,7 +99,7 @@ public class ConstructionPrefab : MonoBehaviour
 
     private void Build()
     {
-        GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id,cTime);
+        GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id,cTime,quantity,cookTime,currentLevel);
         InGame.UIManager.Instance.DisablePopUp();
         return;
 
