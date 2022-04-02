@@ -65,13 +65,14 @@ public class GameManager : MonoBehaviour
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
             EnablePlayerCamera();
             InGame.UIManager.Instance.HideInputs();
-          //  Invoke("ShowInputs",)
+            COnstructDemoBuildings();
+
+            //  Invoke("ShowInputs",)
         }
-       else if (HomeScreen.status == STATUS.SET)
+        else if (HomeScreen.status == STATUS.SET)
         {
             EnableCityCamera();
         }
-        COnstructDemoBuildings();
     }
     public void EnableCityCamera()
     {
