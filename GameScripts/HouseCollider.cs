@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RestaurantCollider : MonoBehaviour
+public class HouseCollider : MonoBehaviour
 {
+
     private Collider collider;
     float waitTime;
-  
+    public int id;
 
     void OnEnable()
     {
         collider = GetComponent<Collider>();
-        waitTime = transform.parent.GetComponent<Restaurants>().restaurantData.waitTime;
+        waitTime = 3;
+        GetComponent<MeshRenderer>().enabled = true;
         collider.enabled = true;
-        transform.GetChild(0).gameObject.SetActive(true);
-
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             InGame.UIManager.Instance.HideInputs();
-            transform.GetChild(0).gameObject.SetActive(false);
             collider.enabled = false;
+            GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(StartTimer());
 
         }

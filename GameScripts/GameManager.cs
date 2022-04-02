@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public List<Plot> allPlots;
     public List<Restaurants> allRestaurants;
+    public List<HouseCollider> allHouses;
 
     public TaskData currentTask;
     private void Awake()
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             EnableCityCamera();
         }
+        COnstructDemoBuildings();
     }
     public void EnableCityCamera()
     {
@@ -103,7 +105,17 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-   
+   public HouseCollider FIndHouseById(int id)
+    {
+        foreach (HouseCollider p in allHouses)
+        {
+            if (p.id == id)
+            {
+                return p;
+            }
+        }
+        return null;
+    }
     public Restaurants FindRestaurantById(int id)
     {
         foreach (Restaurants p in allRestaurants)
@@ -114,6 +126,14 @@ public class GameManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    void COnstructDemoBuildings()
+    {
+        for(int i=1;i<=5;i++)
+        {
+            ConstructBuilding(i, 1, 10, 10, 10, 0);
+        }
     }
     public void ConstructBuilding(int plot_id,int building_id,int cTime,int quantity,int waitTime,int level)
     {
@@ -140,6 +160,8 @@ public class GameManager : MonoBehaviour
         currentTask = task;
         Restaurants r = FindRestaurantById(task.building_id);
         r.restaurantCollider.gameObject.SetActive(true);
+        HouseCollider h = FIndHouseById(task.house_id);
+        h.gameObject.SetActive(true);
         SetArrow(r);
     }
 }

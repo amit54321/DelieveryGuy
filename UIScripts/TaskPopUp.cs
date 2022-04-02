@@ -7,7 +7,7 @@ public class TaskData
 {
     public int id;
     public string taskText;
-    public int building_id;
+    public int building_id,house_id;
     public int value;
 
 }
