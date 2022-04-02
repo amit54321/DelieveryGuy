@@ -12,6 +12,11 @@ public class RestaurantCollider : MonoBehaviour
     {
         collider = GetComponent<Collider>();
         waitTime = transform.parent.GetComponent<Restaurants>().restaurantData.waitTime;
+       
+    }
+
+   public void EnableCollider()
+    {
         collider.enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
 
@@ -30,12 +35,18 @@ public class RestaurantCollider : MonoBehaviour
 
     IEnumerator StartTimer()
     {
+        GameManager.Instance.timer.ToggleTimer(true);
         for (int i = 0; i < waitTime; i++)
         {
+            GameManager.Instance.timer.Set("Cooking ... ", (int)waitTime, i);
+
             yield return new WaitForSeconds(1);
         }
+        GameManager.Instance.timer.ToggleTimer(false);
         InGame.UIManager.Instance.ShowInputs();
         collider.enabled = false;
+        GameManager.Instance.EnableCurrentTaskHouse();
+        
 
     }
 }

@@ -13,6 +13,11 @@ public class HouseCollider : MonoBehaviour
     {
         collider = GetComponent<Collider>();
         waitTime = 3;
+        
+    }
+
+    public void EnableHouse()
+    {
         GetComponent<MeshRenderer>().enabled = true;
         collider.enabled = true;
     }
@@ -30,12 +35,15 @@ public class HouseCollider : MonoBehaviour
 
     IEnumerator StartTimer()
     {
+        GameManager.Instance.timer.ToggleTimer(true);
         for (int i = 0; i < waitTime; i++)
         {
+            GameManager.Instance.timer.Set("Delievering ...",(int)waitTime,i);
             yield return new WaitForSeconds(1);
         }
-        InGame.UIManager.Instance.ShowInputs();
+        GameManager.Instance.timer.ToggleTimer(false);
         collider.enabled = false;
+        InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
 
     }
 }

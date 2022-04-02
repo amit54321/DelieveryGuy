@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     public List<HouseCollider> allHouses;
 
     public TaskData currentTask;
+
+    public Timer timer;
     private void Awake()
     {
         if(Instance==null)
@@ -44,18 +46,26 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }    
     }
-    public void SetArrow(Restaurants target)
+    public void SetArrow(Transform target)
     {
-        currentRestaurant = target;
+        //currentRestaurant = target;
         arrowHandler.SetArrow(target.transform);
+    }
+
+    void ShowInputs()
+    {
+        InGame.UIManager.Instance.ShowInputs();
     }
 
     private void OnEnable()
     {
-        if(HomeScreen.status==STATUS.PLAY)
+      
+        if (HomeScreen.status==STATUS.PLAY)
         {
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
             EnablePlayerCamera();
+            InGame.UIManager.Instance.HideInputs();
+          //  Invoke("ShowInputs",)
         }
        else if (HomeScreen.status == STATUS.SET)
         {
@@ -155,13 +165,20 @@ public class GameManager : MonoBehaviour
         p.GetComponent<Collider>().enabled = false;
     }
 
+    public void EnableCurrentTaskHouse()
+    {
+        HouseCollider h = FIndHouseById(currentTask.house_id);
+        h.gameObject.SetActive(true);
+        h.EnableHouse();
+        SetArrow(h.transform);
+    }
     public void TaskSelected(TaskData task)
     {
         currentTask = task;
+        InGame.UIManager.Instance.ShowInputs();
         Restaurants r = FindRestaurantById(task.building_id);
         r.restaurantCollider.gameObject.SetActive(true);
-        HouseCollider h = FIndHouseById(task.house_id);
-        h.gameObject.SetActive(true);
-        SetArrow(r);
+        r.restaurantCollider.EnableCollider();
+        SetArrow(r.transform);
     }
 }

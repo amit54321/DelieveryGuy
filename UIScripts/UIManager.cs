@@ -36,14 +36,11 @@ namespace InGame
             {
                 Instance = this;
             }
+            keyboardInput = GameObject.FindWithTag("Player").transform.GetComponent<KeyboardInput>();
         }
         [SerializeField] public KeyboardInput keyboardInput;
         public GameObject inputImage;
-        void Start()
-        {
-
-            keyboardInput = GameObject.FindWithTag("Player").transform.GetComponent<KeyboardInput>();
-        }
+       
         // Start is called before the first frame update
         public void HideInputs()
         {
