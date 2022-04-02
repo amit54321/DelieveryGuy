@@ -12,6 +12,8 @@ namespace InGame
         public BasePOpUp constructionPopUp,upgradePopUp,tasksPopUp;
 
         public BasePOpUp currentPopUp;
+
+        public ScreenUI screenUI;
         public void EnablePopUp(BasePOpUp popUp)
         {
             if(currentPopUp!=null)

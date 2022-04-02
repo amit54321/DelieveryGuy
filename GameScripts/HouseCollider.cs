@@ -41,6 +41,9 @@ public class HouseCollider : MonoBehaviour
             GameManager.Instance.timer.Set("Delievering ...",(int)waitTime,i);
             yield return new WaitForSeconds(1);
         }
+        if (GameManager.Instance.DisableCurrentTask())
+            yield break
+              ;
         GameManager.Instance.timer.ToggleTimer(false);
         collider.enabled = false;
         InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);

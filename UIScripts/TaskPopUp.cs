@@ -16,7 +16,7 @@ public class TaskPopUp : BasePOpUp
     public TaskPrefab taskPrefab;
     public Transform parent;
 
-    public List<TaskData> taskDatas;
+   
 
      
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class TaskPopUp : BasePOpUp
 
         }
 
-        foreach (TaskData taskData in taskDatas)
+        foreach (TaskData taskData in GameManager.Instance.taskDatas)
         {
             TaskPrefab task = Instantiate(taskPrefab, parent);
             task.SetData(taskData);

@@ -2,21 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class StudentData
-{
-    public string name;
-    public int rollName;
-    public int marks;
 
-    public StudentData(string n, int rollName, int marks)
-    {
-        this.name = n;
-        this.rollName = rollName;
-        this.marks = marks;
-    }
-
-}
 
 public class GameManager : MonoBehaviour
 {
@@ -37,14 +23,39 @@ public class GameManager : MonoBehaviour
     public List<HouseCollider> allHouses;
 
     public TaskData currentTask;
-
+    public List<TaskData> taskDatas;
     public Timer timer;
+
+    public bool gameOver;
+    int totalTasks;
     private void Awake()
     {
         if(Instance==null)
         {
             Instance = this;
-        }    
+        }
+        gameOver = false;
+        totalTasks = taskDatas.Count;
+    }
+
+    public bool DisableCurrentTask()
+    {
+
+        foreach(TaskData t in taskDatas)
+        {
+            if(currentTask.id == t.id)
+            {
+                taskDatas.Remove(currentTask);
+                break;
+            }
+        }
+        InGame.UIManager.Instance.screenUI.SetTasks(totalTasks - taskDatas.Count);
+        if(totalTasks-taskDatas.Count<=0)
+        {
+            gameOver = true;
+            return true;
+        }
+        return false;
     }
     public void SetArrow(Transform target)
     {
@@ -63,6 +74,7 @@ public class GameManager : MonoBehaviour
         if (HomeScreen.status==STATUS.PLAY)
         {
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
+            InGame.UIManager.Instance.screenUI.gameObject.SetActive(true);
             EnablePlayerCamera();
             InGame.UIManager.Instance.HideInputs();
             COnstructDemoBuildings();
