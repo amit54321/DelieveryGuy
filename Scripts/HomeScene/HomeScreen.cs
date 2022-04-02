@@ -31,9 +31,5 @@ public class HomeScreen : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

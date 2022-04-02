@@ -77,9 +77,4 @@ public class RestaurantLevel
         InGame.UIManager.Instance.DisablePopUp();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

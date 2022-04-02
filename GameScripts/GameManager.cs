@@ -43,11 +43,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }    
     }
-    // Start is called before the first frame update
-    void Start()
+    public void SetArrow(Restaurants target)
     {
-        currentRestaurant = restaurants[0];
-        arrowHandler.SetArrow(currentRestaurant.transform);
+        currentRestaurant = target;
+        arrowHandler.SetArrow(target.transform);
     }
 
     private void OnEnable()
@@ -131,8 +130,7 @@ public class GameManager : MonoBehaviour
     public void UpgradeBuilding( int plot_id,int building_id, int cTime,int quantity,int waitTime,int level)
     {
         Restaurants p = FindRestaurantById(plot_id);
-      //  GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
-       p.StartCoroutine(p.StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
+        p.StartCoroutine(p.StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
         p.enabled = false;
         p.GetComponent<Collider>().enabled = false;
     }
@@ -142,5 +140,6 @@ public class GameManager : MonoBehaviour
         currentTask = task;
         Restaurants r = FindRestaurantById(task.building_id);
         r.restaurantCollider.gameObject.SetActive(true);
+        SetArrow(r);
     }
 }
