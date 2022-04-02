@@ -10,6 +10,7 @@ public class Plot : MonoBehaviour, OnClick
 {
 
     public int id;
+    public Vector3 eulerAngle;
 
     public void OnCLickMethod()
     {

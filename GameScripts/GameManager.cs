@@ -120,8 +120,10 @@ public class GameManager : MonoBehaviour
     {
         Plot p = FindPlotById(plot_id);
         GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
+        g.transform.localEulerAngles = p.eulerAngle;
         g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
         p.enabled = false;
+        p.GetComponent<MeshRenderer>().enabled = false;
         allRestaurants.Add(g.GetComponent<Restaurants>());
         p.GetComponent<Collider>().enabled = false;
     }
