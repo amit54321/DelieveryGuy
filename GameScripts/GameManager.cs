@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
+[System.Serializable]
+public class WayPoints
+{
+    public List<GameObject> ways;
+}
 public class GameManager : MonoBehaviour
 {
     public List<Restaurants> restaurants;
@@ -26,6 +29,12 @@ public class GameManager : MonoBehaviour
     public List<TaskData> taskDatas;
     public Timer timer;
 
+    public Transform player;
+
+    public Direction dir;
+
+    public List<WayPoints> wayPoints;
+
     public bool gameOver;
     int totalTasks;
     private void Awake()
@@ -36,6 +45,8 @@ public class GameManager : MonoBehaviour
         }
         gameOver = false;
         totalTasks = taskDatas.Count;
+
+       
     }
 
     public bool DisableCurrentTask()
@@ -193,5 +204,6 @@ public class GameManager : MonoBehaviour
         r.restaurantCollider.gameObject.SetActive(true);
         r.restaurantCollider.EnableCollider();
         SetArrow(r.transform);
+        dir.SetArrow(player, r.transform);
     }
 }
