@@ -44659,6 +44659,7 @@ MonoBehaviour:
     - {fileID: 1130802314}
     - {fileID: 559267777}
     - {fileID: 2094172161}
+  startingPoint: {x: 0, y: 0, z: 4.4}
   gameOver: 0
 --- !u!4 &918437305
 Transform:
@@ -62849,7 +62850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bff4c4ffbc29a041a638ec3743c588d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 85.8
+      value: 85.9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bff4c4ffbc29a041a638ec3743c588d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -81657,6 +81658,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 582024096}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1692770654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 9b25e71fd5b7ac6469539d930c6dc2e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 72258808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1692770658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692770654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768c41c71869c804186cc5bab5635705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rot: {x: 0, y: 0, z: 0, w: 0}
+  lane: 0
+  wayPoints: []
+  currentWayPoint: 0
 --- !u!1001 &1692927188
 PrefabInstance:
   m_ObjectHideFlags: 0

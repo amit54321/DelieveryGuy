@@ -35,8 +35,17 @@ public class GameManager : MonoBehaviour
 
     public List<WayPoints> wayPoints;
 
+    public Vector3 startingPoint;
+
     public bool gameOver;
     int totalTasks;
+
+    public void ResetPlayer()
+    {
+        player.transform.position = startingPoint;
+        transform.eulerAngles = Vector3.zero;
+
+    }
     private void Awake()
     {
         if(Instance==null)
