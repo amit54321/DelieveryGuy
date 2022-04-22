@@ -204,13 +204,13 @@ public class GameManager : MonoBehaviour
         HouseCollider h = FIndHouseById(currentTask.house_id);
         h.gameObject.SetActive(true);
         h.EnableHouse();
-        EnableMapCube(h.transform);
+        EnableMapCube(h.transform.parent);
         SetArrow(h.transform);
     }
 
     public void StopPlayer(Transform t)
     {
-        float y = player.transform.position.y;
+        float y = player.transform.position.y+1;
         player.transform.position = new Vector3(t.transform.position.x, y, t.transform.position.z);
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
     {
         mapCube.SetActive(true);
         mapCube.transform.SetParent(parent);
-        mapCube.transform.localPosition = new Vector3(0, 60, 0);
+        mapCube.transform.localPosition = new Vector3(0, 90, 0);
     }
     public void TaskSelected(TaskData task)
     {
