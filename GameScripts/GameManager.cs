@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     int totalTasks;
 
+    public GameObject mapCube;
     public void ResetPlayer()
     {
         player.transform.position = startingPoint;
@@ -203,7 +204,26 @@ public class GameManager : MonoBehaviour
         HouseCollider h = FIndHouseById(currentTask.house_id);
         h.gameObject.SetActive(true);
         h.EnableHouse();
+        EnableMapCube(h.transform);
         SetArrow(h.transform);
+    }
+
+    public void StopPlayer(Transform t)
+    {
+        float y = player.transform.position.y;
+        player.transform.position = new Vector3(t.transform.position.x, y, t.transform.position.z);
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
+   public  void DisableMapCube()
+    {
+        mapCube.SetActive(false);
+    }
+    void EnableMapCube(Transform parent)
+    {
+        mapCube.SetActive(true);
+        mapCube.transform.SetParent(parent);
+        mapCube.transform.localPosition = new Vector3(0, 60, 0);
     }
     public void TaskSelected(TaskData task)
     {
@@ -212,6 +232,7 @@ public class GameManager : MonoBehaviour
         Restaurants r = FindRestaurantById(task.building_id);
         r.restaurantCollider.gameObject.SetActive(true);
         r.restaurantCollider.EnableCollider();
+        EnableMapCube(r.transform);
         SetArrow(r.transform);
         dir.SetArrow(player, r.transform);
     }

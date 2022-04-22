@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: -8577343706180074295}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Road Intersection_01
   m_TagString: Waypoint
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2410576558458270839}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Waypoint1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 758720329804800821}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Waypoint1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 98918382047878187}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Waypoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1668686022011254959}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Waypoint1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

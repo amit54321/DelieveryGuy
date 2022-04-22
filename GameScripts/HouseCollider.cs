@@ -28,6 +28,7 @@ public class HouseCollider : MonoBehaviour
             InGame.UIManager.Instance.HideInputs();
             collider.enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
+            GameManager.Instance.StopPlayer(transform);
             StartCoroutine(StartTimer());
 
         }
@@ -47,6 +48,6 @@ public class HouseCollider : MonoBehaviour
         GameManager.Instance.timer.ToggleTimer(false);
         collider.enabled = false;
         InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
-
+        GameManager.Instance.DisableMapCube();
     }
 }
