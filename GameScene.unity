@@ -13834,6 +13834,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 4
+  stable: 0
 --- !u!1 &301093147 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7459313680616357257, guid: cbc86bb57f673ba45a8426789eb0fac0,
@@ -14635,6 +14636,7 @@ MonoBehaviour:
   lane: 1
   wayPoints: []
   currentWayPoint: 2
+  stable: 0
 --- !u!1001 &326388832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25473,6 +25475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_Container_color02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6fa2aa0a1d56aba4a8884471618de9e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6fa2aa0a1d56aba4a8884471618de9e4, type: 3}
       propertyPath: m_RootOrder
       value: 281
@@ -31555,6 +31561,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 6
+  stable: 0
 --- !u!4 &650096553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e0e851c58997b9c438fae494e3412749,
@@ -36579,6 +36586,7 @@ MonoBehaviour:
   lane: 1
   wayPoints: []
   currentWayPoint: 7
+  stable: 0
 --- !u!1001 &758420302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37659,6 +37667,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 4
+  stable: 0
 --- !u!1001 &784387086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49694,6 +49703,7 @@ MonoBehaviour:
   lane: 0
   wayPoints: []
   currentWayPoint: 2
+  stable: 0
 --- !u!1001 &1031547969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51900,6 +51910,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 2
+  stable: 0
 --- !u!1001 &1084019414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56843,6 +56854,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 0
+  stable: 0
 --- !u!1001 &1179316537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60491,6 +60503,7 @@ MonoBehaviour:
   lane: 1
   wayPoints: []
   currentWayPoint: 0
+  stable: 0
 --- !u!1001 &1257645119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64538,6 +64551,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 0
+  stable: 0
 --- !u!1001 &1317466067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69372,6 +69386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_Taxi (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 05aec82adc02f16409639716322b1673, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 05aec82adc02f16409639716322b1673, type: 3}
       propertyPath: m_RootOrder
       value: 570
@@ -72963,21 +72981,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 569656009}
     m_Modifications:
+    - target: {fileID: 100000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
       propertyPath: m_RootOrder
       value: 588
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 259.6
+      value: 272.7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.3
+      value: 21.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.9
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -78116,6 +78138,7 @@ MonoBehaviour:
   lane: 1
   wayPoints: []
   currentWayPoint: 6
+  stable: 0
 --- !u!1001 &1610371167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81680,6 +81703,7 @@ MonoBehaviour:
   lane: 0
   wayPoints: []
   currentWayPoint: 0
+  stable: 0
 --- !u!1001 &1692927188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86307,6 +86331,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_Car_color03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c98da428142c39c42bb62c454958cd1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c98da428142c39c42bb62c454958cd1f, type: 3}
       propertyPath: m_RootOrder
       value: 676
@@ -88989,6 +89017,7 @@ MonoBehaviour:
   lane: 0
   wayPoints: []
   currentWayPoint: 0
+  stable: 0
 --- !u!1001 &1826197374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97244,6 +97273,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 2
+  stable: 0
 --- !u!1001 &2022101653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100320,6 +100350,7 @@ MonoBehaviour:
   lane: 1
   wayPoints: []
   currentWayPoint: 2
+  stable: 0
 --- !u!4 &2078246682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689,
@@ -102362,6 +102393,7 @@ MonoBehaviour:
   lane: 2
   wayPoints: []
   currentWayPoint: 6
+  stable: 0
 --- !u!1001 &2138330522
 PrefabInstance:
   m_ObjectHideFlags: 0
