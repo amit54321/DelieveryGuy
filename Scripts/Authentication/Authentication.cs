@@ -9,6 +9,39 @@ using UnityEngine.Serialization;
 
 namespace Authentication
 {
+
+    [System.Serializable]
+    public class RegisterCallback
+    {
+        public string message;
+        public ProfileData data;
+    }
+
+    [System.Serializable]
+    public class ProfileData
+    {
+        public string id;
+        public string _id;
+        public string name;
+        public string deviceId;
+        public int coins;
+        public List<RestaurantsData> restaurants;
+        public List<TimersData> timers;
+
+    }
+
+    [System.Serializable]
+    public class RestaurantsData
+    {
+
+    }
+    [System.Serializable]
+    public class TimersData
+    {
+
+    }
+
+
     [System.Serializable]
     public class FacebookFriends
     {
@@ -21,6 +54,10 @@ namespace Authentication
 
     public class Authentication : WebRequest
     {
+
+        public  ProfileData profileData;
+
+
         public static bool socketConnected;
         public static List<FacebookFriends> facebookFriends = new List<FacebookFriends>();
         public static LobbyData.UserProfile userProfile;
@@ -45,45 +82,89 @@ namespace Authentication
 
         public void Register()
         {
-            Dictionary<string, object> data = new Dictionary<string, object>()
-            {
-               // {"deviceId", "djjddd"}
-                 {"deviceId", SystemInfo.deviceUniqueIdentifier}
+           Dictionary<string, object> data = new Dictionary<string, object>()
+           {
+              
+                 {"deviceId","bhjbjhbhj" }// SystemInfo.deviceUniqueIdentifier}
 
             };
            
-            StartCoroutine(PostNetworkRequest(AuthenticationConstants.REGISTER, data, RegisterCallBack, Error, false));
+            StartCoroutine(PostNetworkRequest(AuthenticationConstants.REGISTER ,data, RegisterCallBack, Error, false));
             UIManager.instance.ToggleLoadingPanel(true);
         }
 
+
+        public void UpdateName(string name)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>()
+           {
+
+                 {"id",  PlayerPrefs.GetString("ID")},
+                 {"name", name}
+
+            };
+
+            StartCoroutine(PostNetworkRequest(AuthenticationConstants.UPDATENAME, data, UpdateNameCallBack, Error, false));
+            UIManager.instance.ToggleLoadingPanel(true);
+        }
         public void RegisterCallBack(string callback)
         {
             Debug.Log("LOGIN CALLS" + callback);
             UIManager.instance.ToggleLoadingPanel(false);
-            LobbyData.DefaultAUth data = JsonUtility.FromJson<LobbyData.DefaultAUth>(callback);
-            if (data.status == 200)
-            {
-                SavePlayerPrefs(data.message.email, data.message.name, "Bearer " + data.message.token,
-                    _tempPassword, data.message._id, "");
-                userProfile = data.message;
-                allChats = data.chatPacks;
-                allMissions = data.missions;
-          if(!string.IsNullOrEmpty(data.message.name))
+            
+                ProfileData data = JsonUtility.FromJson<ProfileData>(callback);
+                PlayerPrefs.SetString("ID", data._id);
+                profileData = data;
+            RoomContoller.SocketMaster.instance.InitialiseSocket();
+            if (string.IsNullOrEmpty(profileData.name))
                 {
-                    SceneManager.LoadScene("Lobby");
+                    UIManager.instance.EnableScreen(UIManager.instance.loginScreen);
                 }
                 else
                 {
-                   
+                    SceneManager.LoadScene("HomeScene");
                 }
-              
-            }
-            else
             {
-                UIManager.instance.ShowError(data.error);
-                Debug.Log("MESSAGE ERROR " + data.error);
+              
+               
             }
         }
+        public void UpdateNameCallBack(string callback)
+        {
+            Debug.Log("LOGIN CALLS" + callback);
+            UIManager.instance.ToggleLoadingPanel(false);
+            ProfileData data = JsonUtility.FromJson<ProfileData>(callback);
+            {
+                PlayerPrefs.SetString("ID", data._id);
+                profileData = data;
+                SceneManager.LoadScene("HomeScene");
+            }
+            {
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public void UpdateUser(string name,string avatar)
@@ -139,7 +220,7 @@ namespace Authentication
                 {"password", password}
             };
             _tempPassword = password;
-            StartCoroutine(PostNetworkRequest(AuthenticationConstants.LOGIN, data, LoginCallBack, Error, false));
+           // StartCoroutine(PostNetworkRequest(AuthenticationConstants.LOGIN, data, LoginCallBack, Error, false));
             UIManager.instance.ToggleLoadingPanel(true);
         }
 

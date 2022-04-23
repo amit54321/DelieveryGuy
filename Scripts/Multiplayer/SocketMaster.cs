@@ -26,10 +26,10 @@ namespace RoomContoller
                 instance = this;
         }
 
-        private void OnEnable()
-        {
-            InitialiseSocket();
-        }
+       // private void InitialiseSocket()
+      //  {
+        //    InitialiseSocket();
+     //   }
 
         void OnApplicationPause(bool pause)
         {
@@ -116,21 +116,21 @@ namespace RoomContoller
             so.ConnectWith = BestHTTP.SocketIO.Transports.TransportTypes.WebSocket;
             PlatformSupport.Collections.ObjectModel.ObservableDictionary<string, string> dic =
                 new PlatformSupport.Collections.ObjectModel.ObservableDictionary<string, string>();
-            dic.Add("token", PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
-            Debug.LogError("tokrn  " + PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
+           // dic.Add("token", PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
+          //  Debug.LogError("tokrn  " + PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
             so.AdditionalQueryParams = dic;
             socketMaster =
                 new BestHTTP.SocketIO.SocketManager(new System.Uri(AuthenticationConstants.SOCKETURL + "socket.io/"),
                     so);
             socketMaster.Encoder = new BestHTTP.SocketIO.JsonEncoders.LitJsonEncoder();
             socketMaster.Open();
-
+            Debug.LogError("start");
             socketMaster.Socket.On(SocketIOEventTypes.Connect,
                 (socket, packet, args) =>
                 {
-                    CheckGame();
-                    CheckDailyReward();
-                    Debug.LogError("cuuvvyvtftvuv");
+                   // CheckGame();
+                    //CheckDailyReward();
+                    Debug.LogError("connect");
 
                     //    CheckGame();
                 });

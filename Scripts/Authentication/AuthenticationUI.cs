@@ -28,7 +28,8 @@ namespace Authentication
 
         public void LoginUI()
         {
-            UpdateUser(loginEmail.text, "fff");
+            if(!string.IsNullOrEmpty(loginEmail.text))
+            UpdateName(loginEmail.text);
         }
 
         public void LoginSocialUI()

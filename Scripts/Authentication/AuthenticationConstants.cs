@@ -5,12 +5,14 @@
        //  public static readonly string SOCKETURL = "ws://localhost:5000/";
       //   public static readonly string URL = "localhost:5000";
 
-         public static readonly string URL = "http://18.216.195.156:5000";
-          public static readonly string SOCKETURL = "http://18.216.195.156:5000/";
+         public static readonly string URL = "https://2lgrlwtkrd.execute-api.ap-south-1.amazonaws.com/dev";
+          public static readonly string SOCKETURL = "wss://nynlr8imh3.execute-api.ap-south-1.amazonaws.com/dev";
 
 
-        public static readonly string LOGIN = URL + "/users/login";
-        public static readonly string REGISTER = URL + "/users/register";
+        public static readonly string REGISTER = URL + "/users/login";
+        public static readonly string UPDATENAME  = URL + "/users/login/data";
+
+
         public static readonly string UPDATEUSER = URL + "/users/update";
         public static readonly string SIGNUP = URL + "/users/signup";
         public static readonly string GETUSER = URL + "/users/data";

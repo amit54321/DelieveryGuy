@@ -98,6 +98,8 @@ namespace Authentication
             }
         }
 
+
+
         private static UnityWebRequest PostJson(string uri, string postData)
         {
             UnityWebRequest request = new UnityWebRequest(uri, UnityWebRequest.kHttpVerbPOST);
@@ -120,26 +122,28 @@ namespace Authentication
             using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
             {
                 webRequest.timeout = 30;
-                if (token)
+               // if (token)
                 {
-                    Debug.Log("TOKEn   " + PlayerPrefs.GetString(PlayerPrefsData.TOKEN));
-                    webRequest.SetRequestHeader("authorization", PlayerPrefs.GetString(PlayerPrefsData.TOKEN));
+                    Debug.Log("TOKEn   " + uri);
+                  //  webRequest.SetRequestHeader("authorization", PlayerPrefs.GetString(PlayerPrefsData.TOKEN));
                 }
 
                 yield return webRequest.SendWebRequest();
 
-                string[] pages = uri.Split('/');
-                int page = pages.Length - 1;
+             //   string[] pages = uri.Split('/');
+              //  int page = pages.Length - 1;
 
                 if (webRequest.isNetworkError)
                 {
+                    Debug.Log(": Error: " + webRequest.error);
                     error.Invoke(webRequest.error);
-                    Debug.Log(pages[page] + ": Error: " + webRequest.error);
+                  
                 }
                 else
                 {
+                    Debug.Log(":Received: " + webRequest.downloadHandler.text);
                     callBack.Invoke(webRequest.downloadHandler.text);
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                  
                 }
             }
         }
