@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
             EnableCityCamera();
             InGame.UIManager.Instance.HideInputs();
         }
+      //  mainArrow.transform.LookAt(mapCube.transform.position,Vector3.up);
        
     }
 
@@ -205,7 +206,7 @@ public class GameManager : MonoBehaviour
         h.gameObject.SetActive(true);
         h.EnableHouse();
         EnableMapCube(h.transform.parent);
-        SetArrow(h.transform);
+    
     }
 
     public void StopPlayer(Transform t)
@@ -224,6 +225,7 @@ public class GameManager : MonoBehaviour
         mapCube.SetActive(true);
         mapCube.transform.SetParent(parent);
         mapCube.transform.localPosition = new Vector3(0, 90, 0);
+        SetArrow(mapCube.transform);
     }
     public void TaskSelected(TaskData task)
     {
@@ -233,7 +235,7 @@ public class GameManager : MonoBehaviour
         r.restaurantCollider.gameObject.SetActive(true);
         r.restaurantCollider.EnableCollider();
         EnableMapCube(r.transform);
-        SetArrow(r.transform);
-        dir.SetArrow(player, r.transform);
+      
+     //  dir.SetArrow(player, r.transform);
     }
 }
