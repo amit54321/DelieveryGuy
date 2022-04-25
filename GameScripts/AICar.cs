@@ -86,6 +86,7 @@ public class AICar : MonoBehaviour
 
     IEnumerator Deactivate(Collision col)
     {
+        col.transform.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(0.5f);
         GameManager.Instance.ResetPlayer();
        // col.gameObject.SetActive(false);

@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = startingPoint;
         transform.eulerAngles = Vector3.zero;
-
+        player.transform.GetComponent<Rigidbody>().isKinematic = false;
     }
     private void Awake()
     {
