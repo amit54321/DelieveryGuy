@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     int totalTasks;
 
     public GameObject mapCube;
+    public GameObject minimap;
     public void ResetPlayer()
     {
         player.transform.position = startingPoint;
@@ -112,6 +113,9 @@ public class GameManager : MonoBehaviour
         cityCamera.gameObject.SetActive(true);
         playerCamera.gameObject.SetActive(false);
         InGame.UIManager.Instance.HideInputs();
+        arrowHandler.arrows[0].gameObject.SetActive(false);
+        player.gameObject.SetActive(false);
+        minimap.SetActive(false);
     }
 
     public void EnablePlayerCamera()
@@ -208,12 +212,17 @@ public class GameManager : MonoBehaviour
         EnableMapCube(h.transform.parent);
     
     }
+    void SetPlayerKinematic()
+    {
+        player.GetComponent<Rigidbody>().isKinematic = true;
+    }
 
     public void StopPlayer(Transform t)
     {
         float y = player.transform.position.y+1;
         player.transform.position = new Vector3(t.transform.position.x, y, t.transform.position.z);
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Invoke("SetPlayerKinematic", 0.5f);
     }
 
    public  void DisableMapCube()

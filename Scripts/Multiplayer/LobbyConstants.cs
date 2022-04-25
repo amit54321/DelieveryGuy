@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class LobbyConstants
 {
+
+    public static readonly string CONSTRUCT = "CONSTRUCT";
+    public static readonly string UPGRADE = "UPGRADE";
+
     public static readonly string CREATEROOM = "CREATEROOM";
     public static readonly string JOINROOM = "JOINROOM";
     public static readonly string ONROOMJOINED = "ONROOMJOINED";

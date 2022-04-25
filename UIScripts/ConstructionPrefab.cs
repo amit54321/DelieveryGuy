@@ -64,7 +64,7 @@ public class ConstructionPrefab : MonoBehaviour
 
         UpgradeRestaurant constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(
-            LobbyConstants.LEAVEROOM,
+            LobbyConstants.UPGRADE,
             (socket, packet, args) =>
             {
                 if (args != null && args.Length > 0)
@@ -88,7 +88,8 @@ public class ConstructionPrefab : MonoBehaviour
     {
         if (callbackdata.status == 200)
         {
-            UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
+            GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel);
+
         }
         else
         {
@@ -105,7 +106,7 @@ public class ConstructionPrefab : MonoBehaviour
 
         ConstructRestaurant constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(
-            LobbyConstants.LEAVEROOM,
+            LobbyConstants.CONSTRUCT,
             (socket, packet, args) =>
             {
                 if (args != null && args.Length > 0)
@@ -130,7 +131,8 @@ public class ConstructionPrefab : MonoBehaviour
     {
         if (callbackdata.status == 200)
         {
-            UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
+            GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel);
+
         }
         else
         {

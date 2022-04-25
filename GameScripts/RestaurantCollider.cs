@@ -46,6 +46,7 @@ public class RestaurantCollider : MonoBehaviour
         GameManager.Instance.timer.ToggleTimer(false);
         InGame.UIManager.Instance.ShowInputs();
         collider.enabled = false;
+        GameManager.Instance.player.GetComponent<Rigidbody>().isKinematic = false;
         GameManager.Instance.EnableCurrentTaskHouse();
         
 

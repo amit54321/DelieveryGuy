@@ -6,8 +6,9 @@
       //   public static readonly string URL = "localhost:5000";
 
          public static readonly string URL = "https://2lgrlwtkrd.execute-api.ap-south-1.amazonaws.com/dev";
-          public static readonly string SOCKETURL = "wss://nynlr8imh3.execute-api.ap-south-1.amazonaws.com/dev";
-
+        public static readonly string SOCKETURL = //"https://nynlr8imh3.execute-api.ap-south-1.amazonaws.com/dev/@connections";
+           "wss://nynlr8imh3.execute-api.ap-south-1.amazonaws.com/dev";
+        
 
         public static readonly string REGISTER = URL + "/users/login";
         public static readonly string UPDATENAME  = URL + "/users/login/data";

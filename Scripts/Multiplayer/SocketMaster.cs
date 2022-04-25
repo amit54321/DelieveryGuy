@@ -120,10 +120,11 @@ namespace RoomContoller
           //  Debug.LogError("tokrn  " + PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
             so.AdditionalQueryParams = dic;
             socketMaster =
-                new BestHTTP.SocketIO.SocketManager(new System.Uri(AuthenticationConstants.SOCKETURL + "socket.io/"),
+                new BestHTTP.SocketIO.SocketManager(new System.Uri(AuthenticationConstants.SOCKETURL+ "socket.io/"),
                     so);
             socketMaster.Encoder = new BestHTTP.SocketIO.JsonEncoders.LitJsonEncoder();
             socketMaster.Open();
+           
             Debug.LogError("start");
             socketMaster.Socket.On(SocketIOEventTypes.Connect,
                 (socket, packet, args) =>
@@ -134,8 +135,8 @@ namespace RoomContoller
 
                     //    CheckGame();
                 });
-            //    socketMaster.Socket.On(SocketIOEventTypes.Error, (socket, packet, args) =>
-            //        Debug.LogError(string.Format("Error: {0}", args[0].ToString())));
+               socketMaster.Socket.On(SocketIOEventTypes.Error, (socket, packet, args) =>
+                  Debug.LogError(string.Format("Error: {0}", args[0].ToString())));
 
             socketMaster.Socket.On(SocketIOEventTypes.Disconnect,
                 (socket, packet, args) => { InitialiseSocket(); });

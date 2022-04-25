@@ -28829,7 +28829,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 124630, guid: 42d7ee5c11e09824fb98a4babce5d1a5, type: 3}
       propertyPath: m_Name
-      value: Arrow (20)
+      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 124630, guid: 42d7ee5c11e09824fb98a4babce5d1a5, type: 3}
       propertyPath: m_Layer
@@ -44901,6 +44901,7 @@ MonoBehaviour:
   startingPoint: {x: 0, y: 0, z: 4.4}
   gameOver: 0
   mapCube: {fileID: 1203361743}
+  minimap: {fileID: 208342825}
 --- !u!4 &918437305
 Transform:
   m_ObjectHideFlags: 0
@@ -94822,7 +94823,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947531087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
   m_Name: 
