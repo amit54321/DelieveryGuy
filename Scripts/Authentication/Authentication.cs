@@ -122,7 +122,7 @@ namespace Authentication
                 }
                 else
                 {
-                    SceneManager.LoadScene("HomeScene");
+                    SceneManager.LoadScene("Lobby");
                 }
             {
               
@@ -137,7 +137,7 @@ namespace Authentication
             {
                 PlayerPrefs.SetString("ID", data._id);
                 profileData = data;
-                SceneManager.LoadScene("HomeScene");
+                SceneManager.LoadScene("Lobby");
             }
             {
 
