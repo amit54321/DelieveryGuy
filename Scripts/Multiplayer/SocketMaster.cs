@@ -20,16 +20,18 @@ namespace RoomContoller
         public List<Texture> defaultSprites;
         public static List<LobbyData.MissionComplete> missionCompleted = new List<LobbyData.MissionComplete>();
 
+
+        public ProfileData profileData;
         void Awake()
         {
             if (instance == null)
                 instance = this;
         }
 
-       // private void InitialiseSocket()
-      //  {
+        // private void InitialiseSocket()
+        //  {
         //    InitialiseSocket();
-     //   }
+        //   }
 
         void OnApplicationPause(bool pause)
         {
@@ -51,7 +53,7 @@ namespace RoomContoller
 
         void CheckGame()
         {
-           
+
             LobbyData.CheckRoom data;
             SocketMaster.instance.socketMaster.Socket.Emit(
                 LobbyConstants.CHECKGAME,
@@ -116,27 +118,27 @@ namespace RoomContoller
             so.ConnectWith = BestHTTP.SocketIO.Transports.TransportTypes.WebSocket;
             PlatformSupport.Collections.ObjectModel.ObservableDictionary<string, string> dic =
                 new PlatformSupport.Collections.ObjectModel.ObservableDictionary<string, string>();
-           // dic.Add("token", PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
-          //  Debug.LogError("tokrn  " + PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
+            dic.Add("token", PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
+              Debug.LogError("tokrn  " + PlayerPrefs.GetString(PlayerPrefsData.TOKEN).Replace("Bearer ", ""));
             so.AdditionalQueryParams = dic;
             socketMaster =
-                new BestHTTP.SocketIO.SocketManager(new System.Uri(AuthenticationConstants.SOCKETURL+ "socket.io/"),
+                new BestHTTP.SocketIO.SocketManager(new System.Uri(AuthenticationConstants.SOCKETURL + "socket.io/"),
                     so);
             socketMaster.Encoder = new BestHTTP.SocketIO.JsonEncoders.LitJsonEncoder();
             socketMaster.Open();
-           
+
             Debug.LogError("start");
             socketMaster.Socket.On(SocketIOEventTypes.Connect,
                 (socket, packet, args) =>
                 {
-                   // CheckGame();
+                    // CheckGame();
                     //CheckDailyReward();
                     Debug.LogError("connect");
 
                     //    CheckGame();
                 });
-               socketMaster.Socket.On(SocketIOEventTypes.Error, (socket, packet, args) =>
-                  Debug.LogError(string.Format("Error: {0}", args[0].ToString())));
+            socketMaster.Socket.On(SocketIOEventTypes.Error, (socket, packet, args) =>
+               Debug.LogError(string.Format("Error: {0}", args[0].ToString())));
 
             socketMaster.Socket.On(SocketIOEventTypes.Disconnect,
                 (socket, packet, args) => { InitialiseSocket(); });
@@ -153,10 +155,14 @@ namespace RoomContoller
             socketMaster.Socket.On(LobbyConstants.SETCOIN, SetCoin);
             //    socketMaster.Socket.On(LobbyConstants.ROUNDTURN, RoundChange);
             //    socketMaster.Socket.On(LobbyConstants.DICEROLLEDCALLBACK, DiceRolledCallBack);
-               socketMaster.Socket.On(LobbyConstants.PLAYERQUIT, PlayerQuitsTheGame);
+            socketMaster.Socket.On(LobbyConstants.PLAYERQUIT, PlayerQuitsTheGame);
             socketMaster.Socket.On(LobbyConstants.CHATSENDCALLBACK, ChatReceived);
             socketMaster.Socket.On(LobbyConstants.MISSIONCOMPLETE, MissionComplete);
 
+
+            socketMaster.Socket.On(LobbyConstants.UPDATEDUSER, UpdateUser);
+            socketMaster.Socket.On(LobbyConstants.CONSTRUCTFINISH, ConstructionCompleted);
+            socketMaster.Socket.On(LobbyConstants.UPGRADEFINISH, UpgradeCompleted);
             #region Game
 
             #endregion
@@ -167,9 +173,9 @@ namespace RoomContoller
         void SetCoin(Socket socket, Packet packet, params object[] args)
         {
             Debug.Log(JsonMapper.ToJson(args[0]) + "  SETCOIN  ");
-           LobbyData.SetCoinData resp = new LobbyData.SetCoinData();
-           JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-         //   GameManager.instance.SetCoin(resp);
+            LobbyData.SetCoinData resp = new LobbyData.SetCoinData();
+            JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
+            //   GameManager.instance.SetCoin(resp);
 
             // Debug.Log("MISSIONS  "+callbackdata.coinsWon[0] +"   "+callbackdata.missionDone[0]);
         }
@@ -192,7 +198,7 @@ namespace RoomContoller
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
             gamePlay = resp.gameplay;
             SceneManager.LoadScene("GamePlay");
-         
+
         }
 
         void MissionComplete(Socket socket, Packet packet, params object[] args)
@@ -201,7 +207,7 @@ namespace RoomContoller
             LobbyData.MissionComplete callbackdata = new LobbyData.MissionComplete();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
             missionCompleted.Add(callbackdata);
-           
+
         }
 
         void OnRoomJoined(Socket socket, Packet packet, params object[] args)
@@ -238,7 +244,7 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
             LobbyData.RoomData resp = new LobbyData.RoomData();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-            Invoke("SelectPeg",0.25f);
+            Invoke("SelectPeg", 0.25f);
         }
 
         void StartGame(Socket socket, Packet packet, params object[] args)
@@ -258,8 +264,8 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  Collision  ");
             LobbyData.GamePlayCallBack resp = new LobbyData.GamePlayCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-           // GameManager.instance.CollisionOccured(resp);
-         
+            // GameManager.instance.CollisionOccured(resp);
+
         }
 
         void SelectPeg()
@@ -291,7 +297,15 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
             LobbyData.DiceRolledCallBack resp = new LobbyData.DiceRolledCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-          // GameManager.instance.PlayerQuits(resp.dice._id);
+            // GameManager.instance.PlayerQuits(resp.dice._id);
+        }
+       
+        void UpdateUser(Socket socket, Packet packet, params object[] args)
+        {
+            Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
+           
+            RegisterCallBack(JsonMapper.ToJson(args[0]));
+
         }
 
         void ChatReceived(Socket socket, Packet packet, params object[] args)
@@ -299,12 +313,12 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
             LobbyData.SendChatDataCallBack resp = new LobbyData.SendChatDataCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-          //  if (GameManager.instance.playerSync != null)
+            //  if (GameManager.instance.playerSync != null)
             {
-            //    StopCoroutine(GameManager.instance.playerSync);
+                //    StopCoroutine(GameManager.instance.playerSync);
             }
-        
-       //  GameManager.instance.SetPlayerPosition(resp.chat);
+
+            //  GameManager.instance.SetPlayerPosition(resp.chat);
         }
         public IEnumerator MissionCompleted(int missionId, float seconds)
         {
@@ -327,5 +341,32 @@ namespace RoomContoller
                   });
         }
         #endregion
+
+
+        void ConstructionCompleted(Socket socket, Packet packet, params object[] args)
+        {
+            Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA CONSTRUCTION COMPLETED ");
+            RestaurantFinished callbackdata = new RestaurantFinished();
+            JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
+            GameManager.Instance.ConstructionFInisged(callbackdata.message);
+
+        }
+        void UpgradeCompleted(Socket socket, Packet packet, params object[] args)
+        {
+            Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA UPGRADE COMPLETED ");
+            RestaurantFinished callbackdata = new RestaurantFinished();
+            JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
+            GameManager.Instance.ConstructionFInisged(callbackdata.message);
+
+        }
+        public void RegisterCallBack(string callback)
+        {
+            RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);
+
+            if (data.status == 200)
+            {
+                profileData = data.message;
+            }
+        }
     }
 }

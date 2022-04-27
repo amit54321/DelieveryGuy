@@ -53,18 +53,20 @@ public class RestaurantLevel
         }
         else
         {
+          
             TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
             RestaurantDataUIArray data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
             Restaurants res = GameManager.Instance.FindRestaurantById(GameManager.Instance.clickedPlotId);
+           
             foreach (RestaurantDataUI r in data.data)
             {
-
-                if (r.id == res.restaurantId)
+                UnityEngine.Debug.LogError("INITIAL  " + r.id +  "     "+res.restaurantData.id);
+                if (r.id == res.restaurantData.id)
                 {
                   
-                    Debug.LogError("INITIAL  " + res.level);
-                    statiConstructionPrefab.SetData(r.id, r.title, r.desc, r.levels[res.level].cost, res.level+1, r.levels[res.level].timer,
-                         r.levels[res.level].quantity, r.levels[res.level].cookTime);
+                  
+                    statiConstructionPrefab.SetData(r.id, r.title, r.desc, r.levels[res.restaurantData.level].cost, res.restaurantData.level+1, r.levels[res.restaurantData.level].timer,
+                         r.levels[res.restaurantData.level].quantity, r.levels[res.restaurantData.level].cookTime);
                 }
             }
         }

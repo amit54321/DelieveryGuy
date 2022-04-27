@@ -17,6 +17,7 @@ public class UpgradeRestaurant
     public string id;
     public int level;
     public int restaurant_id;
+    public int plot_id;
 
 }
 public class ConstructionPrefab : MonoBehaviour
@@ -40,8 +41,10 @@ public class ConstructionPrefab : MonoBehaviour
         this.cookTime = cookTime;
         cost.text = "Cost: "+costText.ToString();
         currentLevel = levelText;
+        Debug.LogError("UPGRADE START  "+level);
         if (level)
         {
+            Debug.LogError("UPGRADE START");
             currentLevel = levelText;
             buildButton.onClick.AddListener(Upgrade);
             level.text = "Level: " + levelText.ToString();
@@ -58,10 +61,11 @@ public class ConstructionPrefab : MonoBehaviour
 
     private void Upgrade()
     {
-        GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel) ;
-        InGame.UIManager.Instance.DisablePopUp();
-        return;
+        // GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel) ;
 
+        //    return;
+        Debug.LogError("UPGRADE CLICKED");
+        InGame.UIManager.Instance.DisablePopUp();
         UpgradeRestaurant constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(
             LobbyConstants.UPGRADE,
@@ -80,7 +84,8 @@ public class ConstructionPrefab : MonoBehaviour
             {
                 id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
                 level= this.currentLevel,
-                restaurant_id = GameManager.Instance.clickedPlotId
+                plot_id = GameManager.Instance.clickedPlotId,
+                restaurant_id = id
             });
     }
 
@@ -100,10 +105,10 @@ public class ConstructionPrefab : MonoBehaviour
 
     private void Build()
     {
-        GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id,cTime,quantity,cookTime,currentLevel);
+        // GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id,cTime,quantity,cookTime,currentLevel);
+        //
+        //  return;
         InGame.UIManager.Instance.DisablePopUp();
-        return;
-
         ConstructRestaurant constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(
             LobbyConstants.CONSTRUCT,
@@ -111,7 +116,7 @@ public class ConstructionPrefab : MonoBehaviour
             {
                 if (args != null && args.Length > 0)
                 {
-                    Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
+                    Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  CONSTRUCTION STARTED ");
 
                     UIManager.instance.ToggleLoader(false);
                     BuildCallBack(
@@ -121,8 +126,8 @@ public class ConstructionPrefab : MonoBehaviour
             constructRestaurant = new ConstructRestaurant()
             {
                 id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
-                plot_id = id,
-                restaurant_id= GameManager.Instance.clickedPlotId
+                plot_id = GameManager.Instance.clickedPlotId,
+                restaurant_id = id
             });
     }
 

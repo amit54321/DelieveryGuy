@@ -1,3 +1,5 @@
+using Authentication;
+using RoomContoller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -99,13 +101,14 @@ public class GameManager : MonoBehaviour
             InGame.UIManager.Instance.screenUI.gameObject.SetActive(true);
             EnablePlayerCamera();
             InGame.UIManager.Instance.HideInputs();
-            COnstructDemoBuildings();
+            COnstructInitialBuildings();
 
             //  Invoke("ShowInputs",)
         }
         else if (HomeScreen.status == STATUS.SET)
         {
             EnableCityCamera();
+            COnstructInitialBuildings();
         }
     }
     public void EnableCityCamera()
@@ -177,32 +180,14 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    void COnstructDemoBuildings()
+    void COnstructInitialBuildings()
     {
-        for(int i=1;i<=5;i++)
+       foreach(RestaurantsData r in SocketMaster.instance.profileData.restaurants)
         {
-            ConstructBuilding(i, 1, 10, 10, 10, 0);
+                 ConstructBuilding(r.plot_id, r.restaurant_id, 10, 10, 0, r.level);
         }
     }
-    public void ConstructBuilding(int plot_id,int building_id,int cTime,int quantity,int waitTime,int level)
-    {
-        Plot p = FindPlotById(plot_id);
-        GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
-        g.transform.localEulerAngles = p.eulerAngle;
-        g.GetComponent<Restaurants>().StartCoroutine( g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
-        p.enabled = false;
-        p.GetComponent<MeshRenderer>().enabled = false;
-        allRestaurants.Add(g.GetComponent<Restaurants>());
-        p.GetComponent<Collider>().enabled = false;
-    }
-
-    public void UpgradeBuilding( int plot_id,int building_id, int cTime,int quantity,int waitTime,int level)
-    {
-        Restaurants p = FindRestaurantById(plot_id);
-        p.StartCoroutine(p.StartConstruction(plot_id, cTime,level,quantity,waitTime,building_id));
-        p.enabled = false;
-        p.GetComponent<Collider>().enabled = false;
-    }
+   
 
     public void EnableCurrentTaskHouse()
     {
@@ -222,7 +207,7 @@ public class GameManager : MonoBehaviour
         float y = player.transform.position.y+1;
         player.transform.position = new Vector3(t.transform.position.x, y, t.transform.position.z);
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        Invoke("SetPlayerKinematic", 0.5f);
+        Invoke("SetPlayerKinematic", 0.2f);
     }
 
    public  void DisableMapCube()
@@ -246,5 +231,43 @@ public class GameManager : MonoBehaviour
         EnableMapCube(r.transform);
       
      //  dir.SetArrow(player, r.transform);
+    }
+
+
+
+
+
+    public void ConstructBuilding(int plot_id, int building_id, int cTime, int quantity, int waitTime, int level)
+    {
+        Plot p = FindPlotById(plot_id);
+        GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
+        g.transform.localEulerAngles = p.eulerAngle;
+        
+        {
+            g.GetComponent<Restaurants>().StartCoroutine(g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime, level, quantity, waitTime, building_id));
+        }
+        if (waitTime <= 0)
+        {
+            g.GetComponent<Restaurants>().ConstructionFinished();
+            return;
+        }
+        p.enabled = false;
+        p.GetComponent<MeshRenderer>().enabled = false;
+         //  allRestaurants.Add(g.GetComponent<Restaurants>());
+        p.GetComponent<Collider>().enabled = false;
+    }
+
+    public void UpgradeBuilding(int plot_id, int building_id, int cTime, int quantity, int waitTime, int level)
+    {
+        Restaurants p = FindRestaurantById(plot_id);
+        p.StartCoroutine(p.StartConstruction(plot_id, cTime, level, quantity, waitTime, building_id));
+        p.enabled = false;
+        p.GetComponent<Collider>().enabled = false;
+    }
+
+    public void ConstructionFInisged(RestaurantsData r)
+
+    {
+        FindPlotById(r.plot_id).transform.GetChild(0).GetComponent<Restaurants>().ConstructionFinished();
     }
 }

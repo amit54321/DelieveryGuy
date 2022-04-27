@@ -10,34 +10,69 @@ using UnityEngine.Serialization;
 namespace Authentication
 {
 
+
+    [System.Serializable]
+    public class RestaurantFinished
+    {
+        public int status;
+        public RestaurantsData message;
+       
+    }
     [System.Serializable]
     public class RegisterCallback
     {
-        public string message;
-        public ProfileData data;
+        public int status;
+        public ProfileData message;
+        public List<Missions> missions;
+    }
+
+    [System.Serializable]
+    public class Missions
+    {
+        public int id;
+        public string text;
+        public string type;
+        public int win;
+        public int value;
+        public int complete;
     }
 
     [System.Serializable]
     public class ProfileData
     {
-        public string id;
         public string _id;
         public string name;
         public string deviceId;
         public int coins;
         public List<RestaurantsData> restaurants;
         public List<TimersData> timers;
+        public string avatar;
+        public int is_online;
+        public string socket_id;
+        public string room_id;
+        public string game_id;
+        public string role;
+        public string token;
+
 
     }
 
     [System.Serializable]
     public class RestaurantsData
     {
+        public int plot_id;
+        public int restaurant_id;
+        public int level;
 
     }
     [System.Serializable]
     public class TimersData
     {
+        public int plot_id;
+        public int restaurant_id;
+        public int level;
+        public int timer;
+        public double end;
 
     }
 
@@ -55,7 +90,7 @@ namespace Authentication
     public class Authentication : WebRequest
     {
 
-        public  ProfileData profileData;
+      
 
 
         public static bool socketConnected;
@@ -85,7 +120,7 @@ namespace Authentication
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
               
-                 {"deviceId","bhjbjhbhj" }// SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","eefe" }// SystemInfo.deviceUniqueIdentifier}
 
             };
            
@@ -99,8 +134,9 @@ namespace Authentication
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"id",  PlayerPrefs.GetString("ID")},
-                 {"name", name}
+                  {"deviceId","eefe" },// SystemInfo.deviceUniqueIdentifier}
+                 {"name", name},
+                 {"avatar", name}
 
             };
 
@@ -111,32 +147,39 @@ namespace Authentication
         {
             Debug.Log("LOGIN CALLS" + callback);
             UIManager.instance.ToggleLoadingPanel(false);
-            
-                ProfileData data = JsonUtility.FromJson<ProfileData>(callback);
-                PlayerPrefs.SetString("ID", data._id);
-                profileData = data;
-            RoomContoller.SocketMaster.instance.InitialiseSocket();
-            if (string.IsNullOrEmpty(profileData.name))
+
+            RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);
+               
+            if (data.status==200)
                 {
-                    UIManager.instance.EnableScreen(UIManager.instance.loginScreen);
+
+                RoomContoller.SocketMaster.instance.profileData = data.message;
+                PlayerPrefs.SetString(PlayerPrefsData.ID, RoomContoller.SocketMaster.instance.profileData._id);
+                PlayerPrefs.SetString(PlayerPrefsData.TOKEN, data.message.token);
+                RoomContoller.SocketMaster.instance.InitialiseSocket();
+                UIManager.instance.EnableScreen(UIManager.instance.loginScreen);
+                if(!string.IsNullOrEmpty(data.message.name))
+                {
+                    SceneManager.LoadScene("Lobby");
+                }
+
                 }
                 else
                 {
                     SceneManager.LoadScene("Lobby");
                 }
-            {
-              
-               
-            }
+           
         }
         public void UpdateNameCallBack(string callback)
         {
             Debug.Log("LOGIN CALLS" + callback);
             UIManager.instance.ToggleLoadingPanel(false);
-            ProfileData data = JsonUtility.FromJson<ProfileData>(callback);
+            RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);
+            if (data.status == 200)
             {
-                PlayerPrefs.SetString("ID", data._id);
-                profileData = data;
+                PlayerPrefs.SetString(PlayerPrefsData.ID, data.message._id);
+                PlayerPrefs.SetString(PlayerPrefsData.TOKEN, data.message.token);
+                RoomContoller.SocketMaster.instance.profileData = data.message;
                 SceneManager.LoadScene("Lobby");
             }
             {

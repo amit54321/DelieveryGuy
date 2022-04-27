@@ -19,7 +19,7 @@ public class Restaurants : Plot
     TextMeshPro text;
     [SerializeField]
     SpriteRenderer sprite;
-    public int level,quantity,waitTime,restaurantId;
+  //  public int level,quantity,waitTime,restaurantId;
 
     public RestaurantCollider restaurantCollider;
     public new void OnCLickMethod()
@@ -35,10 +35,10 @@ public class Restaurants : Plot
     public IEnumerator StartConstruction(int id,int constructionTime,int level,int quantity,int waitTime,int resId)
     {
         this.id = id;
-        this.level = level;
-        this.quantity = quantity;
-        this.waitTime = waitTime;
-        this.restaurantId = resId;
+        this.restaurantData.level = level;
+        this.restaurantData.quantity = quantity;
+        this.restaurantData.waitTime = waitTime;
+        this.restaurantData.id = resId;
         transform.GetComponent<Collider>().enabled = false;
         sprite.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
@@ -48,13 +48,19 @@ public class Restaurants : Plot
             text.text = (constructionTime - i).ToString()+ " s";
             yield return new WaitForSeconds(1);
         }
+
+
+       
+    }
+
+    public void ConstructionFinished()
+    {
+        GameManager.Instance.allRestaurants.Add(this);
         sprite.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
         transform.GetComponent<Collider>().enabled = true;
 
         GameManager.Instance.FindPlotById(id).enabled = false;
-
-
     }
 
 
