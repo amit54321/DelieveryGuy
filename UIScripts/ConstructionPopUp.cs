@@ -46,9 +46,30 @@ public class RestaurantLevel
             RestaurantDataUIArray data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
             foreach (RestaurantDataUI r in data.data)
             {
-                ConstructionPrefab c = Instantiate(constructionPrefab, parent);
-                c.SetData(r.id, r.title, r.desc, r.levels[0].cost, 0, r.levels[0].timer,r.levels[0].quantity,r.levels[0].cookTime);
+                bool show = true;
+                foreach (Authentication.RestaurantsData res in RoomContoller.SocketMaster.instance.profileData.restaurants)
+                    {
+                    if(res.restaurant_id == r.id)
+                    {
+                        show = false;
+                    }
 
+                    }
+                foreach (Authentication.TimersData res in RoomContoller.SocketMaster.instance.profileData.timers)
+                {
+                    if (res.restaurant_id == r.id)
+                    {
+                        show = false;
+                    }
+
+                }
+
+
+                if (show)
+                {
+                    ConstructionPrefab c = Instantiate(constructionPrefab, parent);
+                    c.SetData(r.id, r.title, r.desc, r.levels[0].cost, 0, r.levels[0].timer, r.levels[0].quantity, r.levels[0].cookTime);
+                }
             }
         }
         else

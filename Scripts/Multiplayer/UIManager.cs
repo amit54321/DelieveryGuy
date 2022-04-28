@@ -27,6 +27,7 @@ namespace RoomContoller
             inAppScreen,
             missionScreen,
             missionCompleteScreen,
+            homeScreen,
             quitPopUp;
 
         public WatchAdsPopUp watchAdsPopUp;

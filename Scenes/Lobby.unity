@@ -2631,7 +2631,7 @@ GameObject:
   - component: {fileID: 287108458}
   - component: {fileID: 287108460}
   m_Layer: 0
-  m_Name: Socket
+  m_Name: Popups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4819,7 +4819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3354b5b15dd4c42c9a965265e7b9280d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPanel: {fileID: 289083778}
+  currentPanel: {fileID: 1034996220}
   loader: {fileID: 981500167}
   internetConnectionPopUp: {fileID: 318063908}
   createRoomScreen: {fileID: 34665789}
@@ -4832,6 +4832,7 @@ MonoBehaviour:
   inAppScreen: {fileID: 1866047063}
   missionScreen: {fileID: 859253728}
   missionCompleteScreen: {fileID: 2019562898}
+  homeScreen: {fileID: 1034996220}
   quitPopUp: {fileID: 0}
   watchAdsPopUp: {fileID: 471925613}
   fullVersionPopUp: {fileID: 1782119493}

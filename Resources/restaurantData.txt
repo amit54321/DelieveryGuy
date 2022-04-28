@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "pizza",
-      "desc": "uihuihuihui",
+      "desc": "make italian pizzas",
       "levels": [
         {
           "cookTime":20,
@@ -31,7 +31,198 @@
      {
       "id": 2,
       "title": "burger",
-      "desc": "uihuihuihui",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }
+      ]
+     },
+         {
+      "id": 3,
+      "title": "burger3",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }
+      ]
+         },
+         {
+      "id": 4,
+      "title": "burger4",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }]
+         },
+         {
+      "id": 5,
+      "title": "burger5",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }
+      ]
+         },
+         {
+      "id": 6,
+      "title": "burger6",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }]},
+         {
+      "id": 7,
+      "title": "burger7",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }]},
+         {
+      "id": 8,
+      "title": "burger8",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }]},
+         {
+      "id": 9,
+      "title": "burger9",
+      "desc": "make states burger",
+      "levels": [
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 10
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 100,
+          "timer": 40
+        },
+        {
+          "cookTime":20,
+          "quantity":1,
+          "cost": 200,
+          "timer": 200
+        }]},
+         {
+      "id": 10,
+      "title": "burger10",
+      "desc": "make states burger",
       "levels": [
         {
           "cookTime":20,
@@ -58,4 +249,4 @@
 
 
   ]
-}
+         }

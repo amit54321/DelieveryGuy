@@ -62,7 +62,7 @@ public class CreateRoom : WebRequest
             bets.Add( data.level*300);
         }
      
-        coinSelector.SetData(bets);
+       // coinSelector.SetData(bets);
 
     }
 
@@ -113,7 +113,7 @@ public class CreateRoom : WebRequest
                 roomName = this.roomName.text,
                 numberOfPlayers = this.numberOfPlayers,
                 _public=0,
-                bet= coinSelector.GetCurrentBet()
+                bet= 10
             });
 
 
