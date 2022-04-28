@@ -58,8 +58,15 @@ public class GameManager : MonoBehaviour
         }
         gameOver = false;
         totalTasks = taskDatas.Count;
+        Debug.LogError(GetCurrentTime());
 
-       
+
+    }
+    int GetCurrentTime()
+    {
+        System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        int cur_time = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
+        return cur_time;
     }
 
     public bool DisableCurrentTask()
@@ -182,9 +189,16 @@ public class GameManager : MonoBehaviour
 
     void COnstructInitialBuildings()
     {
-       foreach(RestaurantsData r in SocketMaster.instance.profileData.restaurants)
+
+        foreach (TimersData r in SocketMaster.instance.profileData.timers)
         {
-                 ConstructBuilding(r.plot_id, r.restaurant_id, 10, 10, 0, r.level);
+          int leftTime = Mathf.Abs((int)(r.end/1000 - GetCurrentTime()));
+            Debug.LogError(GetCurrentTime() +"   NOW  " +  r.end/1000 +  "    "+leftTime);
+            ConstructBuilding(r.plot_id, r.restaurant_id, (int)leftTime, 10, 0, r.level);
+        }
+        foreach (RestaurantsData r in SocketMaster.instance.profileData.restaurants)
+        {
+                 ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
         }
     }
    
@@ -246,7 +260,7 @@ public class GameManager : MonoBehaviour
         {
             g.GetComponent<Restaurants>().StartCoroutine(g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime, level, quantity, waitTime, building_id));
         }
-        if (waitTime <= 0)
+        if (cTime <= 0)
         {
             g.GetComponent<Restaurants>().ConstructionFinished();
             return;

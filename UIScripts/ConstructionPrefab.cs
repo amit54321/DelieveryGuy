@@ -9,15 +9,32 @@ public class ConstructRestaurant
     public string id;
     public int plot_id;
     public int restaurant_id;
-
+    public int timer;
 }
 
+[System.Serializable]
+public class ConstructRestaurantCallBack
+{
+    public ConstructRestaurantCallBackData message;
+    public int status; }
+
+[System.Serializable]
+public class ConstructRestaurantCallBackData
+{
+   
+    public int plot_id;
+    public int restaurant_id;
+    public int timer;
+    public int level;
+    public double end;
+}
 public class UpgradeRestaurant
 {
     public string id;
     public int level;
     public int restaurant_id;
     public int plot_id;
+    public int timer;
 
 }
 public class ConstructionPrefab : MonoBehaviour
@@ -77,7 +94,7 @@ public class ConstructionPrefab : MonoBehaviour
 
                     UIManager.instance.ToggleLoader(false);
                     UpgradeCallBack(
-                        JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])));
+                        JsonUtility.FromJson<ConstructRestaurantCallBack>(JsonMapper.ToJson(args[0])));
                 }
             },
             constructRestaurant = new UpgradeRestaurant()
@@ -85,20 +102,21 @@ public class ConstructionPrefab : MonoBehaviour
                 id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
                 level= this.currentLevel,
                 plot_id = GameManager.Instance.clickedPlotId,
-                restaurant_id = id
+                restaurant_id = id,
+                timer = 10
             });
     }
 
-    private void UpgradeCallBack(LobbyData.RoomDataCallBack callbackdata)
+    private void UpgradeCallBack(ConstructRestaurantCallBack callbackdata)
     {
         if (callbackdata.status == 200)
         {
-            GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel);
+            GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, callbackdata.message.timer, quantity, cookTime, callbackdata.message.level);
 
         }
         else
         {
-            UIManager.instance.ShowError(callbackdata.message);
+          //  UIManager.instance.ShowError(callbackdata.message);
         }
     }
 
@@ -120,28 +138,29 @@ public class ConstructionPrefab : MonoBehaviour
 
                     UIManager.instance.ToggleLoader(false);
                     BuildCallBack(
-                        JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])));
+                        JsonUtility.FromJson<ConstructRestaurantCallBack>(JsonMapper.ToJson(args[0])));
                 }
             },
             constructRestaurant = new ConstructRestaurant()
             {
                 id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
                 plot_id = GameManager.Instance.clickedPlotId,
-                restaurant_id = id
+                restaurant_id = id,
+                timer =100
             });
     }
 
 
-    private void BuildCallBack(LobbyData.RoomDataCallBack callbackdata)
+    private void BuildCallBack(ConstructRestaurantCallBack callbackdata)
     {
         if (callbackdata.status == 200)
         {
-            GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel);
+            GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id, callbackdata.message.timer, quantity, cookTime, callbackdata.message.level);
 
         }
         else
         {
-            UIManager.instance.ShowError(callbackdata.message);
+          //  UIManager.instance.ShowError(callbackdata.message);
         }
     }
 
