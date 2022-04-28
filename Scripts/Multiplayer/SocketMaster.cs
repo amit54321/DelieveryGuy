@@ -163,6 +163,7 @@ namespace RoomContoller
             socketMaster.Socket.On(LobbyConstants.UPDATEDUSER, UpdateUser);
             socketMaster.Socket.On(LobbyConstants.CONSTRUCTFINISH, ConstructionCompleted);
             socketMaster.Socket.On(LobbyConstants.UPGRADEFINISH, UpgradeCompleted);
+            socketMaster.Socket.On(LobbyConstants.TASKRECEIVED, TaskReceived);
             #region Game
 
             #endregion
@@ -170,6 +171,16 @@ namespace RoomContoller
 
 
         #region Game
+
+        void TaskReceived(Socket socket, Packet packet, params object[] args)
+        {
+            Debug.Log(JsonMapper.ToJson(args[0]) + "  TaskDOne  ");
+            TaskDoneRecieved resp = new TaskDoneRecieved();
+            JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
+            //   GameManager.instance.SetCoin(resp);
+
+            // Debug.Log("MISSIONS  "+callbackdata.coinsWon[0] +"   "+callbackdata.missionDone[0]);
+        }
         void SetCoin(Socket socket, Packet packet, params object[] args)
         {
             Debug.Log(JsonMapper.ToJson(args[0]) + "  SETCOIN  ");

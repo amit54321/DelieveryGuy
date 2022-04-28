@@ -1,4 +1,5 @@
 using Authentication;
+using LitJson;
 using RoomContoller;
 using System.Collections;
 using System.Collections.Generic;
@@ -109,6 +110,8 @@ public class GameManager : MonoBehaviour
             EnablePlayerCamera();
             InGame.UIManager.Instance.HideInputs();
             COnstructInitialBuildings();
+
+            SendTaskDone(3);
 
             //  Invoke("ShowInputs",)
         }
@@ -284,4 +287,43 @@ public class GameManager : MonoBehaviour
     {
         FindPlotById(r.plot_id).transform.GetChild(0).GetComponent<Restaurants>().ConstructionFinished();
     }
+
+    public void SendTaskDone(int taskId)
+    {
+        SendTaskDone roomData;
+        SocketMaster.instance.socketMaster.Socket.Emit(
+            LobbyConstants.TASKDONE,
+            (socket, packet, args) =>
+                    {
+                        if (args != null && args.Length > 0)
+                        {
+                            Debug.LogError("joinroom" + JsonMapper.ToJson(args[0]));
+                          
+                           // JoinRoomCallBack(
+                             //   JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])));
+                        }
+                    },
+                    roomData = new SendTaskDone()
+                    {
+                        id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
+                        taskId = 2,
+                        game_id = RoomContoller.SocketMaster.instance.gamePlay.game_id
+                    });
+    }
+
+}
+
+[System.Serializable]
+public class SendTaskDone
+{
+    public string id;
+    public int taskId;
+    public string game_id;
+}
+[System.Serializable]
+public class TaskDoneRecieved
+{
+    public SendTaskDone message;
+    public int status;
+  
 }

@@ -36,7 +36,7 @@ public class HomeScreen : MonoBehaviour
     public void SetPlayStatus()
     {
         UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
-     //   status = STATUS.PLAY;
+       status = STATUS.PLAY;
      //   SceneManager.LoadScene("GameScene");
     }
 

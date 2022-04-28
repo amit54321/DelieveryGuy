@@ -10,6 +10,8 @@ public class LobbyConstants
     public static readonly string UPDATEDUSER = "UPDATEDUSER";
     public static readonly string CONSTRUCTFINISH = "CONSTRUCTFINISH";
     public static readonly string UPGRADEFINISH = "UPGRADEFINISH";
+    public static readonly string TASKDONE = "TASKDONE";
+    public static readonly string TASKRECEIVED = "TASKRECEIVED";
 
     public static readonly string CREATEROOM = "CREATEROOM";
     public static readonly string JOINROOM = "JOINROOM";
