@@ -185,7 +185,7 @@ namespace RoomContoller
             LobbyData.GamePlayCallBack resp = new LobbyData.GamePlayCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
             gamePlay = resp.gameplay;
-            SceneManager.LoadScene("GamePlay");
+            SceneManager.LoadScene("GameScene");
 
             // Debug.Log("MISSIONS  "+callbackdata.coinsWon[0] +"   "+callbackdata.missionDone[0]);
         }
@@ -197,7 +197,7 @@ namespace RoomContoller
             LobbyData.GamePlayCallBack resp = new LobbyData.GamePlayCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
             gamePlay = resp.gameplay;
-            SceneManager.LoadScene("GamePlay");
+            SceneManager.LoadScene("GameScene");
 
         }
 
@@ -253,10 +253,10 @@ namespace RoomContoller
             LobbyData.GamePlayCallBack resp = new LobbyData.GamePlayCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
             gamePlay = resp.gameplay;
-            SocketMaster.instance.StartCoroutine(SocketMaster.instance.MissionCompleted(0, 0));
-            SocketMaster.instance.StartCoroutine(SocketMaster.instance.MissionCompleted(1, 0.3f));
-            SocketMaster.instance.StartCoroutine(SocketMaster.instance.MissionCompleted(2, 0.6f));
-            SceneManager.LoadScene("GamePlay");
+           // SocketMaster.instance.StartCoroutine(SocketMaster.instance.MissionCompleted(0, 0));
+            //SocketMaster.instance.StartCoroutine(SocketMaster.instance.MissionCompleted(1, 0.3f));
+           // SocketMaster.instance.StartCoroutine(SocketMaster.instance.MissionCompleted(2, 0.6f));
+            SceneManager.LoadScene("GameScene");
         }
 
         void CollisionCallback(Socket socket, Packet packet, params object[] args)

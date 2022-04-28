@@ -12,27 +12,27 @@ public class CoinSelector : MonoBehaviour
 
     public void SetData(List<int> betCoins)
     {
-        betText.text = "";
+      //  betText.text = "";
 
-        this.betCoins = betCoins;
-        if (betCoins.Count > 0)
+      //  this.betCoins = betCoins;
+       // if (betCoins.Count > 0)
         {
-            current = 0;
-            betText.text = betCoins[current].ToString();
-            previous.onClick.AddListener(Previous);
-            next.onClick.AddListener(Next);
+          //  current = 0;
+          //  betText.text = betCoins[current].ToString();
+          //  previous.onClick.AddListener(Previous);
+          //  next.onClick.AddListener(Next);
         }
-        else
+       // else
         {
-            current = -1;
-            betText.text = "NO COINS ";
+          //  current = -1;
+          //  betText.text = "NO COINS ";
         }
     }
 
     void OnDisable()
     {
-        previous.onClick.RemoveListener(Previous);
-        next.onClick.RemoveListener(Next);
+     //   previous.onClick.RemoveListener(Previous);
+     //   next.onClick.RemoveListener(Next);
     }
 
     public int GetCurrentBet()

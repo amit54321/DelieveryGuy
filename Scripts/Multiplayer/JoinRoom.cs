@@ -63,7 +63,7 @@ namespace RoomContoller
                 {
                     _id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
                     roomCode = this.roomCode.text,
-                    bet = coinSelector.GetCurrentBet()
+                    bet = 10
                 });
 
 
