@@ -13,7 +13,7 @@ public class TaskPrefab : MonoBehaviour
     {
         this.taskData = taskData;
       
-        task.text = taskData.taskText;
+        task.text = taskData.restaurantId + "  delever to "+taskData.customerId;
         taskNumber.text = taskData.id.ToString();
         taskButton.onClick.AddListener(TaskSelected);
     }

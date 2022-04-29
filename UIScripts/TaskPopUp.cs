@@ -6,9 +6,9 @@ using UnityEngine;
 public class TaskData
 {
     public int id;
-    public string taskText;
-    public int building_id,house_id;
-    public int value;
+   // public string taskText;
+    public int restaurantId,customerId;
+  //  public int value;
 
 }
 public class TaskPopUp : BasePOpUp

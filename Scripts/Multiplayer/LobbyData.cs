@@ -230,12 +230,18 @@ public class LobbyData
     }
 
     [Serializable]
+    public class TasksDone
+    {
+        public int id;
+        public int restaurantId;
+        public int customerId;
+    }
+    [Serializable]
     public class GamePlayCallBack
     {
         public int status;
         public GamePlay gameplay;
     }
-
     [Serializable]
     public class GamePlay
     {
@@ -248,6 +254,7 @@ public class LobbyData
         public int ai;
         public int time;
         public List<CollisonData> collision;
+        public List<TaskData> tasks;
     }
 
     [Serializable]

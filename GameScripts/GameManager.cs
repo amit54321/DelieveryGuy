@@ -53,16 +53,18 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(Instance==null)
+        if (Instance == null)
         {
             Instance = this;
         }
         gameOver = false;
-        totalTasks = taskDatas.Count;
+       
         Debug.LogError(GetCurrentTime());
 
 
     }
+
+
     int GetCurrentTime()
     {
         System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
@@ -73,16 +75,16 @@ public class GameManager : MonoBehaviour
     public bool DisableCurrentTask()
     {
 
-        foreach(TaskData t in taskDatas)
+        foreach (TaskData t in taskDatas)
         {
-            if(currentTask.id == t.id)
+            if (currentTask.id == t.id)
             {
                 taskDatas.Remove(currentTask);
                 break;
             }
         }
         InGame.UIManager.Instance.screenUI.SetTasks(totalTasks - taskDatas.Count);
-        if(totalTasks-taskDatas.Count<=0)
+        if (totalTasks - taskDatas.Count <= 0)
         {
             gameOver = true;
             return true;
@@ -100,18 +102,42 @@ public class GameManager : MonoBehaviour
         InGame.UIManager.Instance.ShowInputs();
     }
 
+    IEnumerator Testing()
+    {
+        for (int i = 1; i <= 10; i++)
+        {
+            SendTaskDone(i);
+            yield return new WaitForSeconds(1);
+
+        }
+    }
+
+
+           void InitializeTasksData()
+        {
+            taskDatas.Clear();
+            foreach(TaskData t in SocketMaster.instance.gamePlay.tasks)
+            {
+                taskDatas.Add(t);
+            }
+
+
+                totalTasks = taskDatas.Count;
+        }
     private void OnEnable()
     {
       
         if (HomeScreen.status==STATUS.PLAY)
         {
+            InitializeTasksData();
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
             InGame.UIManager.Instance.screenUI.gameObject.SetActive(true);
             EnablePlayerCamera();
             InGame.UIManager.Instance.HideInputs();
             COnstructInitialBuildings();
-
-            SendTaskDone(3);
+           
+            StartCoroutine(Testing());
+         
 
             //  Invoke("ShowInputs",)
         }
@@ -208,7 +234,7 @@ public class GameManager : MonoBehaviour
 
     public void EnableCurrentTaskHouse()
     {
-        HouseCollider h = FIndHouseById(currentTask.house_id);
+        HouseCollider h = FIndHouseById(currentTask.customerId);
         h.gameObject.SetActive(true);
         h.EnableHouse();
         EnableMapCube(h.transform.parent);
@@ -242,7 +268,7 @@ public class GameManager : MonoBehaviour
     {
         currentTask = task;
         InGame.UIManager.Instance.ShowInputs();
-        Restaurants r = FindRestaurantById(task.building_id);
+        Restaurants r = FindRestaurantById(task.restaurantId);
         r.restaurantCollider.gameObject.SetActive(true);
         r.restaurantCollider.EnableCollider();
         EnableMapCube(r.transform);
@@ -306,7 +332,7 @@ public class GameManager : MonoBehaviour
                     roomData = new SendTaskDone()
                     {
                         id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
-                        taskId = 2,
+                        taskId = taskId,
                         game_id = RoomContoller.SocketMaster.instance.gamePlay.game_id
                     });
     }
