@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ScreenUI : MonoBehaviour
 {
-    [SerializeField] Text timerText, tasksDone;
+    [SerializeField] Text timerText, tasksDone,opponentTasksDone;
     int timer = 0;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +19,11 @@ public class ScreenUI : MonoBehaviour
     public void SetTasks(int tasks)
     {
         tasksDone.text = "Tasks Done : "+tasks.ToString();
+    }
+
+    public void OpponentSetTasks(int tasks)
+    {
+        opponentTasksDone.text = "Tasks Done : " + tasks.ToString();
     }
 
     string SecondsToHour(int totalSeconds)

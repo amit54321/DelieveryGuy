@@ -72,6 +72,12 @@ public class GameManager : MonoBehaviour
         return cur_time;
     }
 
+    int opponentTasksDone = -1;
+    public void SetOpponentTasks()
+    {
+        opponentTasksDone++;
+        InGame.UIManager.Instance.screenUI.OpponentSetTasks(opponentTasksDone);
+    }
     public bool DisableCurrentTask()
     {
 
@@ -79,6 +85,7 @@ public class GameManager : MonoBehaviour
         {
             if (currentTask.id == t.id)
             {
+                SendTaskDone(t.id);
                 taskDatas.Remove(currentTask);
                 break;
             }
@@ -135,7 +142,7 @@ public class GameManager : MonoBehaviour
             EnablePlayerCamera();
             InGame.UIManager.Instance.HideInputs();
             COnstructInitialBuildings();
-           
+            SetOpponentTasks();
             StartCoroutine(Testing());
          
 
@@ -154,6 +161,7 @@ public class GameManager : MonoBehaviour
         InGame.UIManager.Instance.HideInputs();
         arrowHandler.arrows[0].gameObject.SetActive(false);
         player.gameObject.SetActive(false);
+        cityCamera.fieldOfView = 36;
         minimap.SetActive(false);
     }
 

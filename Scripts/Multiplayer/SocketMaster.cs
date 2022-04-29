@@ -177,9 +177,12 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  TaskDOne  ");
             TaskDoneRecieved resp = new TaskDoneRecieved();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-            //   GameManager.instance.SetCoin(resp);
-
-            // Debug.Log("MISSIONS  "+callbackdata.coinsWon[0] +"   "+callbackdata.missionDone[0]);
+            SendTaskDone s = resp.message;
+            if(!s.id.Equals(PlayerPrefs.GetString(PlayerPrefsData.ID)))
+            {
+                GameManager.Instance.SetOpponentTasks();
+            }
+           
         }
         void SetCoin(Socket socket, Packet packet, params object[] args)
         {
@@ -284,24 +287,7 @@ namespace RoomContoller
             UIManager.instance.EnablePanel(UIManager.instance.selectPegScreen);
         }
 
-        //void DiceRolledCallBack(Socket socket, Packet packet, params object[] args)
-        //{
-        //    Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
-        //    LobbyData.DiceRolledCallBack callbackdata = new LobbyData.DiceRolledCallBack();
-        //    JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
-        //    if (!string.IsNullOrEmpty(callbackdata.dice._id))
-        //    {
-        //        GameLogic.instance.RollTheDice(callbackdata.dice);
-        //    }
-        //}
-
-        //void RoundChange(Socket socket, Packet packet, params object[] args)
-        //{
-        //    Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
-        //    LobbyData.RoundCallBack resp = new LobbyData.RoundCallBack();
-        //    JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-        //    GameLogic.instance.GetRoundData(resp.round);
-        //}
+      
 
         void PlayerQuitsTheGame(Socket socket, Packet packet, params object[] args)
         {

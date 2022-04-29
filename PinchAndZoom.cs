@@ -55,7 +55,7 @@ public class PinchAndZoom : MonoBehaviour
         else
         if (cam.fieldOfView > ZoomMaxBound)
         {
-            cam.fieldOfView = 179.9f;
+            cam.fieldOfView = ZoomMaxBound;
         }
     }
 
