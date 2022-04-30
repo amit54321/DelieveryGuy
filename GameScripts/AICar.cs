@@ -17,7 +17,7 @@ public class AICar : MonoBehaviour
         {
             return;
         }
-        Debug.LogError("car  " + transform.rotation);
+      
         rot = transform.rotation;
         wayPoints = GameManager.Instance.wayPoints[lane].ways;
         StartCoroutine(Move());
