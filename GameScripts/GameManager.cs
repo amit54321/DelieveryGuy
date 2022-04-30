@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 1; i <= 10; i++)
         {
-            SendTaskDone(i);
+          //  SendTaskDone(i);
             yield return new WaitForSeconds(1);
 
         }
@@ -236,6 +236,11 @@ public class GameManager : MonoBehaviour
         foreach (RestaurantsData r in SocketMaster.instance.profileData.restaurants)
         {
                  ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
+        }
+
+        for(int i=1;i<=10;i++)
+        {
+            ConstructBuilding(i, i, 0, 10, 10, 1);
         }
     }
    
