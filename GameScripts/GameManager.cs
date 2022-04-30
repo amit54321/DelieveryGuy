@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
         else if (HomeScreen.status == STATUS.SET)
         {
             EnableCityCamera();
-            COnstructInitialBuildings();
+         //   COnstructInitialBuildings();
         }
     }
     public void EnableCityCamera()
