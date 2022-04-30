@@ -324,6 +324,7 @@ public class GameManager : MonoBehaviour
 
     public void SendTaskDone(int taskId)
     {
+        Debug.LogError("SENDING TASk " + taskId);
         SendTaskDone roomData;
         SocketMaster.instance.socketMaster.Socket.Emit(
             LobbyConstants.TASKDONE,

@@ -23292,7 +23292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 827499977}
   tasksDone: {fileID: 471762347}
-  opponentTasksDone: {fileID: 0}
+  opponentTasksDone: {fileID: 1155276939}
 --- !u!4 &500002418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b8ee657c6800ab849bb30b4375d02323,
@@ -30438,8 +30438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932136c9253b3c34db6087f0c1ac667a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
-  Rotate: 0
 --- !u!114 &625539528
 MonoBehaviour:
   m_ObjectHideFlags: 0
