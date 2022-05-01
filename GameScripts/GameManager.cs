@@ -64,7 +64,40 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void PLayerPositionToTarget()
+    {
+        Transform target = null ;
+        foreach(Restaurants res in allRestaurants)
+        {
+            if (res.restaurantCollider.gameObject.activeSelf)
+            {
+                target = res.restaurantCollider.transform;
+                break;
+            }
+        }
+        if(target!=null)
+        {
+            float y = player.transform.position.y + 1;
+            player.transform.position = new Vector3(target.transform.position.x, y, target.transform.position.z);
+         //   player.transform.position = target.position; ;
+            return;
+        }
 
+        foreach (HouseCollider res in allHouses)
+        {
+            if (res.gameObject.activeSelf)
+            {
+                target = res.transform;
+                break;
+            }
+        }
+        if (target != null)
+        {
+            float y = player.transform.position.y + 1;
+            player.transform.position = new Vector3(target.transform.position.x, y, target.transform.position.z);
+            return;
+        }
+    }
     int GetCurrentTime()
     {
         System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
