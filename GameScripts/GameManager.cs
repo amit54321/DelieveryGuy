@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
                     {
                         if (t.GetComponent<AICar>() == null)
                         {
-                            Debug.LogError(t.name + t.GetComponent<Rigidbody>().mass);
+                           
                             t.gameObject.AddComponent<AICar>();
                             t.gameObject.GetComponent<AICar>().stable = true;
                         }
