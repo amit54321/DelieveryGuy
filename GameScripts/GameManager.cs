@@ -45,6 +45,34 @@ public class GameManager : MonoBehaviour
 
     public GameObject mapCube;
     public GameObject minimap;
+
+    public List<GameObject> allScenes;
+
+    void SetCars()
+    {
+        foreach (GameObject g in allScenes)
+        {
+          
+            foreach (Transform t in g.transform)
+            {
+              
+                if (t.GetComponent<Rigidbody>())
+                {
+                   
+                    if (t.GetComponent<Rigidbody>().mass >= 900)
+                    {
+                        if (t.GetComponent<AICar>() == null)
+                        {
+                            Debug.LogError(t.name + t.GetComponent<Rigidbody>().mass);
+                            t.gameObject.AddComponent<AICar>();
+                            t.gameObject.GetComponent<AICar>().stable = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public void ResetPlayer()
     {
         player.transform.position = startingPoint;
@@ -60,7 +88,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
        
         Debug.LogError(GetCurrentTime());
-
+        SetCars();
 
     }
 
