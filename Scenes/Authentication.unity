@@ -1145,14 +1145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa7cb31cc4d34f2798bd475185b871c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profileData:
-    id: 
-    _id: 
-    name: 
-    deviceId: 
-    coins: 0
-    restaurants: []
-    timers: []
   tempOtp: 0
   sigunUpEmail: {fileID: 2054169482}
   signUpPassword: {fileID: 1717277540}
@@ -4691,14 +4683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12099101a8214bf48a9a3484e78c43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profileData:
-    id: 
-    _id: 
-    name: 
-    deviceId: 
-    coins: 0
-    restaurants: []
-    timers: []
   tempOtp: 0
   gamePlay:
     _id: 
@@ -4710,7 +4694,22 @@ MonoBehaviour:
     ai: 0
     time: 0
     collision: []
+    tasks: []
   defaultSprites: []
+  profileData:
+    _id: 
+    name: 
+    deviceId: 
+    coins: 0
+    restaurants: []
+    timers: []
+    avatar: 
+    is_online: 0
+    socket_id: 
+    room_id: 
+    game_id: 
+    role: 
+    token: 
 --- !u!4 &1387930880
 Transform:
   m_ObjectHideFlags: 0

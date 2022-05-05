@@ -27,6 +27,11 @@ public class CameraHandler : MonoBehaviour
 
     void Update()
     {
+
+        if (InGame.UIManager.Instance.currentPopUp != null)
+        {
+            return;
+        }
         if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer)
         {
             HandleTouch();
@@ -34,6 +39,25 @@ public class CameraHandler : MonoBehaviour
         else
         {
             HandleMouse();
+        }
+
+      
+
+
+       
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                if (hit.transform.GetComponent<OnClick>() != null)
+                {
+                    hit.transform.GetComponent<OnClick>().OnCLickMethod();
+                }
+            }
         }
     }
 
