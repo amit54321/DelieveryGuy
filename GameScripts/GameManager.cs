@@ -289,12 +289,19 @@ public class GameManager : MonoBehaviour
         }
         //  mainArrow.transform.LookAt(mapCube.transform.position,Vector3.up);
 
+        if (HomeScreen.status == STATUS.SET)
+        {
+            return;
+        }
+
+
         if (SocketMaster.instance.gamePlay.ai == 1)
         {
          //   return;
         }
 
-        if (enemy != null)
+      
+            if (enemy != null)
         {
             enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemyPos, Time.deltaTime * 15);
             enemy.transform.eulerAngles = enemyRot;
