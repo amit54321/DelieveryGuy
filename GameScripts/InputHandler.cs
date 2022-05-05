@@ -35,6 +35,11 @@ public class InputHandler : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
    
     public void OnPointerEnter(PointerEventData eventData)
     {
+
+        if (keyboardInput == null)
+        {
+            keyboardInput = GameManager.Instance.player.transform.GetComponent<KeyboardInput>();
+        }
         if (gameObject.CompareTag("LEFT"))
         {
             angle = -1;
@@ -61,6 +66,11 @@ public class InputHandler : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
 
     public void OnPointerExit(PointerEventData eventData)
     {
+
+        if (keyboardInput == null)
+        {
+            keyboardInput = GameManager.Instance.player.transform.GetComponent<KeyboardInput>();
+        }
         if (gameObject.CompareTag("LEFT"))
         {
            angle = 0;

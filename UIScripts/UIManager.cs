@@ -38,7 +38,12 @@ namespace InGame
             {
                 Instance = this;
             }
-            keyboardInput = GameObject.FindWithTag("Player").transform.GetComponent<KeyboardInput>();
+           
+        }
+
+        private void OnEnable()
+        {
+            //keyboardInput =GameManager.Instance.player.transform.GetComponent<KeyboardInput>();
         }
         [SerializeField] public KeyboardInput keyboardInput;
         public GameObject inputImage;
@@ -46,6 +51,10 @@ namespace InGame
         // Start is called before the first frame update
         public void HideInputs()
         {
+            if(keyboardInput==null)
+            {
+                keyboardInput = GameManager.Instance.player.transform.GetComponent<KeyboardInput>();
+            }
             inputImage.SetActive(false);
             keyboardInput.SetAccelaration(false);
             keyboardInput.SetBrake(false);

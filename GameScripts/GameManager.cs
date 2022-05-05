@@ -5,6 +5,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class PlayerTeamData
+{
+
+    public List<PlayerPosition> playerPos;
+
+}
+[System.Serializable]
+public class PlayerPosition
+{
+    public double x;
+    public double y;
+    public double z;
+    public int rotZ, rotY,rotX;
+}
 [System.Serializable]
 public class WayPoints
 {
@@ -32,7 +48,7 @@ public class GameManager : MonoBehaviour
     public List<TaskData> taskDatas;
     public Timer timer;
 
-    public Transform player;
+    public Transform player,enemy;
 
     public Direction dir;
 
@@ -48,6 +64,8 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> allScenes;
 
+
+    Vector3 enemyRot, enemyPos;
     void SetCars()
     {
         foreach (GameObject g in allScenes)
@@ -91,7 +109,28 @@ public class GameManager : MonoBehaviour
         SetCars();
 
     }
+    public void SetPlayerPosition(LobbyData.SyncPosition data)
+    {
+       
 
+        Debug.LogError(data.id + "  GETTING INFO "+data.message.x );
+        if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(data.id))
+        {
+            PlayerPosition player = data.message;
+
+            enemyPos= new Vector3((float)player.x, (float)player.y, (float)player.z); ;
+            enemyRot = new Vector3((int)player.rotX, (int)player.rotY, (int)player.rotZ);
+         //   enemy.transform.position = new Vector3((float)player.x, (float)player.y, (float)player.z);
+         //      //    enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, new Vector3((float)player.x, (float)player.y, (float)player.z), Time.deltaTime * 1500);
+          //         enemy.transform.eulerAngles = new Vector3((int)player.rotX, (int)player.rotY, (int)player.rotZ);
+
+                
+
+            }
+
+
+
+    }
     public void PLayerPositionToTarget()
     {
         Transform target = null ;
@@ -201,8 +240,9 @@ public class GameManager : MonoBehaviour
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
             InGame.UIManager.Instance.screenUI.gameObject.SetActive(true);
             EnablePlayerCamera();
-            InGame.UIManager.Instance.HideInputs();
+           
             COnstructInitialBuildings();
+            InGame.UIManager.Instance.HideInputs();
             SetOpponentTasks();
           //  StartCoroutine(Testing());
          
@@ -232,6 +272,7 @@ public class GameManager : MonoBehaviour
         playerCamera.gameObject.SetActive(true);
         InGame.UIManager.Instance.ShowInputs();
     }
+    int frame = 0;
     private void Update()
     {
 
@@ -246,11 +287,64 @@ public class GameManager : MonoBehaviour
             EnableCityCamera();
             InGame.UIManager.Instance.HideInputs();
         }
-      //  mainArrow.transform.LookAt(mapCube.transform.position,Vector3.up);
-       
+        //  mainArrow.transform.LookAt(mapCube.transform.position,Vector3.up);
+
+        if (SocketMaster.instance.gamePlay.ai == 1)
+        {
+         //   return;
+        }
+
+        if (enemy != null)
+        {
+            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemyPos, Time.deltaTime * 15);
+            enemy.transform.eulerAngles = enemyRot;
+        }
+
+        frame++;
+        if (frame % 2 == 0)
+        {
+
+           
+         // PlayerPosition allPlayersPosition = new PlayerPosition();
+            LobbyData.SyncPosition data;
+            
+                
+                    PlayerPosition playerPosition = new PlayerPosition();
+                    playerPosition.x = player.position.x;
+                    playerPosition.y = player.position.y;
+            playerPosition.z = player.position.z;
+            playerPosition.rotZ = (int)player.rotation.eulerAngles.z;
+                    playerPosition.rotY = (int)player.rotation.eulerAngles.y;
+            playerPosition.rotX = (int)player.rotation.eulerAngles.x;
+            Debug.LogError( "  GETTING INFO " + playerPosition.x);
+
+
+
+
+
+            // Debug.LogError(" DATA  " + playerTeamData.playerPos.Count);
+            SocketMaster.instance.socketMaster.Socket.Emit(
+               LobbyConstants.CHATSEND,
+               (socket, packet, args) =>
+               {
+                   if (args != null && args.Length > 0)
+                   {
+
+                   }
+               },
+               data = new LobbyData.SyncPosition()
+               {
+                   id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
+                   gameId = SocketMaster.instance.gamePlay.game_id,
+                   message = playerPosition
+               });
+        }
+
+
+
     }
 
-   public  Plot FindPlotById(int id)
+    public  Plot FindPlotById(int id)
     {
         foreach(Plot p in allPlots)
         {
@@ -299,9 +393,9 @@ public class GameManager : MonoBehaviour
                  ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
         }
 
-     //   for(int i=1;i<=10;i++)
+       for(int i=1;i<=10;i++)
         {
-          //  ConstructBuilding(i, i, 0, 10, 10, 1);
+            ConstructBuilding(i, i, 0, 10, 10, 1);
         }
     }
    

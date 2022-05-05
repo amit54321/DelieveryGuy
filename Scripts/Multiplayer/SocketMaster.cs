@@ -164,6 +164,7 @@ namespace RoomContoller
             socketMaster.Socket.On(LobbyConstants.CONSTRUCTFINISH, ConstructionCompleted);
             socketMaster.Socket.On(LobbyConstants.UPGRADEFINISH, UpgradeCompleted);
             socketMaster.Socket.On(LobbyConstants.TASKRECEIVED, TaskReceived);
+            socketMaster.Socket.On(LobbyConstants.CHATSENDCALLBACK, ChatReceived);
             #region Game
 
             #endregion
@@ -315,7 +316,7 @@ namespace RoomContoller
                 //    StopCoroutine(GameManager.instance.playerSync);
             }
 
-            //  GameManager.instance.SetPlayerPosition(resp.chat);
+              GameManager.Instance.SetPlayerPosition(resp.chat);
         }
         public IEnumerator MissionCompleted(int missionId, float seconds)
         {

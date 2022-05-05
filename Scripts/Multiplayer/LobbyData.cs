@@ -64,7 +64,7 @@ public class LobbyData
     {
         public string id;
         public string gameId;
-      //  public PlayerTeamData playerTeamData;
+       public PlayerPosition message;
        
     }
 
