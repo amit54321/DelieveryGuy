@@ -301,7 +301,7 @@ public class GameManager : MonoBehaviour
         }
 
         frame++;
-        if (frame % 2 == 0)
+        if (frame % 4 == 0)
         {
 
            
