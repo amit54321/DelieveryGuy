@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
             InGame.UIManager.Instance.HideInputs();
             COnstructInitialBuildings();
             SetOpponentTasks();
-            StartCoroutine(Testing());
+          //  StartCoroutine(Testing());
          
 
             //  Invoke("ShowInputs",)
@@ -299,9 +299,9 @@ public class GameManager : MonoBehaviour
                  ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
         }
 
-        for(int i=1;i<=10;i++)
+     //   for(int i=1;i<=10;i++)
         {
-            ConstructBuilding(i, i, 0, 10, 10, 1);
+          //  ConstructBuilding(i, i, 0, 10, 10, 1);
         }
     }
    
