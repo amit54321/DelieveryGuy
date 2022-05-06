@@ -2,6 +2,7 @@ using KartGame.KartSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace InGame
 {
@@ -70,6 +71,11 @@ namespace InGame
         void Update()
         {
 
+        }
+
+        public void Back()
+        {
+            SceneManager.LoadScene("Lobby");
         }
     }
 }
