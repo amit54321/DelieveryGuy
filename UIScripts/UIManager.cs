@@ -11,7 +11,7 @@ namespace InGame
     {
         public static  UIManager Instance;
 
-        public BasePOpUp constructionPopUp,upgradePopUp,tasksPopUp;
+        public BasePOpUp constructionPopUp,upgradePopUp,tasksPopUp, quitPopUp;
 
         public BasePOpUp currentPopUp;
 
@@ -77,7 +77,8 @@ namespace InGame
 
         public void Back()
         {
-            SceneManager.LoadScene("Lobby");
+            EnablePopUp(quitPopUp);
+           // SceneManager.LoadScene("Lobby");
         }
         public void ShowError(string error)
         {
