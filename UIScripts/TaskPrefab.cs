@@ -16,6 +16,7 @@ public class TaskPrefab : MonoBehaviour
         task.text = taskData.restaurantId + "  delever to "+taskData.customerId;
         taskNumber.text = taskData.id.ToString();
         taskButton.onClick.AddListener(TaskSelected);
+        icon.sprite = Resources.Load<Sprite>("Prefabs/RestaurantImage/" + taskData.restaurantId);
     }
 
     // Update is called once per frame
