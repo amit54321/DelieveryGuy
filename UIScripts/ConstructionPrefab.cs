@@ -113,7 +113,7 @@ public class ConstructionPrefab : MonoBehaviour
                 {
                     Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
 
-                    UIManager.instance.ToggleLoader(false);
+                  //  UIManager.instance.ToggleLoader(false);
                     UpgradeCallBack(
                         JsonUtility.FromJson<ConstructRestaurantCallBack>(JsonMapper.ToJson(args[0])));
                 }
@@ -157,7 +157,7 @@ public class ConstructionPrefab : MonoBehaviour
                 {
                     Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  CONSTRUCTION STARTED ");
 
-                    UIManager.instance.ToggleLoader(false);
+                 //   UIManager.instance.ToggleLoader(false);
                     BuildCallBack(
                         JsonUtility.FromJson<ConstructRestaurantCallBack>(JsonMapper.ToJson(args[0])));
                 }
