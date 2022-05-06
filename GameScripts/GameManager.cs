@@ -124,7 +124,6 @@ public class GameManager : MonoBehaviour
         Plot p1 = FindPlotById(swapFirst);
         Plot p2 = FindPlotById(swapSecond);
 
-      //  Debug.LogError("SWAPPING STARTED " + p1.id + "   " + p2.id);
         Restaurants rId1 = null;
         Restaurants rId2 =null ;
         Vector3 pos = Vector3.zero ; 
@@ -166,11 +165,6 @@ public class GameManager : MonoBehaviour
 
             enemyPos= new Vector3((float)player.x, (float)player.y, (float)player.z); ;
             enemyRot = new Vector3((int)player.rotX, (int)player.rotY, (int)player.rotZ);
-         //   enemy.transform.position = new Vector3((float)player.x, (float)player.y, (float)player.z);
-         //      //    enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, new Vector3((float)player.x, (float)player.y, (float)player.z), Time.deltaTime * 1500);
-          //         enemy.transform.eulerAngles = new Vector3((int)player.rotX, (int)player.rotY, (int)player.rotZ);
-
-                
 
             }
 
@@ -192,7 +186,6 @@ public class GameManager : MonoBehaviour
         {
             float y = player.transform.position.y + 1;
             player.transform.position = new Vector3(target.transform.position.x, y, target.transform.position.z);
-         //   player.transform.position = target.position; ;
             return;
         }
 
@@ -446,16 +439,16 @@ public class GameManager : MonoBehaviour
                  ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
         }
 
-       //for(int i=1;i<=10;i++)
-       // {
-       //     ConstructBuilding(i, i, 0, 10, 10, 1);
-       //     RestaurantsData r = new RestaurantsData();
-       //     r.plot_id = i;
-       //     r.restaurant_id = i;
-       //     r.level = 2;
-         
-       //     SocketMaster.instance.profileData.restaurants.Add(r);
-       // }
+        for (int i = 1; i <= 10; i++)
+        {
+            ConstructBuilding(i, i, 0, 10, 10, 1);
+            RestaurantsData r = new RestaurantsData();
+            r.plot_id = i;
+            r.restaurant_id = i;
+            r.level = 2;
+
+            SocketMaster.instance.profileData.restaurants.Add(r);
+        }
     }
    
 

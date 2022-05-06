@@ -66,6 +66,10 @@
     public class PlayerPrefsData
     {
         public static readonly string GAMEID = "gameId";
+        public static readonly string ID = "id";
+        public static readonly string ROLE = "role";
+        public static readonly string TOKEN = "authToken";
+
         public static readonly string OPPONENTID = "opponentId";
         public static readonly string OPPONENTNAME = "opponentName";
         public static readonly string OPPONENTURL = "opponentUrl";
@@ -74,13 +78,13 @@
         public static readonly string FIRSTTIME = "firstTIme";
         public static readonly string PURCHASE = "purchase";
 
-        public static readonly string ROLE = "role";
+     
         public static readonly string FIRSTNAME = "firstname";
-        public static readonly string ID = "id";
+       
         public static readonly string SOCIALID = "social_id";
         public static readonly string LASTNAME = "lastname";
         public static readonly string EMAIL = "email";
-        public static readonly string TOKEN = "authToken";
+       
         public static readonly string PASSWORD = "password";
         public static readonly string ALREADYLOGIN = "alreadylogin";
     }
