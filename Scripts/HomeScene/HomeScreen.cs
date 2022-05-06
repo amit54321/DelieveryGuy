@@ -43,6 +43,7 @@ public class HomeScreen : MonoBehaviour
     public void SetSetStatus()
     {
         status = STATUS.SET;
+            UIManager.instance.ToggleLoader(true);
         SceneManager.LoadScene("GameScene");
     }
 
