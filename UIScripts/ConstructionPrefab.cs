@@ -37,6 +37,15 @@ public class UpgradeRestaurant
     public int timer;
 
 }
+
+public class SwapRestaurant
+{
+    public string id;
+   
+    public int plot_id1;
+    public int plot_id2;
+
+}
 public class ConstructionPrefab : MonoBehaviour
 {
     [SerializeField]
@@ -44,7 +53,7 @@ public class ConstructionPrefab : MonoBehaviour
     [SerializeField]
     Text title, desc, cost, level, timer;
     [SerializeField]
-    Button buildButton;
+    Button buildButton,swapButton;
 
     int id;
     int cTime,quantity, cookTime;
@@ -72,8 +81,20 @@ public class ConstructionPrefab : MonoBehaviour
         }
         timer.text = "Build Time: "+timerText.ToString()+"s";
         cTime = timerText;
-       
+        if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count >= 10 && swapButton != null)
+        {
+            swapButton.gameObject.SetActive(true);
+            swapButton.onClick.AddListener(Swap);
+        }
 
+    }
+    void Swap()
+    {
+        Restaurants r = GameManager.Instance.FindRestaurantById(GameManager.Instance.clickedPlotId);
+        //  r.gameObject.SetActive(false);
+        InGame.UIManager.Instance.swapUI.SetActive(true);
+        GameManager.Instance.swapFirst = GameManager.Instance.clickedPlotId;
+        InGame.UIManager.Instance.DisablePopUp();
     }
 
     private void Upgrade()
@@ -103,7 +124,7 @@ public class ConstructionPrefab : MonoBehaviour
                 level= this.currentLevel,
                 plot_id = GameManager.Instance.clickedPlotId,
                 restaurant_id = id,
-                timer = 10
+                timer = 2
             });
     }
 
@@ -146,7 +167,7 @@ public class ConstructionPrefab : MonoBehaviour
                 id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
                 plot_id = GameManager.Instance.clickedPlotId,
                 restaurant_id = id,
-                timer =100
+                timer =2
             });
     }
 

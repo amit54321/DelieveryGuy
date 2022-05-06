@@ -14,6 +14,8 @@ namespace InGame
         public BasePOpUp currentPopUp;
 
         public ScreenUI screenUI;
+
+        public GameObject swapUI;
         public void EnablePopUp(BasePOpUp popUp)
         {
             if(currentPopUp!=null)

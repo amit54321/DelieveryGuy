@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
 
 
     Vector3 enemyRot, enemyPos;
+
+    public int swapFirst=-1, swapSecond=-1;
     void SetCars()
     {
         foreach (GameObject g in allScenes)
@@ -107,6 +109,50 @@ public class GameManager : MonoBehaviour
        
         Debug.LogError(GetCurrentTime());
         SetCars();
+        swapFirst = -1;
+        swapSecond = -1;
+    }
+
+    public void SwapCancel(GameObject g)
+    {
+        swapFirst = -1;
+        swapSecond = -1;
+        g.SetActive(false);
+    }
+    public void SwapBuildings()
+    {
+        Plot p1 = FindPlotById(swapFirst);
+        Plot p2 = FindPlotById(swapSecond);
+
+      //  Debug.LogError("SWAPPING STARTED " + p1.id + "   " + p2.id);
+        Restaurants rId1 = null;
+        Restaurants rId2 =null ;
+        Vector3 pos = Vector3.zero ; 
+         foreach(Transform t in p1.transform)
+        {
+            if(t.GetComponent<Restaurants>()!=null)
+            {
+                rId1 = t.GetComponent<Restaurants>();
+                pos = rId1.transform.localPosition;
+            }
+        }
+
+        foreach (Transform t in p2.transform)
+        {
+            if (t.GetComponent<Restaurants>() != null)
+            {
+                rId2 = t.GetComponent<Restaurants>();
+            }
+        }
+
+        rId2.transform.SetParent(p1.transform);
+        rId1.transform.SetParent(p2.transform);
+        rId1.transform.localPosition = pos;
+        rId2.transform.localPosition = pos;
+       
+        swapFirst = -1;
+        swapSecond = -1;
+        InGame.UIManager.Instance.swapUI.SetActive(false);
 
     }
     public void SetPlayerPosition(LobbyData.SyncPosition data)
@@ -400,10 +446,16 @@ public class GameManager : MonoBehaviour
                  ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
         }
 
-       for(int i=1;i<=10;i++)
-        {
-            ConstructBuilding(i, i, 0, 10, 10, 1);
-        }
+       //for(int i=1;i<=10;i++)
+       // {
+       //     ConstructBuilding(i, i, 0, 10, 10, 1);
+       //     RestaurantsData r = new RestaurantsData();
+       //     r.plot_id = i;
+       //     r.restaurant_id = i;
+       //     r.level = 2;
+         
+       //     SocketMaster.instance.profileData.restaurants.Add(r);
+       // }
     }
    
 
@@ -486,7 +538,17 @@ public class GameManager : MonoBehaviour
     public void ConstructionFInisged(RestaurantsData r)
 
     {
-        FindPlotById(r.plot_id).transform.GetChild(0).GetComponent<Restaurants>().ConstructionFinished();
+        Plot p1 = FindPlotById(r.plot_id);
+        foreach (Transform t in p1.transform)
+        {
+            if (t.GetComponent<Restaurants>() != null)
+            {
+                t.GetComponent<Restaurants>().ConstructionFinished();
+                break;
+            }
+        }
+
+       // FindPlotById(r.plot_id).transform.GetChild(1).GetComponent<Restaurants>().ConstructionFinished();
     }
 
     public void SendTaskDone(int taskId)

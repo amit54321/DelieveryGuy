@@ -55,6 +55,7 @@ public class CameraHandler : MonoBehaviour
             {
                 if (hit.transform.GetComponent<OnClick>() != null)
                 {
+                   
                     hit.transform.GetComponent<OnClick>().OnCLickMethod();
                 }
             }

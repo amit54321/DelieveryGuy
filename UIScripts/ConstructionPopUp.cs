@@ -32,6 +32,8 @@ public class RestaurantLevel
 
     [SerializeField]
     ConstructionPrefab statiConstructionPrefab;
+
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -93,11 +95,17 @@ public class RestaurantLevel
         }
 
         crossButton.onClick.AddListener(Cross);
-    }
 
+        
+    }
+   
     void Cross()
     {
         InGame.UIManager.Instance.DisablePopUp();
     }
-
+    private void OnDisable()
+    {
+       
+       // crossButton.onClick.RemoveListener(Cross);
+    }
 }

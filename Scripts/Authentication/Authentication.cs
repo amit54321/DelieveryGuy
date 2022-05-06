@@ -120,7 +120,7 @@ namespace Authentication
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
               
-                 {"deviceId","ef" }// SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","f" }// SystemInfo.deviceUniqueIdentifier}
 
             };
            
@@ -134,7 +134,7 @@ namespace Authentication
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"deviceId","ef" },// SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","f" },// SystemInfo.deviceUniqueIdentifier}
                  {"name", name},
                  {"avatar", name}
 

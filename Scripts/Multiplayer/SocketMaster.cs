@@ -165,6 +165,7 @@ namespace RoomContoller
             socketMaster.Socket.On(LobbyConstants.UPGRADEFINISH, UpgradeCompleted);
             socketMaster.Socket.On(LobbyConstants.TASKRECEIVED, TaskReceived);
             socketMaster.Socket.On(LobbyConstants.CHATSENDCALLBACK, ChatReceived);
+            socketMaster.Socket.On(LobbyConstants.SWAPFINISH, SwapFinish);
             #region Game
 
             #endregion
@@ -215,7 +216,14 @@ namespace RoomContoller
          //   SceneManager.LoadScene("GameScene");
 
         }
-
+        void SwapFinish(Socket socket, Packet packet, params object[] args)
+        {
+          //  Debug.Log(JsonMapper.ToJson(args[0]) + "  GAMEEND  ");
+          //  LobbyData.GamePlayCallBack resp = new LobbyData.GamePlayCallBack();
+          //  JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
+            GameManager.Instance.SwapBuildings();
+           
+        }
         void MissionComplete(Socket socket, Packet packet, params object[] args)
         {
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
