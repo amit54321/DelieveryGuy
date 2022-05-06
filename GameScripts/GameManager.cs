@@ -439,16 +439,16 @@ public class GameManager : MonoBehaviour
                  ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
         }
 
-        for (int i = 1; i <= 10; i++)
-        {
-            ConstructBuilding(i, i, 0, 10, 10, 1);
-            RestaurantsData r = new RestaurantsData();
-            r.plot_id = i;
-            r.restaurant_id = i;
-            r.level = 2;
+        //for (int i = 1; i <= 10; i++)
+        //{
+        //    ConstructBuilding(i, i, 0, 10, 10, 1);
+        //    RestaurantsData r = new RestaurantsData();
+        //    r.plot_id = i;
+        //    r.restaurant_id = i;
+        //    r.level = 2;
 
-            SocketMaster.instance.profileData.restaurants.Add(r);
-        }
+        //    SocketMaster.instance.profileData.restaurants.Add(r);
+        //}
     }
    
 

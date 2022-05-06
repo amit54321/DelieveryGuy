@@ -77,8 +77,15 @@ namespace InGame
 
         public void Back()
         {
-            EnablePopUp(quitPopUp);
-           // SceneManager.LoadScene("Lobby");
+            if (RoomContoller.HomeScreen.status == STATUS.PLAY)
+            {
+                EnablePopUp(quitPopUp);
+            }
+            else
+            {
+                 SceneManager.LoadScene("Lobby");
+
+            }
         }
         public void ShowError(string error)
         {
