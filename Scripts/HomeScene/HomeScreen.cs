@@ -18,13 +18,7 @@ public class HomeScreen : MonoBehaviour
     public static STATUS status;
     private void Start()
     {
-        // if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count < 10)
-        {
-            // show warning first construct all restaurants
-            //  play.enabled = false;
-            //  play.GetComponent<Image>().color = Color.black;
-        }
-        // else
+      
         {
             play.enabled = true;
             play.GetComponent<Image>().color = Color.white;
@@ -34,16 +28,24 @@ public class HomeScreen : MonoBehaviour
     }
     // Start is called before the first frame update
     public void SetPlayStatus()
-    {
-        UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
-       status = STATUS.PLAY;
-     //   SceneManager.LoadScene("GameScene");
-    }
+        {
+            if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count < 10)
+            {
+                UIManager.instance.ShowError("Construct all 10 buildings.");
+            }
+            else
+            {
+                UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
+                status = STATUS.PLAY;
 
-    public void SetSetStatus()
+            }
+                //   SceneManager.LoadScene("GameScene");
+            }
+
+            public void SetSetStatus()
     {
         status = STATUS.SET;
-            UIManager.instance.ToggleLoader(true);
+        UIManager.instance.ToggleLoader(true);
         SceneManager.LoadScene("GameScene");
     }
 
