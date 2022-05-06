@@ -25,15 +25,16 @@ public class Plot : MonoBehaviour, OnClick
             Debug.LogError("CLICKED " + transform.name+"     "+ SocketMaster.instance.profileData.restaurants.Count);
             if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count <10)
             {
+                InGame.UIManager.Instance.ShowError("Construct all 10 buildings.");
                 //show warning first construct all restaurants
                 return;
             }
-          //  Debug.LogError("CLICKED " + transform.name + "  SWAP   " + GameManager.Instance.swapFirst);
+         
             if (GameManager.Instance.swapFirst >= 0)
             {
                // Restaurants r = GameManager.Instance.FindRestaurantById(id);
                 GameManager.Instance.swapSecond = id;
-              //  GameManager.Instance.SwapBuildings();
+             
                 Swap();
                 return;
 

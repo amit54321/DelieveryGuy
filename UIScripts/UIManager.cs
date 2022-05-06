@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace InGame
 {
@@ -17,6 +18,10 @@ namespace InGame
         public ScreenUI screenUI;
 
         public GameObject swapUI;
+
+        public Transform
+           loader, internetConnectionPopUp;
+        [SerializeField] private Text error;
         public void EnablePopUp(BasePOpUp popUp)
         {
             if(currentPopUp!=null)
@@ -68,14 +73,52 @@ namespace InGame
             inputImage.SetActive(true);
         }
         // Update is called once per frame
-        void Update()
-        {
-
-        }
+      
 
         public void Back()
         {
             SceneManager.LoadScene("Lobby");
+        }
+        public void ShowError(string error)
+        {
+            this.error.text = error;
+            Invoke("RemoveError", 2);
+        }
+
+        void RemoveError()
+        {
+            this.error.text = "";
+        }
+
+        public void ToggleLoader(bool toggle)
+        {
+            loader.gameObject.SetActive(toggle);
+        }
+
+        public bool CheckInternetConnection()
+        {
+            if (Application.internetReachability == NetworkReachability.NotReachable)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        void Update()
+        {
+            if (internetConnectionPopUp == null)
+            {
+                return;
+            }
+
+            if (CheckInternetConnection())
+            {
+                internetConnectionPopUp.gameObject.SetActive(false);
+            }
+            else
+            {
+                internetConnectionPopUp.gameObject.SetActive(true);
+            }
         }
     }
 }
