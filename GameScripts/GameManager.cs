@@ -217,7 +217,21 @@ public class GameManager : MonoBehaviour
         opponentTasksDone++;
         InGame.UIManager.Instance.screenUI.OpponentSetTasks(opponentTasksDone);
     }
-    public bool DisableCurrentTask()
+
+    public void SetInitialOpponentTasks()
+    {
+        foreach (LobbyData.TaskDoneData u in SocketMaster.instance.gamePlay.taskDone)
+        {
+            if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(u.id))
+            {
+                opponentTasksDone = u.taskDone.Count;
+            }
+
+        }
+             //   opponentTasksDone = taskDone;
+        InGame.UIManager.Instance.screenUI.OpponentSetTasks(opponentTasksDone);
+    }
+        public bool DisableCurrentTask()
     {
 
         foreach (TaskData t in taskDatas)
@@ -282,8 +296,9 @@ public class GameManager : MonoBehaviour
            
             COnstructInitialBuildings();
             InGame.UIManager.Instance.HideInputs();
-            SetOpponentTasks();
+           
             StartCoroutine(PlayAI());
+            SetInitialOpponentTasks();
           //  StartCoroutine(Testing());
          
 
@@ -548,7 +563,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PlayAI()
     {
         string id = "";
-        foreach (LobbyData.UserProfile u in SocketMaster.instance.gamePlay.users_data)
+        foreach (ProfileData u in SocketMaster.instance.gamePlay.users_data)
         {
             if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(u._id))
             {

@@ -53,7 +53,8 @@ namespace Authentication
         public string game_id;
         public string role;
         public string token;
-
+        public int  matches;
+        public int  wins;
 
     }
 

@@ -62,6 +62,7 @@ public class Restaurants : Plot
         //  text.transform.LookAt(GameManager.Instance.cityCamera.transform);
         for (int i=0;i<constructionTime;i++)
         {
+           // sprite.transform.localScale = Vector3.one * (1 / ((float)constructionTime+1));
             text.text = (constructionTime - i).ToString()+ " s";
             yield return new WaitForSeconds(1);
         }
