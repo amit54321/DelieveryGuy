@@ -66,7 +66,7 @@ public class JoinPublicRoom : WebRequest
                 _public = 1,
                 roomName = "public room",
                 time = 30000,
-                bet = coinSelector.GetCurrentBet()
+               // bet = coinSelector.GetCurrentBet()
             });
 
 
@@ -118,7 +118,7 @@ public class JoinPublicRoom : WebRequest
             bets.Add(data.level * 300);
         }
 
-        coinSelector.SetData(bets);
+      //  coinSelector.SetData(bets);
     }
 
     public void Error(string error)
