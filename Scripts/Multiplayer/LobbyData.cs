@@ -125,6 +125,7 @@ public class LobbyData
         public int coins;
         public int level;
         public int bet;
+        public string role;
     }
 
     [Serializable]

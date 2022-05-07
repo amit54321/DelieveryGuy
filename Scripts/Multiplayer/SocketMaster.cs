@@ -213,6 +213,8 @@ namespace RoomContoller
             LobbyData.GamePlayCallBack resp = new LobbyData.GamePlayCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
             gamePlay = resp.gameplay;
+            InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.winnerPopUp);
+            InGame.UIManager.Instance.HideInputs();
          //   SceneManager.LoadScene("GameScene");
 
         }

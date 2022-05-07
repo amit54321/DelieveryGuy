@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
         {
             if (currentTask.id == t.id)
             {
-                SendTaskDone(t.id);
+                SendTaskDone(t.id,PlayerPrefs.GetString(PlayerPrefsData.ID));
                 taskDatas.Remove(currentTask);
                 break;
             }
@@ -283,6 +283,7 @@ public class GameManager : MonoBehaviour
             COnstructInitialBuildings();
             InGame.UIManager.Instance.HideInputs();
             SetOpponentTasks();
+            StartCoroutine(PlayAI());
           //  StartCoroutine(Testing());
          
 
@@ -544,7 +545,35 @@ public class GameManager : MonoBehaviour
        // FindPlotById(r.plot_id).transform.GetChild(1).GetComponent<Restaurants>().ConstructionFinished();
     }
 
-    public void SendTaskDone(int taskId)
+    IEnumerator PlayAI()
+    {
+        string id = "";
+        foreach (LobbyData.UserProfile u in SocketMaster.instance.gamePlay.users_data)
+        {
+            if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(u._id))
+            {
+                if (u.role.Equals("ai"))
+                    
+                {
+                    enemy.gameObject.SetActive(false);
+                    id = u._id;
+                }
+                else
+                {
+                    
+                    yield break;
+                }
+            }
+        }
+        for(int i=1;i<=10;i++)
+        {
+            yield return new WaitForSeconds(Random.Range(1, 5));
+            SendTaskDone(i, id);
+        }
+
+    }
+
+    public void SendTaskDone(int taskId,string id)
     {
         Debug.LogError("SENDING TASk " + taskId);
         SendTaskDone roomData;
@@ -562,7 +591,7 @@ public class GameManager : MonoBehaviour
                     },
                     roomData = new SendTaskDone()
                     {
-                        id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
+                        id = id,
                         taskId = taskId,
                         game_id = RoomContoller.SocketMaster.instance.gamePlay.game_id
                     });
