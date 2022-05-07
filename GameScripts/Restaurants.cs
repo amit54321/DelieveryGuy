@@ -82,7 +82,11 @@ public class Restaurants : Plot
             {
                dish.transform.localEulerAngles = new Vector3(15, 0, 0);
             }
-           else //if (restaurantData.id == 2)
+           else if (restaurantData.id == 4)
+            {
+                dish.transform.localEulerAngles = new Vector3(-65, 0, 0);
+            }
+            else 
             {
                 dish.transform.localEulerAngles = new Vector3(15, 0, 0);
             }
