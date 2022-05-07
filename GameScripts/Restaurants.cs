@@ -96,6 +96,16 @@ public class Restaurants : Plot
 
     public void ConstructionFinished()
     {
+        Debug.LogWarning("CONSTRUCTION FINISHED NOW");
+        foreach(Restaurants r in GameManager.Instance.allRestaurants)
+        {
+            if(r.restaurantData.id == restaurantData.id && r.restaurantData.level == restaurantData.level)
+
+            {
+                return;
+            }
+        }
+        
         GameManager.Instance.allRestaurants.Add(this);
         InGame.UIManager.Instance.restaurantPopUp.SetData();
         sprite.gameObject.SetActive(false);

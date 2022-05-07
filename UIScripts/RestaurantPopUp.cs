@@ -20,14 +20,14 @@ public class RestaurantPopUp : MonoBehaviour
         foreach (Restaurants r in GameManager.Instance.allRestaurants)
         {
             RestaurantMenuPrefab task = Instantiate(rPrefab, parent);
-            task.SetData(r.id,r.restaurantData.id);
+            task.SetData(r.id,r.restaurantData.id, r.restaurantData.level);
             plots.Remove(r.id);
         }
 
         foreach (int r in plots)
         {
             RestaurantMenuPrefab task = Instantiate(rPrefab, parent);
-            task.SetData(r, 11);
+            task.SetData(r, 11,-1);
           
         }
         }
