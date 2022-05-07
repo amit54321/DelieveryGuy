@@ -567,7 +567,7 @@ public class GameManager : MonoBehaviour
         }
         for(int i=1;i<=10;i++)
         {
-            yield return new WaitForSeconds(Random.Range(1, 5));
+            yield return new WaitForSeconds(Random.Range(10, 30));
             SendTaskDone(i, id);
         }
 
