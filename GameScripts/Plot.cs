@@ -11,7 +11,7 @@ public class Plot : MonoBehaviour, OnClick
 
     public int id;
     public Vector3 eulerAngle;
-
+    public bool forward;
     public void OnCLickMethod()
     {
        

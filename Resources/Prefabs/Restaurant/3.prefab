@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2352418888671930761}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0.73, y: 9.21, z: 0}
-  m_LocalScale: {x: 1, y: 0.21, z: 1}
+  m_LocalPosition: {x: 2.1, y: 24.3, z: -5.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2518814389464872673}
   m_Father: {fileID: 5364335062089094082}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   eulerAngle: {x: 0, y: 0, z: 0}
+  forward: 0
   restaurantData:
     level: 0
     id: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
     quantity: 0
   text: {fileID: 1212290685240951345}
   sprite: {fileID: 6983343526805456261}
+  dish: {fileID: 7876797282054607412}
   restaurantCollider: {fileID: 2663714036403873576}
 --- !u!1 &5989591012424085375
 GameObject:
@@ -312,16 +314,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8728455892476659297}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8653200224422186355}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5.2}
+  m_AnchoredPosition: {x: 0, y: 4.4}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &9206493745630091103
@@ -580,6 +582,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f266193b1995a45baaae853448ad1423, type: 3}
+--- !u!1 &7876797282054607412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100030, guid: f266193b1995a45baaae853448ad1423,
+    type: 3}
+  m_PrefabInstance: {fileID: 7876797282054640778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7876797282055032340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400030, guid: f266193b1995a45baaae853448ad1423,

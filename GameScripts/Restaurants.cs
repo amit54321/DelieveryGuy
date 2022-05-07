@@ -19,9 +19,17 @@ public class Restaurants : Plot
     TextMeshPro text;
     [SerializeField]
     SpriteRenderer sprite;
+    [SerializeField]
+    GameObject dish;
   //  public int level,quantity,waitTime,restaurantId;
 
     public RestaurantCollider restaurantCollider;
+
+    Vector3 forwardP = new Vector3(2.1f, 24.3f, 0.66f);
+    Vector3 forwardR = new Vector3(90, 0, 180);
+    Vector3 forwardTP = new Vector3(0, -3.14f,0);
+    Vector3 forwardTR = new Vector3(0, 0, 0);
+
     public new void OnCLickMethod()
     {
         UnityEngine.Debug.LogError("CLICKED REST " + id);
@@ -35,6 +43,7 @@ public class Restaurants : Plot
     public IEnumerator StartConstruction(int id,int constructionTime,int level,int quantity,int waitTime,int resId)
     {
         this.id = id;
+        this.forward = transform.parent.GetComponent<Plot>().forward;
         this.restaurantData.level = level;
         this.restaurantData.quantity = quantity;
         this.restaurantData.waitTime = waitTime;
@@ -42,15 +51,42 @@ public class Restaurants : Plot
         transform.GetComponent<Collider>().enabled = false;
         sprite.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
-        text.transform.LookAt(GameManager.Instance.cityCamera.transform);
-        for(int i=0;i<constructionTime;i++)
+        SetPositonOfRestaurant();
+        if (this.forward)
+        {
+            text.transform.localPosition = forwardTP;
+            text.transform.localEulerAngles = forwardTR;
+            sprite.transform.localPosition = forwardP;
+            sprite.transform.localEulerAngles = forwardR;
+        }
+        //  text.transform.LookAt(GameManager.Instance.cityCamera.transform);
+        for (int i=0;i<constructionTime;i++)
         {
             text.text = (constructionTime - i).ToString()+ " s";
             yield return new WaitForSeconds(1);
         }
-
+      
 
        
+    }
+
+    void SetPositonOfRestaurant()
+    {
+        if(dish==null)
+        {
+            return;
+        }
+        if(this.forward)
+        {
+            if(restaurantData.id==1)
+            {
+               dish.transform.localEulerAngles = new Vector3(15, 0, 0);
+            }
+           else //if (restaurantData.id == 2)
+            {
+                dish.transform.localEulerAngles = new Vector3(15, 0, 0);
+            }
+        }
     }
 
     public void ConstructionFinished()
