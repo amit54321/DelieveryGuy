@@ -21,6 +21,7 @@ namespace InGame
 
         public Transform
            loader, internetConnectionPopUp;
+        public RestaurantPopUp restaurantPopUp;
         [SerializeField] private Text error;
         public void EnablePopUp(BasePOpUp popUp)
         {

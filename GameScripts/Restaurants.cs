@@ -97,6 +97,7 @@ public class Restaurants : Plot
     public void ConstructionFinished()
     {
         GameManager.Instance.allRestaurants.Add(this);
+        InGame.UIManager.Instance.restaurantPopUp.SetData();
         sprite.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
         transform.GetComponent<Collider>().enabled = true;

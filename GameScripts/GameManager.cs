@@ -28,7 +28,7 @@ public class WayPoints
 }
 public class GameManager : MonoBehaviour
 {
-    public List<Restaurants> restaurants;
+   // public List<Restaurants> restaurants;
 
     public Restaurants currentRestaurant;
 
@@ -308,6 +308,8 @@ public class GameManager : MonoBehaviour
         {
             EnableCityCamera();
             COnstructInitialBuildings();
+            InGame.UIManager.Instance.restaurantPopUp.gameObject.SetActive(true);
+            InGame.UIManager.Instance.restaurantPopUp.SetData();
         }
     }
     public void EnableCityCamera()
@@ -560,6 +562,11 @@ public class GameManager : MonoBehaviour
        // FindPlotById(r.plot_id).transform.GetChild(1).GetComponent<Restaurants>().ConstructionFinished();
     }
 
+    public void SetCityCameraPosition(int plotId)
+    {
+        Plot p = FindPlotById(plotId);
+        cityCamera.transform.position = new Vector3(p.transform.position.x, 150, p.transform.position.z-(130-cityCamera.fieldOfView));
+    }
     IEnumerator PlayAI()
     {
         string id = "";
