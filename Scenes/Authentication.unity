@@ -2714,7 +2714,7 @@ RectTransform:
   m_GameObject: {fileID: 913134771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32668996, y: 0.32668996, z: 0.32668996}
+  m_LocalScale: {x: 1.15, y: 1.15, z: 0.32668996}
   m_Children:
   - {fileID: 1669211028}
   m_Father: {fileID: 911553916}
@@ -2723,7 +2723,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -104.6}
-  m_SizeDelta: {x: 1323, y: 425}
+  m_SizeDelta: {x: 208, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913134773
 MonoBehaviour:
@@ -4693,7 +4693,6 @@ MonoBehaviour:
     round: 0
     ai: 0
     time: 0
-    collision: []
     tasks: []
   defaultSprites: []
   profileData:
@@ -4710,6 +4709,9 @@ MonoBehaviour:
     game_id: 
     role: 
     token: 
+    matches: 0
+    wins: 0
+  missions: []
 --- !u!4 &1387930880
 Transform:
   m_ObjectHideFlags: 0
@@ -5649,8 +5651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: 0, y: 40}
+  m_AnchoredPosition: {x: 0, y: 8.65}
+  m_SizeDelta: {x: 0, y: 17.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1669211029
 MonoBehaviour:
@@ -5673,8 +5675,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 93d507323237282459899f9bcb711151, type: 3}
-    m_FontSize: 130
+    m_Font: {fileID: 12800000, guid: 1620879da31773b4691aa7344ac7f59c, type: 3}
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -5703,11 +5705,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1669211027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &1717277538
 GameObject:
