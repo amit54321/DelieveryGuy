@@ -1,3 +1,4 @@
+using RoomContoller;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -94,7 +95,7 @@ public class Restaurants : Plot
         }
     }
 
-    public void ConstructionFinished()
+    public void ConstructionFinished(bool newData)
     {
         Debug.LogWarning("CONSTRUCTION FINISHED NOW");
         foreach(Restaurants r in GameManager.Instance.allRestaurants)
@@ -105,7 +106,8 @@ public class Restaurants : Plot
                 return;
             }
         }
-        
+        if(newData)
+        SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 3, 4, 5, 6 }));
         GameManager.Instance.allRestaurants.Add(this);
         InGame.UIManager.Instance.restaurantPopUp.SetData();
         sprite.gameObject.SetActive(false);

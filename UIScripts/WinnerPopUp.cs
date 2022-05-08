@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using RoomContoller;
+
 public class WinnerPopUp : BasePOpUp
 {
     [SerializeField]
@@ -19,6 +21,8 @@ public class WinnerPopUp : BasePOpUp
         }
         else
         {
+            SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 8,9,10,11 }));
+            
             winner.text = "YOU WIN";
 
         }

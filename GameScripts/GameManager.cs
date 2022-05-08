@@ -299,8 +299,10 @@ public class GameManager : MonoBehaviour
            
             StartCoroutine(PlayAI());
             SetInitialOpponentTasks();
-          //  StartCoroutine(Testing());
-         
+            SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 0,1,2 }));
+
+            //  StartCoroutine(Testing());
+
 
             //  Invoke("ShowInputs",)
         }
@@ -530,7 +532,7 @@ public class GameManager : MonoBehaviour
         }
         if (cTime <= 0)
         {
-            g.GetComponent<Restaurants>().ConstructionFinished();
+            g.GetComponent<Restaurants>().ConstructionFinished(false);
             return;
         }
         p.enabled = false;
@@ -550,12 +552,13 @@ public class GameManager : MonoBehaviour
     public void ConstructionFInisged(RestaurantsData r)
 
     {
+       
         Plot p1 = FindPlotById(r.plot_id);
         foreach (Transform t in p1.transform)
         {
             if (t.GetComponent<Restaurants>() != null)
             {
-                t.GetComponent<Restaurants>().ConstructionFinished();
+                t.GetComponent<Restaurants>().ConstructionFinished(true);
                 break;
             }
         }

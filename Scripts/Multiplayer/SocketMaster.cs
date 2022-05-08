@@ -90,8 +90,11 @@ namespace RoomContoller
                 });
         }
 
+       
         public void MissionDone(int missionIdt)
         {
+           
+            
             LobbyData.MissionDone data;
             SocketMaster.instance.socketMaster.Socket.Emit(
                 LobbyConstants.MISSIONDONE,
@@ -233,6 +236,7 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
             LobbyData.MissionComplete callbackdata = new LobbyData.MissionComplete();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
+            if(!missionCompleted.Contains(callbackdata))
             missionCompleted.Add(callbackdata);
 
         }
@@ -352,9 +356,18 @@ namespace RoomContoller
         }
         #endregion
 
+       public IEnumerator SendMissions(List <int> missions)
+        {
+            for(int i=0;i<missions.Count;i++)
+            {
+                SocketMaster.instance.MissionDone(missions[i]);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
 
         void ConstructionCompleted(Socket socket, Packet packet, params object[] args)
         {
+            
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA CONSTRUCTION COMPLETED ");
             RestaurantFinished callbackdata = new RestaurantFinished();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
@@ -363,6 +376,8 @@ namespace RoomContoller
         }
         void UpgradeCompleted(Socket socket, Packet packet, params object[] args)
         {
+            SocketMaster.instance.MissionDone(7);
+        
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA UPGRADE COMPLETED ");
             RestaurantFinished callbackdata = new RestaurantFinished();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
