@@ -22,6 +22,7 @@ namespace RoomContoller
 
 
         public ProfileData profileData;
+        public List<Missions> missions;
         void Awake()
         {
             if (instance == null)

@@ -3678,7 +3678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 168.68225, y: -74}
+  m_AnchoredPosition: {x: 356.88022, y: -74}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394276980
@@ -6033,15 +6033,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  m_Color: {r: 0, g: 0.5307614, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 089f6909938b547ccae38b1f89551fc4, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 858a80c247101f04ba19c5b3cd0d5ca2, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7492,7 +7492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff1064dbdba6d34f961413b5f25e2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionPrefab: {fileID: 6066294715430286726, guid: 534bfc8c444f88f478f9766e7fc9b24c,
+  missionPrefab: {fileID: 4430306285258779037, guid: d6d2d143476f92f4bb2bd4757baf2db7,
     type: 3}
   parent: {fileID: 1696883863}
 --- !u!114 &859253730
@@ -8030,7 +8030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 378.68225, y: -243.1}
+  m_AnchoredPosition: {x: 566.88025, y: -243.1}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915486361
@@ -8461,7 +8461,7 @@ MonoBehaviour:
         m_MethodName: EnablePanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 289083778}
+          m_ObjectArgument: {fileID: 1034996220}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -10294,7 +10294,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1218348369}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581787080}
+        m_TargetAssemblyTypeName: RoomContoller.UIManager, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 859253728}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1181013794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13646,7 +13658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 378.68225, y: -74}
+  m_AnchoredPosition: {x: 566.88025, y: -74}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466469564
@@ -14449,7 +14461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 168.68225, y: -243.1}
+  m_AnchoredPosition: {x: 356.88022, y: -243.1}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1525382379
@@ -15206,6 +15218,7 @@ GameObject:
   - component: {fileID: 1594279211}
   - component: {fileID: 1594279210}
   - component: {fileID: 1594279209}
+  - component: {fileID: 1594279212}
   m_Layer: 5
   m_Name: ChatPopUp (2)
   m_TagString: Untagged
@@ -15259,7 +15272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  m_Color: {r: 0, g: 0.5307614, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15284,6 +15297,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594279207}
   m_CullTransparentMesh: 1
+--- !u!114 &1594279212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594279207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1606182478
 GameObject:
   m_ObjectHideFlags: 0
@@ -16425,7 +16453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  m_Color: {r: 0, g: 0.5307614, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17337,6 +17365,7 @@ GameObject:
   - component: {fileID: 1741472546}
   - component: {fileID: 1741472545}
   - component: {fileID: 1741472544}
+  - component: {fileID: 1741472547}
   m_Layer: 5
   m_Name: ChatPopUp (2)
   m_TagString: Untagged
@@ -17390,7 +17419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  m_Color: {r: 0, g: 0.5307614, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17415,6 +17444,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741472542}
   m_CullTransparentMesh: 1
+--- !u!114 &1741472547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741472542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1751583147
 GameObject:
   m_ObjectHideFlags: 0
@@ -19769,7 +19813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  m_Color: {r: 0, g: 0.5307614, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19831,7 +19875,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 413.2, y: 64}
+  m_SizeDelta: {x: 413.2, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1883505768
 MonoBehaviour:
@@ -20406,8 +20450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0009765625}
-  m_SizeDelta: {x: 413.2, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_SizeDelta: {x: 413.2, y: 65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1902001226
 MonoBehaviour:
@@ -20462,7 +20506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  m_Color: {r: 0, g: 0.5307614, b: 0.6037736, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21834,7 +21878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36096bbdd410504ba50704716c6bd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionPrefab: {fileID: 6066294715430286726, guid: 534bfc8c444f88f478f9766e7fc9b24c,
+  missionPrefab: {fileID: 4430306285258779037, guid: d6d2d143476f92f4bb2bd4757baf2db7,
     type: 3}
   parent: {fileID: 1902001225}
 --- !u!114 &2019562900
@@ -22075,7 +22119,7 @@ MonoBehaviour:
         m_MethodName: EnablePanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 289083778}
+          m_ObjectArgument: {fileID: 1034996220}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

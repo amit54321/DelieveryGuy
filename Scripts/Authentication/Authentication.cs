@@ -121,7 +121,7 @@ namespace Authentication
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
               
-                 {"deviceId","fff" }// SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","fffc" }// SystemInfo.deviceUniqueIdentifier}
 
             };
            
@@ -135,7 +135,7 @@ namespace Authentication
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"deviceId","fff" },// SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","fffc" },// SystemInfo.deviceUniqueIdentifier}
                  {"name", name},
                  {"avatar", name}
 
@@ -155,6 +155,7 @@ namespace Authentication
                 {
 
                 RoomContoller.SocketMaster.instance.profileData = data.message;
+                RoomContoller.SocketMaster.instance.missions = data.missions;
                 PlayerPrefs.SetString(PlayerPrefsData.ID, RoomContoller.SocketMaster.instance.profileData._id);
                 PlayerPrefs.SetString(PlayerPrefsData.TOKEN, data.message.token);
                 RoomContoller.SocketMaster.instance.InitialiseSocket();
