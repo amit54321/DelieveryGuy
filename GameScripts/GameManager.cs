@@ -312,6 +312,7 @@ public class GameManager : MonoBehaviour
             InGame.UIManager.Instance.restaurantPopUp.SetData();
         }
     }
+    
     public void EnableCityCamera()
     {
         cityCamera.gameObject.SetActive(true);

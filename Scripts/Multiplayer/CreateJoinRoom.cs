@@ -55,17 +55,10 @@ namespace RoomContoller
             profileButton.onClick.AddListener(ProfileScreen);
             inAppButton.onClick.AddListener(InappScreen);
             missionButton.onClick.AddListener(MissionScreen);
-            CheckMissionsCompleted();
+           
         }
 
-        void CheckMissionsCompleted()
-        {
-            if (SocketMaster.missionCompleted.Count > 0)
-            {
-                UIManager.instance.EnablePanel(UIManager.instance.missionCompleteScreen);
-              
-            }
-        }
+       
 
         private void ProfileScreen()
         {

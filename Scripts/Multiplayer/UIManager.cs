@@ -42,7 +42,18 @@ namespace RoomContoller
                 instance = this;
             SocketMaster.userType = "game";
         }
+        private void OnEnable()
+        {
+            CheckMissionsCompleted();
+        }
+        void CheckMissionsCompleted()
+        {
+            if (SocketMaster.missionCompleted.Count > 0)
+            {
+                UIManager.instance.EnablePanel(UIManager.instance.missionCompleteScreen);
 
+            }
+        }
         public void ShowError(string error)
         {
             this.error.text = error;

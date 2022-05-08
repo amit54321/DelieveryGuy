@@ -26,8 +26,9 @@ public class HomeScreen : MonoBehaviour
         play.onClick.AddListener(SetPlayStatus);
         set.onClick.AddListener(SetSetStatus);
     }
-    // Start is called before the first frame update
-    public void SetPlayStatus()
+    
+        // Start is called before the first frame update
+        public void SetPlayStatus()
         {
            if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count < 10)
             {
