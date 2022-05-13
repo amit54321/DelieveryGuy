@@ -22,7 +22,7 @@ public class Plot : MonoBehaviour, OnClick
         }
         if (transform.GetComponent<Restaurants>()!=null)
         {
-            Debug.LogError("CLICKED " + transform.name+"     "+ SocketMaster.instance.profileData.restaurants.Count);
+         //   Debug.LogError("CLICKED " + transform.name+"     "+ SocketMaster.instance.profileData.restaurants.Count);
             if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count <10)
             {
                 InGame.UIManager.Instance.ShowError("Construct all 10 buildings.");
@@ -56,7 +56,7 @@ public class Plot : MonoBehaviour, OnClick
         // GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel) ;
 
         //    return;
-        Debug.LogError("UPGRADE CLICKED");
+        Debug.LogError("SWAP CLICKED"+ GameManager.Instance.swapFirst +"   "+ GameManager.Instance.swapSecond);
       //  InGame.UIManager.Instance.DisablePopUp();
         SwapRestaurant constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(

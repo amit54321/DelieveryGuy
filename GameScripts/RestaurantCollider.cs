@@ -11,7 +11,7 @@ public class RestaurantCollider : MonoBehaviour
     void OnEnable()
     {
         collider = GetComponent<Collider>();
-        waitTime = transform.parent.GetComponent<Restaurants>().restaurantData.waitTime;
+        waitTime = transform.parent.GetComponent<Restaurants>().restaurantData.cookTime;
        
     }
 
@@ -47,6 +47,7 @@ public class RestaurantCollider : MonoBehaviour
         InGame.UIManager.Instance.ShowInputs();
         collider.enabled = false;
         GameManager.Instance.player.GetComponent<Rigidbody>().isKinematic = false;
+        Debug.LogError("kinematic  " + GameManager.Instance.player.GetComponent<Rigidbody>().isKinematic);
         GameManager.Instance.EnableCurrentTaskHouse();
         
 

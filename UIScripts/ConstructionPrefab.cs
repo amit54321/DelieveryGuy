@@ -168,7 +168,7 @@ public class ConstructionPrefab : MonoBehaviour
                 id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
                 plot_id = GameManager.Instance.clickedPlotId,
                 restaurant_id = id,
-                timer = cTime
+                timer = 2
             });
     }
 

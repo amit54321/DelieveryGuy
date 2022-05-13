@@ -28,7 +28,7 @@ public class WayPoints
 }
 public class GameManager : MonoBehaviour
 {
-   // public List<Restaurants> restaurants;
+    // public List<Restaurants> restaurants;
 
     public Restaurants currentRestaurant;
 
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public List<TaskData> taskDatas;
     public Timer timer;
 
-    public Transform player,enemy;
+    public Transform player, enemy;
 
     public Direction dir;
 
@@ -67,23 +67,23 @@ public class GameManager : MonoBehaviour
 
     Vector3 enemyRot, enemyPos;
 
-    public int swapFirst=-1, swapSecond=-1;
+    public int swapFirst = -1, swapSecond = -1;
     void SetCars()
     {
         foreach (GameObject g in allScenes)
         {
-          
+
             foreach (Transform t in g.transform)
             {
-              
+
                 if (t.GetComponent<Rigidbody>())
                 {
-                   
+
                     if (t.GetComponent<Rigidbody>().mass >= 900)
                     {
                         if (t.GetComponent<AICar>() == null)
                         {
-                           
+
                             t.gameObject.AddComponent<AICar>();
                             t.gameObject.GetComponent<AICar>().stable = true;
                         }
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         gameOver = false;
-       
+        SetRestaurantStaticData();
         Debug.LogError(GetCurrentTime());
         SetCars();
         swapFirst = -1;
@@ -121,6 +121,11 @@ public class GameManager : MonoBehaviour
     }
     public void SwapBuildings()
     {
+        if (swapFirst == -1 || swapSecond==-1 )
+        {
+            return;
+        }
+        UnityEngine.Debug.LogError("SAPPING " + swapFirst + "  SAPPING   " + swapSecond);
         Plot p1 = FindPlotById(swapFirst);
         Plot p2 = FindPlotById(swapSecond);
 
@@ -527,8 +532,12 @@ public class GameManager : MonoBehaviour
       
      //  dir.SetArrow(player, r.transform);
     }
-
-
+   public  RestaurantDataUIArray data;
+    void SetRestaurantStaticData()
+    {
+        TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
+         data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
+    }
 
 
 

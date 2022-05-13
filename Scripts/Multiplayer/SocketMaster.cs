@@ -316,7 +316,7 @@ namespace RoomContoller
        
         void UpdateUser(Socket socket, Packet packet, params object[] args)
         {
-            Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
+            //Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
            
             RegisterCallBack(JsonMapper.ToJson(args[0]));
 

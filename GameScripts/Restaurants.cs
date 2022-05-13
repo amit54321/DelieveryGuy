@@ -10,7 +10,7 @@ public class RestaurantData
     public int id;
     public string name;
     public int dish;
-    public float waitTime;
+    public float cookTime;
     public int quantity;
 }
 public class Restaurants : Plot
@@ -47,8 +47,22 @@ public class Restaurants : Plot
         this.forward = transform.parent.GetComponent<Plot>().forward;
         this.restaurantData.level = level;
         this.restaurantData.quantity = quantity;
-        this.restaurantData.waitTime = waitTime;
+        
         this.restaurantData.id = resId;
+       // TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
+      //  RestaurantDataUIArray data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
+        foreach (RestaurantDataUI r in GameManager.Instance.data.data)
+        {
+
+
+            if (restaurantData.id == r.id)
+            {
+
+                this.restaurantData.cookTime = r.levels[this.restaurantData.level].cookTime;
+                break;
+            }
+
+        }
         transform.GetComponent<Collider>().enabled = false;
         sprite.gameObject.SetActive(true);
         text.gameObject.SetActive(true);

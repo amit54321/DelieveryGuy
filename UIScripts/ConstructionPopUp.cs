@@ -44,9 +44,8 @@ public class RestaurantLevel
                 Destroy(t.gameObject);
             }
 
-            TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
-            RestaurantDataUIArray data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
-            foreach (RestaurantDataUI r in data.data)
+          
+            foreach (RestaurantDataUI r in GameManager.Instance.data.data)
             {
                 bool show = true;
                 foreach (Authentication.RestaurantsData res in RoomContoller.SocketMaster.instance.profileData.restaurants)
