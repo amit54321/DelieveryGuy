@@ -95,21 +95,31 @@ public class Restaurants : Plot
         }
     }
 
-    public void ConstructionFinished(bool newData)
+    public void ConstructionFinished(bool newData,bool cons)
     {
-        Debug.LogWarning("CONSTRUCTION FINISHED NOW");
+        Debug.LogWarning("CONSTRUCTION FINISHED NOW "+newData +"    "+cons);
         foreach(Restaurants r in GameManager.Instance.allRestaurants)
         {
-            if(r.restaurantData.id == restaurantData.id && r.restaurantData.level == restaurantData.level)
-
+            if (cons)
             {
-                return;
+                if (r.restaurantData.id == restaurantData.id && r.restaurantData.level == restaurantData.level)
+
+                {
+                    return;
+                }
             }
         }
-        if(newData)
-        SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 3, 4, 5, 6 }));
-        GameManager.Instance.allRestaurants.Add(this);
-        InGame.UIManager.Instance.restaurantPopUp.SetData();
+        if (newData)
+        {
+           
+        }
+        else
+        {
+            GameManager.Instance.allRestaurants.Add(this);
+        }
+
+       
+       
         sprite.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
         transform.GetComponent<Collider>().enabled = true;

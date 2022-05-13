@@ -1,14 +1,39 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
-
-public class ShowRewarded : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+using Authentication;
+using System.Collections.Generic;
+public class ShowRewarded : WebRequest, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] Button _showAdButton;
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
+    public void AdWatched()
+    {
+        Dictionary<string, object> data = new Dictionary<string, object>()
+        {
+            {"id", PlayerPrefs.GetString(PlayerPrefsData.ID)}
 
+        };
+
+        StartCoroutine(PostNetworkRequest(AuthenticationConstants.WATCHADS, data, GetDataCallBack, Error, false));
+    }
+
+    public void GetDataCallBack(string callback)
+    {
+            RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);
+
+            if (data.status == 200)
+            {
+            RoomContoller.SocketMaster.instance.profileData = data.message;
+            }
+            //gameObject.SetActive(false);
+    }
+    public void Error(string error)
+    {
+
+    }
     void Awake()
     {
         Advertisement.Initialize("4747403");
@@ -65,7 +90,7 @@ public class ShowRewarded : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
-
+            AdWatched();
             // Load another ad:
             Advertisement.Load(_adUnitId, this);
         }

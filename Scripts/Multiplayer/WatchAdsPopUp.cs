@@ -17,9 +17,15 @@ namespace RoomContoller
            
         }
         
-    public void GetUserDataCallBack(string callback)
+    public void GetDataCallBack(string callback)
     {
-        gameObject.SetActive(false);
+            RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);
+
+            if (data.status == 200)
+            {
+               SocketMaster.instance.profileData = data.message;
+            }
+            //gameObject.SetActive(false);
     }
     public void Error(string error)
     {
@@ -34,7 +40,7 @@ namespace RoomContoller
             
         };
 
-        StartCoroutine(PostNetworkRequest(AuthenticationConstants.WATCHADS, data, GetUserDataCallBack, Error, false));
+        StartCoroutine(PostNetworkRequest(AuthenticationConstants.WATCHADS, data, GetDataCallBack, Error, false));
     }
       
     }

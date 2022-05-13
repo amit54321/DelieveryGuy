@@ -1,3 +1,4 @@
+using RoomContoller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,11 +18,11 @@ public class RestaurantPopUp : MonoBehaviour
             Destroy(t.gameObject);
         }
         List<int> plots = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        foreach (Restaurants r in GameManager.Instance.allRestaurants)
+        foreach (Authentication.RestaurantsData r in SocketMaster.instance.profileData.restaurants)
         {
             RestaurantMenuPrefab task = Instantiate(rPrefab, parent);
-            task.SetData(r.id,r.restaurantData.id, r.restaurantData.level);
-            plots.Remove(r.id);
+            task.SetData(r.plot_id,r.restaurant_id, r.level);
+            plots.Remove(r.plot_id);
         }
 
         foreach (int r in plots)

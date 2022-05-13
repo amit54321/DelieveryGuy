@@ -43,8 +43,10 @@ public class HouseCollider : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         if (GameManager.Instance.DisableCurrentTask())
+        {
             yield break
               ;
+        }
         GameManager.Instance.timer.ToggleTimer(false);
         GameManager.Instance.player.GetComponent<Rigidbody>().isKinematic = false;
         collider.enabled = false;

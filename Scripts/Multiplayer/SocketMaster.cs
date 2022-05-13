@@ -371,17 +371,17 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA CONSTRUCTION COMPLETED ");
             RestaurantFinished callbackdata = new RestaurantFinished();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
-            GameManager.Instance.ConstructionFInisged(callbackdata.message);
+            GameManager.Instance.ConstructionFInisged(callbackdata.message,true);
 
         }
         void UpgradeCompleted(Socket socket, Packet packet, params object[] args)
         {
-            SocketMaster.instance.MissionDone(7);
+           
         
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA UPGRADE COMPLETED ");
             RestaurantFinished callbackdata = new RestaurantFinished();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
-            GameManager.Instance.ConstructionFInisged(callbackdata.message);
+            GameManager.Instance.ConstructionFInisged(callbackdata.message,false);
 
         }
         public void RegisterCallBack(string callback)
@@ -391,6 +391,8 @@ namespace RoomContoller
             if (data.status == 200)
             {
                 profileData = data.message;
+                if(GameManager.Instance!=null)
+                GameManager.Instance.SetRestaurantPopUp();
             }
         }
     }

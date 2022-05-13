@@ -42,7 +42,7 @@ public class AICar : MonoBehaviour
                 while (Mathf.Abs(Vector3.Distance(transform.position, pos)) > 1)
                 {
 
-                    transform.position = Vector3.MoveTowards(transform.position, pos, 0.1f);
+                    transform.position = Vector3.MoveTowards(transform.position, pos, 0.25f);
                     yield return new WaitForSeconds(0.01f);
 
                 }

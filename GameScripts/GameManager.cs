@@ -314,6 +314,17 @@ public class GameManager : MonoBehaviour
             InGame.UIManager.Instance.restaurantPopUp.SetData();
         }
     }
+
+    public void SetRestaurantPopUp()
+    {
+        if(InGame.UIManager.Instance==null)
+        {
+            return;
+        }
+      
+        InGame.UIManager.Instance.restaurantPopUp.gameObject.SetActive(true);
+        InGame.UIManager.Instance.restaurantPopUp.SetData();
+    }
     
     public void EnableCityCamera()
     {
@@ -532,7 +543,7 @@ public class GameManager : MonoBehaviour
         }
         if (cTime <= 0)
         {
-            g.GetComponent<Restaurants>().ConstructionFinished(false);
+            g.GetComponent<Restaurants>().ConstructionFinished(false,true);
             return;
         }
         p.enabled = false;
@@ -549,7 +560,7 @@ public class GameManager : MonoBehaviour
         p.GetComponent<Collider>().enabled = false;
     }
 
-    public void ConstructionFInisged(RestaurantsData r)
+    public void ConstructionFInisged(RestaurantsData r , bool cons)
 
     {
        
@@ -558,7 +569,7 @@ public class GameManager : MonoBehaviour
         {
             if (t.GetComponent<Restaurants>() != null)
             {
-                t.GetComponent<Restaurants>().ConstructionFinished(true);
+                t.GetComponent<Restaurants>().ConstructionFinished(true,cons);
                 break;
             }
         }
