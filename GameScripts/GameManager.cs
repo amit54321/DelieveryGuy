@@ -578,7 +578,9 @@ public class GameManager : MonoBehaviour
         {
             if (t.GetComponent<Restaurants>() != null)
             {
-                t.GetComponent<Restaurants>().ConstructionFinished(true,cons);
+               
+              t.GetComponent<Restaurants>().ConstructionFinished(true,cons);
+                t.GetComponent<Restaurants>().restaurantData.level = r.level;
                 break;
             }
         }

@@ -25,7 +25,7 @@ public class Plot : MonoBehaviour, OnClick
          //   Debug.LogError("CLICKED " + transform.name+"     "+ SocketMaster.instance.profileData.restaurants.Count);
             if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count <10)
             {
-                InGame.UIManager.Instance.ShowError("Construct all 10 buildings.");
+                InGame.UIManager.Instance.ShowError("Construct all 10 restaurants.");
                 //show warning first construct all restaurants
                 return;
             }
@@ -38,6 +38,12 @@ public class Plot : MonoBehaviour, OnClick
                 Swap();
                 return;
 
+            }
+            if (transform.GetComponent<Restaurants>().restaurantData.level>=10)
+            {
+                InGame.UIManager.Instance.ShowError("Restaurant is already on top level.");
+                //show warning first construct all restaurants
+                return;
             }
 
             GameManager.Instance.clickedPlotId = id;
