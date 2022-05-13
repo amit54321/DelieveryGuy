@@ -250,19 +250,21 @@ public class LobbyData
         public string winnerId;
         public string game_id;
         public string current_Color;
+        public List<TaskDoneData> tasksDone;
         public List<ProfileData> users_data;
         public int round;
         public int ai;
         public int time;
-       // public List<CollisonData> collision;
+       
         public List<TaskData> tasks;
-        public List<TaskDoneData> taskDone;
+       
 
     }
-    [SerializeField]
+    [Serializable]
     public class TaskDoneData
     {
-        public string id, _id;
+        public string id;
+            public string _id;
         public List<int> taskDone;
 
     }

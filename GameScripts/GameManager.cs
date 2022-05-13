@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
     {
        
 
-        Debug.LogError(data.id + "  GETTING INFO "+data.message.x );
+      //  Debug.LogError(data.id + "  GETTING INFO "+data.message.x );
         if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(data.id))
         {
             PlayerPosition player = data.message;
@@ -225,13 +225,22 @@ public class GameManager : MonoBehaviour
 
     public void SetInitialOpponentTasks()
     {
-        foreach (LobbyData.TaskDoneData u in SocketMaster.instance.gamePlay.taskDone)
+        foreach (LobbyData.TaskDoneData u in SocketMaster.instance.gamePlay.tasksDone)
         {
             if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(u.id))
             {
+              
                 opponentTasksDone = u.taskDone.Count;
+                Debug.LogError("OPPONENT TASK " + opponentTasksDone + "    " + u.taskDone.Count);
+                
+                break;
             }
 
+        }
+        if(opponentTasksDone>=10)
+        {
+            InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.winnerPopUp);
+            InGame.UIManager.Instance.HideInputs();
         }
              //   opponentTasksDone = taskDone;
         InGame.UIManager.Instance.screenUI.OpponentSetTasks(opponentTasksDone);
@@ -304,7 +313,8 @@ public class GameManager : MonoBehaviour
            
             StartCoroutine(PlayAI());
             SetInitialOpponentTasks();
-            SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 0,1,2 }));
+
+           // SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 0,1,2 }));
 
             //  StartCoroutine(Testing());
 
@@ -399,7 +409,7 @@ public class GameManager : MonoBehaviour
             playerPosition.rotZ = (int)player.rotation.eulerAngles.z;
                     playerPosition.rotY = (int)player.rotation.eulerAngles.y;
             playerPosition.rotX = (int)player.rotation.eulerAngles.x;
-            Debug.LogError( "  GETTING INFO " + playerPosition.x);
+          //  Debug.LogError( "  GETTING INFO " + playerPosition.x);
 
 
 
@@ -595,7 +605,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator PlayAI()
     {
-        string id = "";
+       
         foreach (ProfileData u in SocketMaster.instance.gamePlay.users_data)
         {
             if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(u._id))
@@ -604,7 +614,7 @@ public class GameManager : MonoBehaviour
                     
                 {
                     enemy.gameObject.SetActive(false);
-                    id = u._id;
+                   
                 }
                 else
                 {
@@ -613,11 +623,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        for(int i=1;i<=10;i++)
-        {
-            yield return new WaitForSeconds(Random.Range(10, 30));
-            SendTaskDone(i, id);
-        }
+       
 
     }
 

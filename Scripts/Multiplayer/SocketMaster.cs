@@ -180,7 +180,7 @@ namespace RoomContoller
 
         void TaskReceived(Socket socket, Packet packet, params object[] args)
         {
-            Debug.Log(JsonMapper.ToJson(args[0]) + "  TaskDOne  ");
+            Debug.LogError(JsonMapper.ToJson(args[0]) + "  TaskDOne  ");
             TaskDoneRecieved resp = new TaskDoneRecieved();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
             SendTaskDone s = resp.message;
@@ -324,7 +324,7 @@ namespace RoomContoller
 
         void ChatReceived(Socket socket, Packet packet, params object[] args)
         {
-            Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
+           // Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
             LobbyData.SendChatDataCallBack resp = new LobbyData.SendChatDataCallBack();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
             //  if (GameManager.instance.playerSync != null)

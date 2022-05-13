@@ -23,6 +23,7 @@ public class ScreenUI : MonoBehaviour
 
     public void OpponentSetTasks(int tasks)
     {
+        Debug.LogError("OPPONENT TASK UI" + tasks);
         opponentTasksDone.text = "Tasks Done : " + tasks.ToString();
     }
 
