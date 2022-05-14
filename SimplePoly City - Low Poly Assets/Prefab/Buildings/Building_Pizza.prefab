@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Restaurant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -111,19 +111,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  eulerAngle: {x: 0, y: 0, z: 0}
+  forward: 0
   restaurantData:
     level: 0
     id: 0
     name: 
     dish: 0
-    waitTime: 0
+    cookTime: 0
     quantity: 0
   text: {fileID: 0}
   sprite: {fileID: 0}
-  level: 0
-  quantity: 0
-  waitTime: 0
-  restaurantId: 0
+  dish: {fileID: 0}
   restaurantCollider: {fileID: 4828834694263380471}
 --- !u!1 &359315972118388569
 GameObject:
@@ -141,7 +140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8263810056259678288
 Transform:
@@ -222,7 +221,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &6236240348272831028
 RectTransform:
@@ -392,7 +391,7 @@ GameObject:
   m_TagString: PizzaStop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &6359947681280319674
 Transform:
@@ -449,7 +448,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4702405944599746852
 Transform:

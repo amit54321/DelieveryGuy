@@ -60,6 +60,7 @@ public class ConstructionPrefab : MonoBehaviour
     int currentLevel;
     public void SetData(int id,string titleText,string descText,int costText,int levelText,int timerText ,int quantity,int cookTime)
     {
+        upgradeCalled = false;
         this.id = id;
         title.text = titleText;
         desc.text = descText;
@@ -98,10 +99,19 @@ public class ConstructionPrefab : MonoBehaviour
         InGame.UIManager.Instance.DisablePopUp();
     }
 
+    public void SetUpgradeCalled()
+    {
+        upgradeCalled = false;
+    }
+    bool upgradeCalled = false;
     private void Upgrade()
     {
-        // GameManager.Instance.UpgradeBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel) ;
-
+        if(upgradeCalled)
+        {
+            return;
+        }
+        upgradeCalled = true;
+        Invoke("SetUpgradeCalled", 3);
         //    return;
         Debug.LogError("UPGRADE CLICKED");
         InGame.UIManager.Instance.DisablePopUp();
@@ -148,6 +158,13 @@ public class ConstructionPrefab : MonoBehaviour
         // GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id,cTime,quantity,cookTime,currentLevel);
         //
         //  return;
+
+        if (upgradeCalled)
+        {
+            return;
+        }
+        upgradeCalled = true;
+        Invoke("SetUpgradeCalled", 3);
         InGame.UIManager.Instance.DisablePopUp();
         ConstructRestaurant constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(

@@ -348,6 +348,7 @@ public class GameManager : MonoBehaviour
         InGame.UIManager.Instance.HideInputs();
         arrowHandler.arrows[0].gameObject.SetActive(false);
         player.gameObject.SetActive(false);
+        enemy.gameObject.SetActive(false);
         cityCamera.fieldOfView = 36;
         minimap.SetActive(false);
     }
@@ -383,7 +384,7 @@ public class GameManager : MonoBehaviour
 
         if (SocketMaster.instance.gamePlay.ai == 1)
         {
-         //   return;
+           return;
         }
 
       
@@ -394,7 +395,7 @@ public class GameManager : MonoBehaviour
         }
 
         frame++;
-        if (frame % 4 == 0)
+        if (frame % 6 == 0)
         {
 
            
