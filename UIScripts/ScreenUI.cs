@@ -13,7 +13,7 @@ public class ScreenUI : MonoBehaviour
     {
         timerText.text = timer.ToString();
         SetTasks(0);
-        StartCoroutine(Timer());
+      //  StartCoroutine(Timer());
     }
 
     public void SetTasks(int tasks)
