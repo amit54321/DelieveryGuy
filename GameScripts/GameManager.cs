@@ -4,7 +4,7 @@ using RoomContoller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Analytics;
 
 [System.Serializable]
 public class PlayerTeamData
@@ -323,6 +323,7 @@ public class GameManager : MonoBehaviour
         }
         else if (HomeScreen.status == STATUS.SET)
         {
+         
             EnableCityCamera();
             COnstructInitialBuildings();
             InGame.UIManager.Instance.restaurantPopUp.gameObject.SetActive(true);

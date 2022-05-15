@@ -36,6 +36,7 @@ public class HomeScreen : MonoBehaviour
             }
             else
             {
+                SendAnalytics("play");
                 UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
                 status = STATUS.PLAY;
 
@@ -45,12 +46,19 @@ public class HomeScreen : MonoBehaviour
 
             public void SetSetStatus()
     {
+            SendAnalytics("set");
         status = STATUS.SET;
         UIManager.instance.ToggleLoader(true);
         SceneManager.LoadScene("GameScene");
     }
 
+        public void SendAnalytics(string typeOfRoom)
+        {
+            Dictionary<string, object> d = new Dictionary<string, object>();
+            d.Add("gameType", typeOfRoom);
+            Analytics.SendAnalytics(Analytics.GameType, d);
 
-        
-}
+        }
+
+    }
 }

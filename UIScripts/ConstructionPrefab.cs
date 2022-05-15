@@ -114,6 +114,10 @@ public class ConstructionPrefab : MonoBehaviour
         Invoke("SetUpgradeCalled", 3);
         //    return;
         Debug.LogError("UPGRADE CLICKED");
+        Dictionary<string, object> d = new Dictionary<string, object>();
+        d.Add("building", id);
+        d.Add("level", this.currentLevel);
+        Analytics.SendAnalytics(Analytics.Upgrade, d);
         InGame.UIManager.Instance.DisablePopUp();
         UpgradeRestaurant constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(
@@ -163,6 +167,10 @@ public class ConstructionPrefab : MonoBehaviour
         {
             return;
         }
+        Dictionary<string, object> d = new Dictionary<string, object>();
+        d.Add("building", id);
+        Analytics.SendAnalytics(Analytics.Construction, d);
+
         upgradeCalled = true;
         Invoke("SetUpgradeCalled", 3);
         InGame.UIManager.Instance.DisablePopUp();

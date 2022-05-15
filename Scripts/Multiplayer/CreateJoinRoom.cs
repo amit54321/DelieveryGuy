@@ -76,19 +76,30 @@ namespace RoomContoller
             UIManager.instance.EnablePanel(UIManager.instance.missionScreen);
         }
 
+        public void SendAnalytics(string typeOfRoom)
+        {
+            Dictionary<string, object> d = new Dictionary<string, object>();
+            d.Add("room", typeOfRoom);
+            Analytics.SendAnalytics(Analytics.RoomSelected, d);
+
+        }
+
         private void CreateRoom()
         {
             CheckRoom(UIManager.instance.createRoomScreen);
+            SendAnalytics("create");
         }
 
         private void JoinPublicRoom()
         {
             CheckRoom(UIManager.instance.joinPublicScreen);
+            SendAnalytics("join");
         }
 
         private void JoinRoom()
         {
             CheckRoom(UIManager.instance.joinRoomScreen);
+            SendAnalytics("joinpublic");
         }
 
         private void CheckRoom(Transform nextScreen)

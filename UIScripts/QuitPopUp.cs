@@ -17,6 +17,10 @@ public class QuitPopUp : BasePOpUp
     // Start is called before the first frame update
    public void Quit()
     {
+        Dictionary<string, object> d = new Dictionary<string, object>();
+       
+        Analytics.SendAnalytics(Analytics.PlayerQuit, d);
+
         QuitData constructRestaurant;
         SocketMaster.instance.socketMaster.Socket.Emit(
             LobbyConstants.QUITGAME,
