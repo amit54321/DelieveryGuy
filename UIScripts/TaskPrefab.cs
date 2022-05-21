@@ -13,7 +13,7 @@ public class TaskPrefab : MonoBehaviour
     {
         this.taskData = taskData;
       
-        task.text = taskData.restaurantId + "  delever to "+taskData.customerId;
+        task.text = GameManager.Instance.data.data[taskData.restaurantId-1].title + "  delever to House no : "+taskData.customerId;
         taskNumber.text = taskData.id.ToString();
         taskButton.onClick.AddListener(TaskSelected);
         icon.sprite = Resources.Load<Sprite>("Prefabs/RestaurantImage/" + taskData.restaurantId);

@@ -25,9 +25,9 @@ public class DownloadImage : MonoBehaviour
             yield break;
         }
 
-        if (Authentication.UIManager.profilePictures.ContainsKey(url))
+       // if (Authentication.UIManager.profilePictures.ContainsKey(url))
         {
-            image.texture = Authentication.UIManager.profilePictures[url];
+         //   image.texture = Authentication.UIManager.profilePictures[url];
             yield break;
         }
 
@@ -41,9 +41,9 @@ public class DownloadImage : MonoBehaviour
         else
         {
             image.texture = DownloadHandlerTexture.GetContent(unityWebRequest);
-            if (Authentication.UIManager.profilePictures.Count < 1000)
+         //   if (Authentication.UIManager.profilePictures.Count < 1000)
             {
-                Authentication.UIManager.profilePictures.Add(url, image.texture);
+             //   Authentication.UIManager.profilePictures.Add(url, image.texture);
             }
         }
     }

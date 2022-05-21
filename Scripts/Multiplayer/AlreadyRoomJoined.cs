@@ -18,7 +18,7 @@ namespace RoomContoller
         private LobbyData.RoomData roomData;
 
         [SerializeField] private InputField roomCode;
-
+        [SerializeField] List<Sprite> profilePictures;
         // Start is called before the first frame update
         void OnEnable()
         {
@@ -69,7 +69,7 @@ namespace RoomContoller
                 players[i].gameObject.SetActive(true);
                 if (i < roomData.players_joined.Count)
                 {
-                    players[i].SetData(roomData.players_joined[i]);
+                    players[i].SetData(roomData.players_joined[i],profilePictures[int.Parse(roomData.players_joined[i].avatar)]);
                 }
                 else
                 {

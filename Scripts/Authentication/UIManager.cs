@@ -17,9 +17,8 @@ namespace Authentication
         public GameObject currentScreen;
 
         public Transform loadingPanel;
-        
-        public static Dictionary<string,Texture> profilePictures = new Dictionary<string, Texture>();
 
+      
         public void Awake()
         {
             if (instance == null)
@@ -33,6 +32,8 @@ namespace Authentication
             Invoke("HideError", 2);
         }
 
+
+     
         public void ToggleLoadingPanel(bool toogle)
         {
             loadingPanel.gameObject.SetActive(toogle);

@@ -371,6 +371,7 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA CONSTRUCTION COMPLETED ");
             RestaurantFinished callbackdata = new RestaurantFinished();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
+            if(SceneManager.GetActiveScene().name.Equals("GameScene"))
             GameManager.Instance.ConstructionFInisged(callbackdata.message,true);
 
         }
@@ -381,7 +382,8 @@ namespace RoomContoller
             Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA UPGRADE COMPLETED ");
             RestaurantFinished callbackdata = new RestaurantFinished();
             JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), callbackdata);
-            GameManager.Instance.ConstructionFInisged(callbackdata.message,false);
+            if (SceneManager.GetActiveScene().name.Equals("GameScene"))
+                GameManager.Instance.ConstructionFInisged(callbackdata.message,false);
 
         }
         public void RegisterCallBack(string callback)

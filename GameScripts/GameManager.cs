@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
         Transform target = null ;
         foreach(Restaurants res in allRestaurants)
         {
-            if (res.restaurantCollider.gameObject.activeSelf)
+            if (res.restaurantCollider.transform.GetChild(0).gameObject.activeSelf)
             {
                 target = res.restaurantCollider.transform;
                 break;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -24,12 +25,31 @@ namespace Authentication
         [SerializeField] private InputField verifyOTPemail, verifyOTPotp;
 
         [SerializeField] private InputField resetPasswordemail, resetPasswordpassword, resetPasswordOTP;
-
-
+        public List<Sprite> profilePictures;
+        public Image avatarImage;
+        int currentAvatar = 0;
+        public void NextImage()
+        {
+            if (currentAvatar == profilePictures.Count-1)
+            {
+                currentAvatar = 0;
+            }
+            currentAvatar++;
+            avatarImage.sprite = profilePictures[currentAvatar];
+        }
+        public void PreviousImage()
+        {
+            if (currentAvatar == 0)
+            {
+                currentAvatar = profilePictures.Count - 1;
+            }
+            currentAvatar--;
+            avatarImage.sprite = profilePictures[currentAvatar];
+        }
         public void LoginUI()
         {
             if(!string.IsNullOrEmpty(loginEmail.text))
-            UpdateName(loginEmail.text);
+            UpdateName(loginEmail.text,currentAvatar);
         }
 
         public void LoginSocialUI()

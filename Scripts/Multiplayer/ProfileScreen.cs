@@ -8,38 +8,23 @@ namespace RoomContoller
 {
     public class ProfileScreen : WebRequest
     {
-        [SerializeField] private RawImage picture;
-        [SerializeField] Text name,coins;
-
+        [SerializeField] private Image picture;
+        [SerializeField] Text name,coins,matches,wins;
+        [SerializeField] List<Sprite> profilePictures;
         void OnEnable()
         {
             SetCurrentScreen();
-            GetUserData();
+           
         }
-
-        public void GetUserData()
+        void SetCurrentScreen()
         {
-            Dictionary<string, object> data = new Dictionary<string, object>()
-            {
-                {"id", PlayerPrefs.GetString(PlayerPrefsData.ID)}
-            };
-
-            StartCoroutine(PostNetworkRequest(AuthenticationConstants.GETUSER, data, GetUserDataCallBack, Error,
-                false));
+            picture.sprite = profilePictures[int.Parse(SocketMaster.instance.profileData.avatar)];
+                    name.text = SocketMaster.instance.profileData.name;
+                 matches.text= "Macthes : "+ SocketMaster.instance.profileData.matches.ToString();
+            wins.text = "Wins : "+SocketMaster.instance.profileData.wins.ToString();
+            coins.text = "Coins : "+SocketMaster.instance.profileData.coins.ToString();
         }
 
-        public void GetUserDataCallBack(string callback)
-        {
-            LobbyData.DefaultAUth deafult = JsonUtility.FromJson<LobbyData.DefaultAUth>(callback);
-            LobbyData.UserProfile data = deafult.message;
 
-            name.text = data.name;
-            coins.text = data.coins.ToString();
-            StartCoroutine(DownloadImage.LoadRawImage(data.avatar, picture));
-        }
-
-        public void Error(string error)
-        {
-        }
     }
 }

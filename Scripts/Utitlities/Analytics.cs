@@ -18,7 +18,7 @@ public class Analytics :MonoBehaviour
     {
         // Debug.LogError("NAME  " + customEventName);
         eventData.Add("deviceId", SystemInfo.deviceUniqueIdentifier);
-        UnityEngine.Analytics.Analytics.CustomEvent(customEventName, eventData);
+       // UnityEngine.Analytics.Analytics.CustomEvent(customEventName, eventData);
 
     }
 

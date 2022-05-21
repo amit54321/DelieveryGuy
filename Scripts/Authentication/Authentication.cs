@@ -121,7 +121,7 @@ namespace Authentication
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
               
-                 {"deviceId",SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","cddd" }//SystemInfo.deviceUniqueIdentifier}
 
             };
            
@@ -130,14 +130,14 @@ namespace Authentication
         }
 
 
-        public void UpdateName(string name)
+        public void UpdateName(string name,int avatar)
         {
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"deviceId", SystemInfo.deviceUniqueIdentifier},
+                 {"deviceId","cddd" },// SystemInfo.deviceUniqueIdentifier},
                  {"name", name},
-                 {"avatar", name}
+                 {"avatar", avatar}
 
             };
 
