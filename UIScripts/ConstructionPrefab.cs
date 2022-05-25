@@ -10,6 +10,7 @@ public class ConstructRestaurant
     public int plot_id;
     public int restaurant_id;
     public int timer;
+    public int cost;
 }
 
 [System.Serializable]
@@ -35,6 +36,7 @@ public class UpgradeRestaurant
     public int restaurant_id;
     public int plot_id;
     public int timer;
+    public int cost;
 
 }
 
@@ -57,7 +59,7 @@ public class ConstructionPrefab : MonoBehaviour
 
     int id;
     int cTime,quantity, cookTime;
-    int currentLevel;
+    int currentLevel,costNumber;
     public void SetData(int id,string titleText,string descText,int costText,int levelText,int timerText ,int quantity,int cookTime)
     {
         upgradeCalled = false;
@@ -66,6 +68,7 @@ public class ConstructionPrefab : MonoBehaviour
         desc.text = descText;
         this.quantity = quantity;
         this.cookTime = cookTime;
+        costNumber = costText;
         cost.text = "Cost: "+costText.ToString();
         currentLevel = levelText;
         Debug.LogError("UPGRADE START  "+level);
@@ -139,7 +142,8 @@ public class ConstructionPrefab : MonoBehaviour
                 level= this.currentLevel,
                 plot_id = GameManager.Instance.clickedPlotId,
                 restaurant_id = id,
-                timer = cTime
+                timer = cTime,
+                cost = costNumber
             });
     }
 
@@ -193,7 +197,8 @@ public class ConstructionPrefab : MonoBehaviour
                 id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
                 plot_id = GameManager.Instance.clickedPlotId,
                 restaurant_id = id,
-                timer = cTime
+                timer = cTime,
+                cost = costNumber
             });
     }
 
