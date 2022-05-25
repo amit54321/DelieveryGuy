@@ -16,10 +16,14 @@ public class HomeScreen : MonoBehaviour
     [SerializeField]
     Button play, set;
     public static STATUS status;
-    private void Start()
+        [SerializeField]
+        Image picture;
+        [SerializeField] List<Sprite> profilePictures;
+        private void Start()
     {
-      
-        {
+            picture.sprite = profilePictures[int.Parse(SocketMaster.instance.profileData.avatar)];
+
+            {
             play.enabled = true;
             play.GetComponent<Image>().color = Color.white;
         }
