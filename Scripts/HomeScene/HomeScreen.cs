@@ -30,11 +30,11 @@ public class HomeScreen : MonoBehaviour
         // Start is called before the first frame update
         public void SetPlayStatus()
         {
-           if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count < 10)
+          // if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count < 10)
             {
-               UIManager.instance.ShowError("Construct all 10 buildings.");
+          //     UIManager.instance.ShowError("Construct all 10 buildings.");
             }
-            else
+         //   else
             {
                 SendAnalytics("play");
                 UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
