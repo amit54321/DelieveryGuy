@@ -71,12 +71,20 @@ namespace Authentication
                 }
             }
         }
+      static   bool sendingRequest = false;
 
+        
         public static IEnumerator PostNetworkRequest(string uri, Dictionary<string, object> data,
             UnityAction<string> callBack, UnityAction<string> error, bool token)
         {
+            if(sendingRequest)
+            {
+               yield break;
+            }
+            sendingRequest = true;
             var json = JsonMapper.ToJson(data);
             Debug.LogError("json  " + json);
+           
             using (var www = PostJson(uri, json))
             {
                 www.SetRequestHeader("authorization", PlayerPrefs.GetString(PlayerPrefsData.TOKEN));
@@ -84,7 +92,7 @@ namespace Authentication
 
                 Debug.Log("Sending request " + uri + ", " + json);
                 yield return www.SendWebRequest();
-
+                sendingRequest = false;
                 if (www.isNetworkError)
                 {
                     error.Invoke(www.error);
@@ -96,6 +104,8 @@ namespace Authentication
                     Debug.Log(www.downloadHandler.text);
                 }
             }
+          //  yield return new WaitForSeconds(2);
+          //  sendingRequest = false;
         }
 
 

@@ -9,6 +9,7 @@ namespace Authentication
     {
         void OnEnable()
         {
+          
            // if(!string.IsNullOrEmpty(PlayerPrefs.GetString(PlayerPrefsData.ID)))
         //    Login(PlayerPrefs.GetString(PlayerPrefsData.EMAIL), PlayerPrefs.GetString(PlayerPrefsData.PASSWORD));
 

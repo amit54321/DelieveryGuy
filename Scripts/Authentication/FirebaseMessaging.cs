@@ -6,9 +6,9 @@ public class FirebaseMessaging : MonoBehaviour
 {
     public void Start()
     {
-        Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
-        Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
         StartCrashalytics();
+       
+      
     }
 
     public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token)
@@ -33,7 +33,9 @@ public class FirebaseMessaging : MonoBehaviour
                 // Crashlytics will use the DefaultInstance, as well;
                 // this ensures that Crashlytics is initialized.
                 Firebase.FirebaseApp app = Firebase.FirebaseApp.DefaultInstance;
-
+                Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+                Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
+                Analytics.SendAnalytics("appOpned", new Dictionary<string, object>());
                 // Set a flag here for indicating that your project is ready to use Firebase.
             }
             else

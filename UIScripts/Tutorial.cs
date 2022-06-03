@@ -43,6 +43,9 @@ public class Tutorial : WebRequest
     {
         
         current++;
+        Dictionary<string, object> d = new Dictionary<string, object>();
+        d.Add("step", current);
+        Analytics.SendAnalytics(Analytics.Tutorial, d);
         Debug.LogError("STEPS  " + current);
         TutorialStep step = steps[current-1];
         if (step.showHand)
