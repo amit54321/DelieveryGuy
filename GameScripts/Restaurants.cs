@@ -1,3 +1,4 @@
+using Authentication;
 using RoomContoller;
 using System.Collections;
 using System.Collections.Generic;
@@ -81,9 +82,13 @@ public class Restaurants : Plot
             text.text = (constructionTime - i).ToString()+ " s";
             yield return new WaitForSeconds(1);
         }
-      
+        if (InGame.UIManager.Instance.tutorialUI.activeSelf)
+        {
+            ConstructionFinished(false, false);
+        }
 
-       
+
+
     }
 
     void SetPositonOfRestaurant()
@@ -139,6 +144,16 @@ public class Restaurants : Plot
         transform.GetComponent<Collider>().enabled = true;
 
         GameManager.Instance.FindPlotById(id).enabled = false;
+        if (InGame.UIManager.Instance.tutorialUI.activeSelf)
+        {
+            RestaurantsData r = new RestaurantsData();
+            r.plot_id = id;
+            r.restaurant_id = this.restaurantData.id;
+            r.level = 1;
+            SocketMaster.instance.profileData.restaurants.Add(r);
+            InGame.UIManager.Instance.restaurantPopUp.SetData();
+            GameManager.Instance.tutorial.SetTutorial();
+        }
     }
 
 

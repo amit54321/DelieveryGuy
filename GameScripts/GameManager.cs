@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> allScenes;
 
+    public Tutorial tutorial;
 
     Vector3 enemyRot, enemyPos;
 
@@ -301,7 +302,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
       
-        if (HomeScreen.status==STATUS.PLAY)
+        if (Authentication.Authentication.status ==STATUS.PLAY)
         {
             InitializeTasksData();
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
@@ -321,13 +322,22 @@ public class GameManager : MonoBehaviour
 
             //  Invoke("ShowInputs",)
         }
-        else if (HomeScreen.status == STATUS.SET)
+        else if (Authentication.Authentication.status == STATUS.SET)
         {
          
             EnableCityCamera();
             COnstructInitialBuildings();
             InGame.UIManager.Instance.restaurantPopUp.gameObject.SetActive(true);
             InGame.UIManager.Instance.restaurantPopUp.SetData();
+            if(SocketMaster.instance.profileData.tutorial==0)
+            {
+                InGame.UIManager.Instance.tutorialUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                InGame.UIManager.Instance.tutorialUI.gameObject.SetActive(false);
+
+            }
         }
     }
 
@@ -377,7 +387,7 @@ public class GameManager : MonoBehaviour
         }
         //  mainArrow.transform.LookAt(mapCube.transform.position,Vector3.up);
 
-        if (HomeScreen.status == STATUS.SET)
+        if (Authentication.Authentication.status == STATUS.SET)
         {
             return;
         }

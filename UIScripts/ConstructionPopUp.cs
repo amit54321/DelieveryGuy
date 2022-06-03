@@ -32,6 +32,7 @@ public class RestaurantLevel
 
     [SerializeField]
     ConstructionPrefab statiConstructionPrefab;
+    public ScrollRect scrollRect;
 
 
     // Start is called before the first frame update
@@ -92,7 +93,10 @@ public class RestaurantLevel
                 }
             }
         }
-
+        if (InGame.UIManager.Instance.tutorialUI.activeSelf)
+        {
+            scrollRect.enabled = false;
+        }
         crossButton.onClick.AddListener(Cross);
 
         
@@ -100,6 +104,10 @@ public class RestaurantLevel
    
     void Cross()
     {
+        if(InGame.UIManager.Instance.tutorialUI.activeSelf)
+        {
+            return;
+        }
         InGame.UIManager.Instance.DisablePopUp();
     }
     private void OnDisable()

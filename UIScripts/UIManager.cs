@@ -17,7 +17,7 @@ namespace InGame
 
         public ScreenUI screenUI;
 
-        public GameObject swapUI;
+        public GameObject swapUI,tutorialUI;
 
         public Transform
            loader, internetConnectionPopUp;
@@ -78,14 +78,29 @@ namespace InGame
 
         public void Back()
         {
-            if (RoomContoller.HomeScreen.status == STATUS.PLAY)
+            Debug.LogError("BACK STEPS  " + GameManager.Instance.tutorial.current);
+            if (RoomContoller.SocketMaster.instance.profileData.tutorial == 0
+                && GameManager.Instance.tutorial.current != 5)
             {
+               
+                return;
+            }
+          
+            ButtonSOund.instance.Play();
+            if (Authentication.Authentication.status == STATUS.PLAY)
+            {
+              
                 EnablePopUp(quitPopUp);
             }
             else
             {
                  SceneManager.LoadScene("Lobby");
 
+            }
+            if (InGame.UIManager.Instance.tutorialUI.activeSelf)
+            {
+                GameManager.Instance.tutorial.SenStep(5);
+                GameManager.Instance.tutorial.SetTutorial();
             }
         }
         public void ShowError(string error)

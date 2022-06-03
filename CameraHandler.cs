@@ -32,15 +32,17 @@ public class CameraHandler : MonoBehaviour
         {
             return;
         }
-        if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer)
+        if (!InGame.UIManager.Instance.tutorialUI.activeSelf || GameManager.Instance.tutorial.current == 3)
         {
-            HandleTouch();
+            if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer)
+            {
+                HandleTouch();
+            }
+            else
+            {
+                HandleMouse();
+            }
         }
-        else
-        {
-            HandleMouse();
-        }
-
       
 
 

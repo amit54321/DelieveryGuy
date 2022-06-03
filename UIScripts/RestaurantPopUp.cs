@@ -31,7 +31,8 @@ public class RestaurantPopUp : MonoBehaviour
             task.SetData(r, 11,-1);
           
         }
-        }
+       
+    }
 
     // Update is called once per frame
     void Update()

@@ -8,7 +8,7 @@ public class RestaurantMenuPrefab : MonoBehaviour
     Image icon;
     [SerializeField]
     Text levelText;
-    int id;
+    public int id;
     // Start is called before the first frame update
     public void SetData(int id,int restId,int level)
     {
@@ -24,6 +24,22 @@ public class RestaurantMenuPrefab : MonoBehaviour
     // Update is called once per frame
    public void OnClick()
     {
-        GameManager.Instance.SetCityCameraPosition(id);
+        if(InGame.UIManager.Instance.tutorialUI.activeSelf  && GameManager.Instance.tutorial.current!= 4 )
+        {
+            return;
+        }
+        if (InGame.UIManager.Instance.tutorialUI.activeSelf && id == 3)
+        {
+            GameManager.Instance.tutorial.SetTutorial();
+            ButtonSOund.instance.Play();
+            GameManager.Instance.SetCityCameraPosition(id);
+        }
+        else if (!InGame.UIManager.Instance.tutorialUI.activeSelf)
+        {
+            ButtonSOund.instance.Play();
+            GameManager.Instance.SetCityCameraPosition(id);
+        }
+     
+       
     }
 }

@@ -15,7 +15,7 @@ public class HomeScreen : MonoBehaviour
 {
     [SerializeField]
     Button play, set;
-    public static STATUS status;
+  
         [SerializeField]
         Image picture;
         [SerializeField] List<Sprite> profilePictures;
@@ -40,9 +40,11 @@ public class HomeScreen : MonoBehaviour
             }
          //   else
             {
+                
                 SendAnalytics("play");
+                ButtonSOund.instance.Play();
                 UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
-                status = STATUS.PLAY;
+               Authentication.Authentication.status = STATUS.PLAY;
 
             }
                 //   SceneManager.LoadScene("GameScene");
@@ -50,9 +52,11 @@ public class HomeScreen : MonoBehaviour
 
             public void SetSetStatus()
     {
+          
             SendAnalytics("set");
-        status = STATUS.SET;
-        UIManager.instance.ToggleLoader(true);
+            Authentication.Authentication.status = STATUS.SET;
+            ButtonSOund.instance.Play();
+            UIManager.instance.ToggleLoader(true);
         SceneManager.LoadScene("GameScene");
     }
 

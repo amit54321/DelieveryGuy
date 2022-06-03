@@ -55,7 +55,8 @@ namespace Authentication
         public string token;
         public int  matches;
         public int  wins;
-
+        public int tutorial;
+        public int step;
     }
 
     [System.Serializable]
@@ -91,8 +92,8 @@ namespace Authentication
     public class Authentication : WebRequest
     {
 
-      
 
+        public static STATUS status;
 
         public static bool socketConnected;
         public static List<FacebookFriends> facebookFriends = new List<FacebookFriends>();
@@ -121,21 +122,21 @@ namespace Authentication
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
               
-                 {"deviceId","cddd" }//SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","ddfgtdtyeftr" }//SystemInfo.deviceUniqueIdentifier}
 
             };
            
             StartCoroutine(PostNetworkRequest(AuthenticationConstants.REGISTER ,data, RegisterCallBack, Error, false));
             UIManager.instance.ToggleLoadingPanel(true);
         }
-
+       
 
         public void UpdateName(string name,int avatar)
         {
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"deviceId","cddd" },// SystemInfo.deviceUniqueIdentifier},
+                 {"deviceId","ddfgtdtyeftr" },// SystemInfo.deviceUniqueIdentifier},
                  {"name", name},
                  {"avatar", avatar}
 
@@ -160,12 +161,23 @@ namespace Authentication
                 PlayerPrefs.SetString(PlayerPrefsData.TOKEN, data.message.token);
                 RoomContoller.SocketMaster.instance.InitialiseSocket();
                 UIManager.instance.EnableScreen(UIManager.instance.loginScreen);
-                if(!string.IsNullOrEmpty(data.message.name))
+                if (!string.IsNullOrEmpty(data.message.name))
                 {
-                    SceneManager.LoadScene("Lobby");
-                }
 
+
+                    if (RoomContoller.SocketMaster.instance.profileData.tutorial == 0)
+                    {
+                        status = STATUS.SET;
+
+
+                        SceneManager.LoadScene("GameScene");
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("Lobby");
+                    }
                 }
+            }
                 else
                 {
                     SceneManager.LoadScene("Lobby");
@@ -182,7 +194,17 @@ namespace Authentication
                 PlayerPrefs.SetString(PlayerPrefsData.ID, data.message._id);
                 PlayerPrefs.SetString(PlayerPrefsData.TOKEN, data.message.token);
                 RoomContoller.SocketMaster.instance.profileData = data.message;
-                SceneManager.LoadScene("Lobby");
+                if (RoomContoller.SocketMaster.instance.profileData.tutorial == 0)
+                {
+                    status = STATUS.SET;
+
+
+                    SceneManager.LoadScene("GameScene");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Lobby");
+                }
             }
             {
 
@@ -355,7 +377,17 @@ namespace Authentication
                 allMissions = data.missions;
                 Debug.Log("CHATS " + allChats.Count);
                 PlayerPrefs.SetInt("login", 1);
-                SceneManager.LoadScene("Lobby");
+                if (userProfile.tutorial == 0)
+                {
+                    status = STATUS.SET;
+                   
+                    
+                    SceneManager.LoadScene("GameScene");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Lobby");
+                }
             }
             else
             {

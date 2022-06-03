@@ -48,8 +48,11 @@ namespace Authentication
         }
         public void LoginUI()
         {
-            if(!string.IsNullOrEmpty(loginEmail.text))
-            UpdateName(loginEmail.text,currentAvatar);
+            if (!string.IsNullOrEmpty(loginEmail.text))
+            {
+                ButtonSOund.instance.Play();
+                UpdateName(loginEmail.text, currentAvatar);
+            }
         }
 
         public void LoginSocialUI()

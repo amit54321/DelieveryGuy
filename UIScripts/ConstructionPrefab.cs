@@ -163,9 +163,13 @@ public class ConstructionPrefab : MonoBehaviour
 
     private void Build()
     {
-        // GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id,cTime,quantity,cookTime,currentLevel);
-        //
-        //  return;
+        if (InGame.UIManager.Instance.tutorialUI.activeSelf)
+        {
+            GameManager.Instance.ConstructBuilding(GameManager.Instance.clickedPlotId, id, cTime, quantity, cookTime, currentLevel);
+            GameManager.Instance.tutorial.SetTutorial();
+            InGame.UIManager.Instance.DisablePopUp();
+            return;
+        }
 
         if (upgradeCalled)
         {

@@ -85,6 +85,7 @@ namespace RoomContoller
          //   analytics.SetEvents(panel.name + "_Open", "");
           //  analytics.SendAnalytics();
             currentPanel = panel;
+            ButtonSOund.instance.Play();
             currentPanel.gameObject.SetActive(true);
         }
 

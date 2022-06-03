@@ -47,14 +47,19 @@ public class Plot : MonoBehaviour, OnClick
             }
 
             GameManager.Instance.clickedPlotId = id;
+           
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.upgradePopUp);
             return;
         }
-        
-       
+        UnityEngine.Debug.LogError("CLICKED STEPS " + id);
+        if (InGame.UIManager.Instance.tutorialUI.activeSelf)
+        {
+            GameManager.Instance.tutorial.SetTutorial();
+        }
+
         GameManager.Instance.clickedPlotId = id;
         InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.constructionPopUp);
-        UnityEngine.Debug.LogError("CLICKED  " + id);
+        
     }
 
     private void Swap()

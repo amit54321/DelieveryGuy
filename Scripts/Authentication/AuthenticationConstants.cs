@@ -10,7 +10,8 @@
 
         public static readonly string REGISTER = URL + "/users/register";
         public static readonly string UPDATENAME  = URL + "/users/update";
-
+        public static readonly string TUTORIALSTEP = URL + "/users/tutorialStep";
+        public static readonly string ADDCOINS = URL + "/users/addcoins";
 
         public static readonly string UPDATEUSER = URL + "/users/update";
         public static readonly string SIGNUP = URL + "/users/signup";
