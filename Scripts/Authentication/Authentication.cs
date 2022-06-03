@@ -159,6 +159,7 @@ namespace Authentication
                 RoomContoller.SocketMaster.instance.missions = data.missions;
                 PlayerPrefs.SetString(PlayerPrefsData.ID, RoomContoller.SocketMaster.instance.profileData._id);
                 PlayerPrefs.SetString(PlayerPrefsData.TOKEN, data.message.token);
+               
                 RoomContoller.SocketMaster.instance.InitialiseSocket();
                 UIManager.instance.EnableScreen(UIManager.instance.loginScreen);
                 if (!string.IsNullOrEmpty(data.message.name))
