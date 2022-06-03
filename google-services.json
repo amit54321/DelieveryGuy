@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1049560310198",
+    "project_id": "delievery-boy-3ead7",
+    "storage_bucket": "delievery-boy-3ead7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049560310198:android:f3063c417c1252665c6117",
+        "android_client_info": {
+          "package_name": "com.kaiser.delieveryboy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049560310198-s11t513gu5mc8q87phuamc1gdbk3sm86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2yY6oV1VcFSItyOK0Zou4O9PyosI5zVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049560310198-s11t513gu5mc8q87phuamc1gdbk3sm86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
