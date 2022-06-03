@@ -301,7 +301,8 @@ public class GameManager : MonoBehaviour
         }
     private void OnEnable()
     {
-      
+        Debug.LogError("STATUS  " + Authentication.Authentication.status +"    "
+            + SocketMaster.instance.profileData.tutorial);
         if (Authentication.Authentication.status ==STATUS.PLAY)
         {
             InitializeTasksData();
