@@ -69,6 +69,17 @@ public class GameManager : MonoBehaviour
     Vector3 enemyRot, enemyPos;
 
     public int swapFirst = -1, swapSecond = -1;
+    public GameObject portalButton;
+
+    void EnableOrDisablePortalButton()
+    {
+        if (PlayerPrefs.GetInt("PORTAL") == 1)
+            portalButton.SetActive(false);
+        else
+        {
+            portalButton.SetActive(true);
+        }
+    }
     void SetCars()
     {
         foreach (GameObject g in allScenes)
@@ -209,6 +220,8 @@ public class GameManager : MonoBehaviour
             player.transform.position = new Vector3(target.transform.position.x, y, target.transform.position.z);
             return;
         }
+        PlayerPrefs.SetInt("PORTAL", 1);
+        portalButton.SetActive(false);
     }
     int GetCurrentTime()
     {
@@ -305,6 +318,7 @@ public class GameManager : MonoBehaviour
             + SocketMaster.instance.profileData.tutorial);
         if (Authentication.Authentication.status ==STATUS.PLAY)
         {
+            EnableOrDisablePortalButton();
             InitializeTasksData();
             InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
             InGame.UIManager.Instance.screenUI.gameObject.SetActive(true);

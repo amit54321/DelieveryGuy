@@ -22,6 +22,7 @@ namespace RoomContoller
         // Start is called before the first frame update
         void OnEnable()
         {
+            PlayerPrefs.SetInt("PORTAL", 0);
             SetCurrentScreen();
             roomName.text = "";
             roomCode.text = "";
