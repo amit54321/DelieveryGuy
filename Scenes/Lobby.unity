@@ -759,14 +759,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 30838300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76d3c19584c80e4686123fa23a7ed76, type: 3}
+  m_Script: {fileID: 11500000, guid: 72d109cf6992f844e97e292c70801a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   code: {fileID: 0}
-  share: {fileID: 0}
-  shareText: Download This Game
-  gameLink: "Download the game on play store at \nhttps://play.google.com/store/apps/details?id=com.CrazyDrivers"
-  imageName: MyPic
+  shareButton: {fileID: 30838304}
+  shareSubject: 
+  shareMessage: 
 --- !u!114 &30838303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,7 +825,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30838302}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShareMenu, Assembly-CSharp
         m_MethodName: shareImage
         m_Mode: 1
@@ -1253,14 +1252,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 58439943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76d3c19584c80e4686123fa23a7ed76, type: 3}
+  m_Script: {fileID: 11500000, guid: 72d109cf6992f844e97e292c70801a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   code: {fileID: 1726297475}
-  share: {fileID: 0}
-  shareText: Download This Game
-  gameLink: "Download the game on play store at \nhttps://play.google.com/store/apps/details?id=com.CrazyDrivers"
-  imageName: MyPic
+  shareButton: {fileID: 58439947}
+  shareSubject: 
+  shareMessage: 
 --- !u!114 &58439946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,7 +1318,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 58439945}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShareMenu, Assembly-CSharp
         m_MethodName: shareImage
         m_Mode: 1
