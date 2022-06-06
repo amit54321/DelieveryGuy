@@ -2,10 +2,13 @@ using Authentication;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InAppScreen : WebRequest
 {
 
+    [SerializeField]
+    Text priceText, productIdText;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +20,14 @@ public class InAppScreen : WebRequest
            {
 
                {"id",PlayerPrefs.GetString(PlayerPrefsData.ID) },// SystemInfo.deviceUniqueIdentifier},
-                 {"coins", coins},
+               {"coins", coins},
             };
        
         StartCoroutine(PostNetworkRequest(AuthenticationConstants.ADDCOINS, data, RegisterCallBack, Error, false));
+        Dictionary<string, object> d = new Dictionary<string, object>();
+        d.Add("cost", priceText.text);
+        d.Add("producId", productIdText.text);
+        Analytics.SendAnalytics(Analytics.InappBuy, d);
     }
     public void RegisterCallBack(string callback)
     {

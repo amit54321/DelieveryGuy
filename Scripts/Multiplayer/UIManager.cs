@@ -27,6 +27,7 @@ namespace RoomContoller
             inAppScreen,
             missionScreen,
             missionCompleteScreen,
+            settingsScreen,
             homeScreen,
             quitPopUp;
 

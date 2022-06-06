@@ -11,7 +11,11 @@ public class ButtonSOund : MonoBehaviour
     // Start is called before the first frame update
     public void Play()
     {
-        source.Play();
+        if (PlayerPrefs.GetInt("SOUNDVFX", 1) == 1)
+        {
+            source.Play();
+        }
+       
     }
     private void Awake()
     {

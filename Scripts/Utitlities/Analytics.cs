@@ -10,7 +10,7 @@ public class Analytics :MonoBehaviour
     public static string Upgrade = "UPGRADE";
     public static string GameEndStatus = "GAMEENDSTATUS";
     public static string GameType = "GAMETYPE";
-
+    public static string InappBuy = "INAPPBUY";
     public static string PlayerQuit = "PLAYERQUIT";
     public static string OPENPOPUP = "OPEN";
     public static string Tutorial = "TUTORIAL";
