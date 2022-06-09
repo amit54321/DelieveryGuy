@@ -19,6 +19,13 @@ public class HomeScreen : MonoBehaviour
         [SerializeField]
         Image picture;
         [SerializeField] List<Sprite> profilePictures;
+        [SerializeField]
+        Text coinsText;
+
+        private void OnEnable()
+        {
+            coinsText.text =  SocketMaster.instance.profileData.coins.ToString();
+        }
         private void Start()
     {
             picture.sprite = profilePictures[int.Parse(SocketMaster.instance.profileData.avatar)];

@@ -11,6 +11,7 @@ public class TutorialStep
     public bool showHand;
     public Vector2 handPos;
     public string desc;
+    public Vector2 descPos;
 
 }
 public class Tutorial : WebRequest
@@ -52,6 +53,7 @@ public class Tutorial : WebRequest
         {
             hand.anchoredPosition = step.handPos;
             hand.transform.GetComponent<Image>().enabled = true;
+            descr.transform.GetComponent<RectTransform>().anchoredPosition = step.descPos;
         }
         else
         {

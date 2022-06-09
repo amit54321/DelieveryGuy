@@ -22,7 +22,7 @@ namespace RoomContoller
                     name.text = SocketMaster.instance.profileData.name;
                  matches.text= "Macthes : "+ SocketMaster.instance.profileData.matches.ToString();
             wins.text = "Wins : "+SocketMaster.instance.profileData.wins.ToString();
-            coins.text = "Coins : "+SocketMaster.instance.profileData.coins.ToString();
+            coins.text = SocketMaster.instance.profileData.coins.ToString();
         }
 
 

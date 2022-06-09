@@ -69,7 +69,7 @@ public class ConstructionPrefab : MonoBehaviour
         this.quantity = quantity;
         this.cookTime = cookTime;
         costNumber = costText;
-        cost.text = "Cost: "+costText.ToString();
+        cost.text = costText.ToString();
         currentLevel = levelText;
         Debug.LogError("UPGRADE START  "+level);
         icon.sprite = Resources.Load<Sprite>("Prefabs/RestaurantImage/" + id);
