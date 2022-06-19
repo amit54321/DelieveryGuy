@@ -147,7 +147,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 98387a5e673a6ab4dbed345505f5ca07, type: 2}
+  - {fileID: 2100000, guid: 9ebf42121b2a88d4abb0f169e43156c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
     id: 0
     name: 
     dish: 0
-    waitTime: 0
+    cookTime: 0
     quantity: 0
   text: {fileID: 1212290685240951345}
   sprite: {fileID: 6983343526805456261}

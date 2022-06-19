@@ -36,7 +36,13 @@ namespace RoomContoller
                 players[i].gameObject.SetActive(false);
             }
         }
-
+       public void CopyToClipboard()
+        {
+            TextEditor textEditor = new TextEditor();
+            textEditor.text = "Play with me by joining the room with code " + roomCode.text;
+            textEditor.SelectAll();
+            textEditor.Copy();
+        }
         IEnumerator RunTimer(int timer)
         {
             Debug.LogError("TIMER   " + timer);

@@ -1,0 +1,576 @@
+fileFormatVersion: 2
+guid: 513c3e050b2b2054da9a1450f4c938aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1562646087834293003
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_0"
+  - first:
+      213: 4615485873166203426
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_1"
+  - first:
+      213: 9017734491802637357
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_2"
+  - first:
+      213: -1956587207958794760
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_3"
+  - first:
+      213: 9052490703009783828
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_4"
+  - first:
+      213: -2838653271916440159
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_5"
+  - first:
+      213: 6120061305500448926
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_6"
+  - first:
+      213: -8454131804192452849
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_7"
+  - first:
+      213: -1924518843822510830
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_8"
+  - first:
+      213: 113776248986905703
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_9"
+  - first:
+      213: -3480357461516909936
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_10"
+  - first:
+      213: -3767439571235966298
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_11"
+  - first:
+      213: 5578959372143999993
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_12"
+  - first:
+      213: -4446892531235137792
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_13"
+  - first:
+      213: -8313633549715761707
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_14"
+  - first:
+      213: 906102668075088496
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_15"
+  - first:
+      213: -1426148247009885643
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_16"
+  - first:
+      213: -2817429102932856144
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_17"
+  - first:
+      213: -8282367875610572499
+    second: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_18"
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_0"
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 3773
+        width: 1931
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b03540f6652afa510800000000000000
+      internalID: 1562646087834293003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_1"
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 2054
+        width: 1881
+        height: 1853
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ab7ef92ff7d0040800000000000000
+      internalID: 4615485873166203426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_2"
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 2258
+        width: 2004
+        height: 1495
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d241fa60ebd652d70800000000000000
+      internalID: 9017734491802637357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_3"
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1567
+        width: 574
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fdea810d4ec8d4e0800000000000000
+      internalID: -1956587207958794760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_4"
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1649
+        width: 575
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 410ac6d0558e0ad70800000000000000
+      internalID: 9052490703009783828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_5"
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 1638
+        width: 578
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a59be693e31b98d0800000000000000
+      internalID: -2838653271916440159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_6"
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 1267
+        width: 575
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e98b7f5f453dee450800000000000000
+      internalID: 6120061305500448926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_7"
+      rect:
+        serializedVersion: 2
+        x: 2872
+        y: 1269
+        width: 301
+        height: 728
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0fc6ce7ae3ecaa80800000000000000
+      internalID: -8454131804192452849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_8"
+      rect:
+        serializedVersion: 2
+        x: 3339
+        y: 1269
+        width: 301
+        height: 728
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21de96ede4cba45e0800000000000000
+      internalID: -1924518843822510830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_9"
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 964
+        width: 574
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cadb845e6349100800000000000000
+      internalID: 113776248986905703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_10"
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 819
+        width: 522
+        height: 764
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09287e6145943bfc0800000000000000
+      internalID: -3480357461516909936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_11"
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 808
+        width: 628
+        height: 769
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2fab3bbad57bbc0800000000000000
+      internalID: -3767439571235966298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_12"
+      rect:
+        serializedVersion: 2
+        x: 2069
+        y: 671
+        width: 575
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fbbaf88df17c6d40800000000000000
+      internalID: 5578959372143999993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_13"
+      rect:
+        serializedVersion: 2
+        x: 2797
+        y: 919
+        width: 1050
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0075461bdc67942c0800000000000000
+      internalID: -4446892531235137792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_14"
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 360
+        width: 575
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d51c64855a00ac80800000000000000
+      internalID: -8313633549715761707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_15"
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 214
+        width: 574
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a36ac639f139c00800000000000000
+      internalID: 906102668075088496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_16"
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 227
+        width: 986
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5320ee3b9bd453ce0800000000000000
+      internalID: -1426148247009885643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_17"
+      rect:
+        serializedVersion: 2
+        x: 2551
+        y: 444
+        width: 1376
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2f6d3882b76e8d0800000000000000
+      internalID: -2817429102932856144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u2014Pngtree\u2014cool game ui cartoon set_5276261_18"
+      rect:
+        serializedVersion: 2
+        x: 2747
+        y: 78
+        width: 1065
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d29002b8c4e1f0d80800000000000000
+      internalID: -8282367875610572499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 06beaea5367b1f34b827216d41199f72
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
