@@ -156,7 +156,12 @@ public class LobbyData
         public string id;
         public int missionId;
     }
-
+    [Serializable]
+    public class MissionDoneMany
+    {
+        public string id;
+        public List<int> missionId;
+    }
     [Serializable]
     public class MissionComplete
     {

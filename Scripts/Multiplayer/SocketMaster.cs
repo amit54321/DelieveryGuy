@@ -90,7 +90,27 @@ namespace RoomContoller
                 });
         }
 
-       
+        public void MissionDoneMany(List<int> missionIdt)
+        {
+
+
+            LobbyData.MissionDoneMany data;
+            SocketMaster.instance.socketMaster.Socket.Emit(
+                LobbyConstants.MISSIONDONEMANY,
+                (socket, packet, args) =>
+                {
+                    if (args != null && args.Length > 0)
+                    {
+                        Debug.LogError("createroom" + JsonMapper.ToJson(args[0]));
+                    }
+                },
+                data = new LobbyData.MissionDoneMany()
+                {
+                    id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID),
+                    missionId = missionIdt
+                });
+        }
+
         public void MissionDone(int missionIdt)
         {
            
@@ -358,11 +378,15 @@ namespace RoomContoller
 
        public IEnumerator SendMissions(List <int> missions)
         {
-            for(int i=0;i<missions.Count;i++)
+            if(missions.Count>0)
             {
-                SocketMaster.instance.MissionDone(missions[i]);
-                yield return new WaitForSeconds(0.5f);
+                SocketMaster.instance.MissionDoneMany(missions);
             }
+            else
+            {
+                SocketMaster.instance.MissionDone(missions[0]);
+            }
+           yield  break ;
         }
 
         void ConstructionCompleted(Socket socket, Packet packet, params object[] args)

@@ -25,6 +25,12 @@ namespace Authentication
         public ProfileData message;
         public List<Missions> missions;
     }
+    [System.Serializable]
+    public class TutorialFinishedCallBack
+    {
+        public int status;
+        public ProfileData message;
+    }
 
     [System.Serializable]
     public class Missions
@@ -122,7 +128,7 @@ namespace Authentication
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
               
-                 {"deviceId","ddgfgtdtyeftr" }//SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","gty" }//SystemInfo.deviceUniqueIdentifier}
 
             };
            
@@ -136,7 +142,7 @@ namespace Authentication
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"deviceId","ddgfgtdtyeftr" },// SystemInfo.deviceUniqueIdentifier},
+                 {"deviceId","gty" },// SystemInfo.deviceUniqueIdentifier},
                  {"name", name},
                  {"avatar", avatar}
 

@@ -41,7 +41,7 @@ public class LobbyConstants
     public static readonly string GETALLMISSIONS = "GETALLMISSIONS";
     public static readonly string MISSIONDONE = "MISSIONDONE";
     public static readonly string MISSIONCOMPLETE = "MISSIONCOMPLETE";
-
+    public static readonly string MISSIONDONEMANY = "MISSIONDONEMANY";
     public static readonly string SHOWPOPUP = "SHOWPOPUP";
     public static readonly string SELECTPEG = "SELECTPEG";
     public static readonly string STARTGAME = "STARTGAME";

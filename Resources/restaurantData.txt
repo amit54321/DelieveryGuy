@@ -314,8 +314,8 @@
          },
          {
       "id": 6,
-      "title": "burger6",
-      "desc": "make states burger",
+      "title": "sausage",
+      "desc": "make french sausage",
       "levels": [
         {
           "cookTime":12,
@@ -374,8 +374,8 @@
         }]},
          {
       "id": 7,
-      "title": "burger7",
-      "desc": "make states burger",
+      "title": "ramen",
+      "desc": "make chinese ramen",
       "levels": [
        {
           "cookTime":12,
@@ -434,8 +434,8 @@
         }]},
          {
       "id": 8,
-      "title": "burger8",
-      "desc": "make states burger",
+      "title": "donut",
+      "desc": "make english donuts",
       "levels": [
        {
           "cookTime":12,
@@ -494,8 +494,8 @@
         }]},
          {
       "id": 9,
-      "title": "burger9",
-      "desc": "make states burger",
+      "title": "sushi",
+      "desc": "make japanese sushi",
       "levels": [
         {
           "cookTime":12,
@@ -554,8 +554,8 @@
         }]},
          {
       "id": 10,
-      "title": "burger10",
-      "desc": "make states burger",
+      "title": "hotdog",
+      "desc": "make german hotdog",
       "levels": [
         {
           "cookTime":12,

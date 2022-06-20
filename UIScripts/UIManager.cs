@@ -87,21 +87,25 @@ namespace InGame
             }
           
             ButtonSOund.instance.Play();
-            if (Authentication.Authentication.status == STATUS.PLAY)
-            {
-              
-                EnablePopUp(quitPopUp);
-            }
-            else
-            {
-                 SceneManager.LoadScene("Lobby");
-
-            }
             if (InGame.UIManager.Instance.tutorialUI.activeSelf)
             {
                 GameManager.Instance.tutorial.SenStep(5);
                 GameManager.Instance.tutorial.SetTutorial();
             }
+            else
+            {
+                if (Authentication.Authentication.status == STATUS.PLAY)
+                {
+
+                    EnablePopUp(quitPopUp);
+                }
+                else
+                {
+                    SceneManager.LoadScene("Lobby");
+
+                }
+            }
+           
         }
         public void ShowError(string error)
         {

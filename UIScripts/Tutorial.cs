@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using Authentication;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class TutorialStep
@@ -33,12 +34,20 @@ public class Tutorial : WebRequest
                {"id",PlayerPrefs.GetString(PlayerPrefsData.ID) },// SystemInfo.deviceUniqueIdentifier},
                  {"step", step},
             };
-        Debug.LogError("SENDING STEP" + step);
+      
         StartCoroutine(PostNetworkRequest(AuthenticationConstants.TUTORIALSTEP, data, RegisterCallBack, Error, false));
     }
     public void RegisterCallBack(string callback)
     {
-    }
+        TutorialFinishedCallBack data = JsonUtility.FromJson<TutorialFinishedCallBack>(callback);
+        Debug.LogError("GETTING  DATA" + data.message);
+        if (data.status == 200)
+        {
+
+            RoomContoller.SocketMaster.instance.profileData = data.message;
+            SceneManager.LoadScene("Lobby");
+        }
+        }
         // Update is called once per frame
         public void SetTutorial()
     {
@@ -48,6 +57,10 @@ public class Tutorial : WebRequest
         d.Add("step", current);
         Analytics.SendAnalytics(Analytics.Tutorial, d);
         Debug.LogError("STEPS  " + current);
+        if(current>5)
+        {
+            return;
+        }
         TutorialStep step = steps[current-1];
         if (step.showHand)
         {
