@@ -40,10 +40,7 @@ public class MissionScreen : MonoBehaviour
 
     void GetAllMissions(LobbyData.GetAllMissions missions)
     {
-        foreach (Transform t in parent)
-        {
-            Destroy(t.gameObject);
-        }
+       
 
         {
             foreach (LobbyData.MissionData mission in missions.missions)
