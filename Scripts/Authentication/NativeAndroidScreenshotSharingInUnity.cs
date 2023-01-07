@@ -33,9 +33,10 @@ public class NativeAndroidScreenshotSharingInUnity : MonoBehaviour
 
 		screenshotName = "fireblock_highscore.png";
 		shareSubject = "Play with me, download the game Delievery Boy";
-		shareMessage = "I challenge you to beat my high score in Fire Block. " +
-		". Get the Fire Block app from the link below. \nCheers\n" +
+		shareMessage =
+        "Get the Delievery Boy from the link below. \nCheers\n" +
 		"\nhttp://onelink.to/fireblock";
+
 		if (code != null)
 		{
 			shareSubject = code.text;

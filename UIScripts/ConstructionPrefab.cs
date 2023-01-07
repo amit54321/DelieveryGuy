@@ -79,11 +79,11 @@ public class ConstructionPrefab : MonoBehaviour
         {
             buildButton.gameObject.SetActive(true);
         }
-        Debug.LogError("UPGRADE START  "+level);
+      //  Debug.LogError("UPGRADE START  "+level);
         icon.sprite = Resources.Load<Sprite>("Prefabs/RestaurantImage/" + id);
         if (level)
         {
-            Debug.LogError("UPGRADE START");
+            //Debug.LogError("UPGRADE START");
             currentLevel = levelText;
             buildButton.onClick.AddListener(Upgrade);
             level.text = "Level: " + levelText.ToString();
@@ -124,7 +124,7 @@ public class ConstructionPrefab : MonoBehaviour
         upgradeCalled = true;
         Invoke("SetUpgradeCalled", 3);
         //    return;
-        Debug.LogError("UPGRADE CLICKED");
+      //  Debug.LogError("UPGRADE CLICKED");
         Dictionary<string, object> d = new Dictionary<string, object>();
         d.Add("building", id);
         d.Add("level", this.currentLevel);
@@ -137,7 +137,7 @@ public class ConstructionPrefab : MonoBehaviour
             {
                 if (args != null && args.Length > 0)
                 {
-                    Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
+                   // Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  ");
 
                   //  UIManager.instance.ToggleLoader(false);
                     UpgradeCallBack(
@@ -197,7 +197,7 @@ public class ConstructionPrefab : MonoBehaviour
             {
                 if (args != null && args.Length > 0)
                 {
-                    Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  CONSTRUCTION STARTED ");
+                   // Debug.Log(JsonMapper.ToJson(args[0]) + "  DATA  CONSTRUCTION STARTED ");
 
                  //   UIManager.instance.ToggleLoader(false);
                     BuildCallBack(

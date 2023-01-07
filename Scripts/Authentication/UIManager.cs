@@ -46,8 +46,8 @@ namespace Authentication
             currentScreen = screen;
             Analytics.SendAnalytics(AnalyticsEvents.SCREENOPEN, new Dictionary<string, object>()
             {
-                { "screen",currentScreen },
-                {"id",PlayerPrefsData.ID }
+                { "screen",currentScreen.name },
+              //  {"id",PlayerPrefsData.ID }
 
             });
             //  analytics.SetEvents(currentScreen+"_Open", "");

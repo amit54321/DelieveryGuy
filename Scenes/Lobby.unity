@@ -8549,7 +8549,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 116.89998, y: 0}
-  m_SizeDelta: {x: 104.03, y: 31}
+  m_SizeDelta: {x: 95, y: 31}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &530563685
 MonoBehaviour:
@@ -8590,7 +8590,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 1620879da31773b4691aa7344ac7f59c, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 5
@@ -8599,7 +8599,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1235
+  m_Text: 
 --- !u!222 &530563687
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14711,10 +14711,10 @@ MonoBehaviour:
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 998537656}
+      - m_Target: {fileID: 2016493505}
         m_TargetAssemblyTypeName: InAppScreen, Assembly-CSharp
-        m_MethodName: AddTimerPacks
-        m_Mode: 1
+        m_MethodName: AddCoins
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -32471,7 +32471,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 100000
+          m_IntArgument: 50000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
