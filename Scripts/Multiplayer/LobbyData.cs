@@ -335,4 +335,24 @@ public class LobbyData
         public string id;
         public string game_id;
     }
+
+    [Serializable]
+    public class AddTimerPack
+    {
+        public string id;
+        
+    }
+
+    [Serializable]
+    public class UseTimerPack
+    {
+        public string id;
+        public int missionId;
+    }
+    [Serializable]
+    public class TimerPackCallBack
+    {
+        public int status;
+        public int timerPacks;
+    }
 }

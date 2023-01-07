@@ -113,7 +113,7 @@ public class CreateRoom : WebRequest
                 roomName = this.roomName.text,
                 numberOfPlayers = this.numberOfPlayers,
                 _public=0,
-                bet= 10
+                bet= 100
             });
 
 

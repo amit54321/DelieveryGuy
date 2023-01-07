@@ -2,11 +2,15 @@
 {
     public class AuthenticationConstants
     {
-      //   public static readonly string SOCKETURL = "https://66f5-45-127-232-41.in.ngrok.io/";//"ws://localhost:5000/";
-      //  public static readonly string URL = "https://66f5-45-127-232-41.in.ngrok.io";//"localhost:5000";
+       //   public static readonly string SOCKETURL = "https://7bb2-45-127-232-58.in.ngrok.io/";//"ws://localhost:5000/";
+        //  public static readonly string URL = "https://7bb2-45-127-232-58.in.ngrok.io";//"localhost:5000";
 
         public static readonly string SOCKETURL = "ws://localhost:5000/";
-        public static readonly string URL = "localhost:5000";
+       public static readonly string URL = "localhost:5000";
+
+      //  public static readonly string SOCKETURL = "https://delieveryguy.herokuapp.com/";
+        //public static readonly string URL = "https://delieveryguy.herokuapp.com/";
+       
 
         public static readonly string REGISTER = URL + "/users/register";
         public static readonly string UPDATENAME  = URL + "/users/update";

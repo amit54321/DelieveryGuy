@@ -69,8 +69,21 @@ public class GameManager : MonoBehaviour
     Vector3 enemyRot, enemyPos;
 
     public int swapFirst = -1, swapSecond = -1;
-    public GameObject portalButton;
+    public GameObject portalButton,cancelTimer;
 
+
+    public void CancelTimer()
+    {
+        InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.canceltimerPopUp);
+    }
+
+    public void ToggleCancelTimer(bool toogle)
+    {
+        if(!InGame.UIManager.Instance.tutorialUI.activeSelf &&  RoomContoller.SocketMaster.instance.profileData.restaurants.Count == 10)
+        cancelTimer.SetActive(toogle);
+       
+    }
+  
     void EnableOrDisablePortalButton()
     {
         if (PlayerPrefs.GetInt("PORTAL") == 1)
@@ -372,7 +385,7 @@ public class GameManager : MonoBehaviour
         cityCamera.gameObject.SetActive(true);
         playerCamera.gameObject.SetActive(false);
         InGame.UIManager.Instance.HideInputs();
-        arrowHandler.arrows[0].gameObject.SetActive(false);
+        arrowHandler.arrows.gameObject.SetActive(false);
         player.gameObject.SetActive(false);
         enemy.gameObject.SetActive(false);
         cityCamera.fieldOfView = 36;
@@ -498,7 +511,17 @@ public class GameManager : MonoBehaviour
         }
         return null;
     }
-
+    public Restaurants FindRestaurantByRestaurantId(int id)
+    {
+        foreach (Restaurants p in allRestaurants)
+        {
+            if (p.restaurantData.id == id)
+            {
+                return p;
+            }
+        }
+        return null;
+    }
     void COnstructInitialBuildings()
     {
 
@@ -562,7 +585,7 @@ public class GameManager : MonoBehaviour
     {
         currentTask = task;
         InGame.UIManager.Instance.ShowInputs();
-        Restaurants r = FindRestaurantById(task.restaurantId);
+        Restaurants r = FindRestaurantByRestaurantId(task.restaurantId);
         r.restaurantCollider.gameObject.SetActive(true);
         r.restaurantCollider.EnableCollider();
         EnableMapCube(r.transform);
@@ -605,7 +628,24 @@ public class GameManager : MonoBehaviour
         p.enabled = false;
         p.GetComponent<Collider>().enabled = false;
     }
+    public void UpgradeFInisged(RestaurantsData r, bool cons)
 
+    {
+
+        Plot p1 = FindPlotById(r.plot_id);
+        foreach (Transform t in p1.transform)
+        {
+            if (t.GetComponent<Restaurants>() != null)
+            {
+
+                t.GetComponent<Restaurants>().ConstructionFinished(true, cons);
+                t.GetComponent<Restaurants>().restaurantData.level = r.level;
+                break;
+            }
+        }
+
+        // FindPlotById(r.plot_id).transform.GetChild(1).GetComponent<Restaurants>().ConstructionFinished();
+    }
     public void ConstructionFInisged(RestaurantsData r , bool cons)
 
     {
@@ -616,7 +656,7 @@ public class GameManager : MonoBehaviour
             if (t.GetComponent<Restaurants>() != null)
             {
                
-              t.GetComponent<Restaurants>().ConstructionFinished(true,cons);
+              t.GetComponent<Restaurants>().ConstructionFinished(false,cons);
                 t.GetComponent<Restaurants>().restaurantData.level = r.level;
                 break;
             }

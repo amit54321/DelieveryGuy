@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using Authentication;
 using System.Collections.Generic;
+using RoomContoller;
+
 public class ShowRewarded : WebRequest, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] Button _showAdButton;
@@ -11,29 +13,17 @@ public class ShowRewarded : WebRequest, IUnityAdsLoadListener, IUnityAdsShowList
     string _adUnitId = null; // This will remain null for unsupported platforms
     public void AdWatched()
     {
-        Dictionary<string, object> data = new Dictionary<string, object>()
-        {
-            {"id", PlayerPrefs.GetString(PlayerPrefsData.ID)}
+        // Dictionary<string, object> data = new Dictionary<string, object>()
+        // {
+        //      {"id", PlayerPrefs.GetString(PlayerPrefsData.ID)}
 
-        };
+        //  };
+        RoomContoller.UIManager.instance.AdWatchedGift();
 
-        StartCoroutine(PostNetworkRequest(AuthenticationConstants.WATCHADS, data, GetDataCallBack, Error, false));
+       // StartCoroutine(PostNetworkRequest(AuthenticationConstants.WATCHADS, data, GetDataCallBack, Error, false));
     }
 
-    public void GetDataCallBack(string callback)
-    {
-            RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);
-
-            if (data.status == 200)
-            {
-            RoomContoller.SocketMaster.instance.profileData = data.message;
-            }
-            //gameObject.SetActive(false);
-    }
-    public void Error(string error)
-    {
-
-    }
+   
     void Awake()
     {
         Advertisement.Initialize("4747403");

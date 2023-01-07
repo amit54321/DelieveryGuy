@@ -5,35 +5,74 @@ using UnityEngine.UI;
 public class SettingsScreen : MonoBehaviour
 {
     [SerializeField]
-    Toggle sound, music;
+    Button sound, music;
+    [SerializeField]
+    Sprite on,off;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("MUSICVFX", 1)==1)
-        {
-            music.isOn = true;
-        }
-        else
-        {
-            music.isOn = false;
-        }
-        if (PlayerPrefs.GetInt("SOUNDVFX", 1) == 1)
-        {
-            sound.isOn = true;
-        }
-        else
-        {
-            sound.isOn = false;
-        }
-        sound.onValueChanged.AddListener(delegate {
-            ToggleValueChanged(sound);
-        });
-        music.onValueChanged.AddListener(delegate {
-            ToggleValueChangedMusic(music);
-        });
+        ChangeSprites();
+
+
+      //  sound.onValueChanged.AddListener(delegate {
+       //     ToggleValueChanged(sound);
+       // });
+       // music.onValueChanged.AddListener(delegate {
+       // //    ToggleValueChangedMusic(music);
+      //  });
 
         //Initialise the Text to say the first state of the Toggle
 
+    }
+
+    void ChangeSprites()
+    {
+        if (PlayerPrefs.GetInt("MUSICVFX", 1) == 1)
+        {
+            music.GetComponent<Image>().sprite = on;
+        }
+        else
+        {
+            music.GetComponent<Image>().sprite = off;
+        }
+        if (PlayerPrefs.GetInt("SOUNDVFX", 1) == 1)
+        {
+            sound.GetComponent<Image>().sprite = on;
+        }
+        else
+        {
+            sound.GetComponent<Image>().sprite = off;
+        }
+    }
+    public void ToggleSound()
+    {
+        if (sound.GetComponent<Image>().sprite==off)
+        {
+            sound.GetComponent<Image>().sprite = on;
+            PlayerPrefs.SetInt("SOUNDVFX", 1);
+        }
+        else{
+            sound.GetComponent<Image>().sprite = off;
+            PlayerPrefs.SetInt("SOUNDVFX", 0);
+        }
+     //   ChangeSprites();
+    }
+    public void ToggleMusic()
+    {
+
+        if (music.GetComponent<Image>().sprite == off)
+        {
+            PlayerPrefs.SetInt("MUSICVFX", 1);
+            music.GetComponent<Image>().sprite = on;
+        }
+        else
+        {
+            music.GetComponent<Image>().sprite = off;
+            PlayerPrefs.SetInt("MUSICVFX", 0);
+        }
+       // ChangeSprites();
     }
     void ToggleValueChangedMusic(Toggle change)
     {

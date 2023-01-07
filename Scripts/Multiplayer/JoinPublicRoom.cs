@@ -66,7 +66,7 @@ public class JoinPublicRoom : WebRequest
                 _public = 1,
                 roomName = "public room",
                 time = 30000,
-                bet = 10
+                bet = 100
                // bet = coinSelector.GetCurrentBet()
             });
 

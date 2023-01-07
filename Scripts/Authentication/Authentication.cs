@@ -63,6 +63,7 @@ namespace Authentication
         public int  wins;
         public int tutorial;
         public int step;
+        public int timerPacks;
     }
 
     [System.Serializable]
@@ -128,7 +129,7 @@ namespace Authentication
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
               
-                 {"deviceId","gty" }//SystemInfo.deviceUniqueIdentifier}
+                 {"deviceId","gty1" }//SystemInfo.deviceUniqueIdentifier}
 
             };
            
@@ -142,7 +143,7 @@ namespace Authentication
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"deviceId","gty" },// SystemInfo.deviceUniqueIdentifier},
+                 {"deviceId","gty1" },// SystemInfo.deviceUniqueIdentifier},
                  {"name", name},
                  {"avatar", avatar}
 
@@ -153,7 +154,6 @@ namespace Authentication
         }
         public void RegisterCallBack(string callback)
         {
-            Debug.Log("LOGIN CALLS" + callback);
             UIManager.instance.ToggleLoadingPanel(false);
 
             RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);

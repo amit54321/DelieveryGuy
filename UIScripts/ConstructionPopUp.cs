@@ -80,16 +80,18 @@ public class RestaurantLevel
          //   TextAsset textAsset = Resources.Load<TextAsset>("restaurantData");
           //  RestaurantDataUIArray data = JsonUtility.FromJson<RestaurantDataUIArray>(textAsset.text);
             Restaurants res = GameManager.Instance.FindRestaurantById(GameManager.Instance.clickedPlotId);
-           
-            foreach (RestaurantDataUI r in GameManager.Instance.data.data)
+            if (res != null)
             {
-                UnityEngine.Debug.LogError("INITIAL  " + r.id +  "     "+res.restaurantData.id);
-                if (r.id == res.restaurantData.id)
+                foreach (RestaurantDataUI r in GameManager.Instance.data.data)
                 {
-                  
-                  
-                    statiConstructionPrefab.SetData(r.id, r.title, r.desc, r.levels[res.restaurantData.level].cost, res.restaurantData.level, r.levels[res.restaurantData.level].timer,
-                         r.levels[res.restaurantData.level].quantity, r.levels[res.restaurantData.level].cookTime);
+                    UnityEngine.Debug.LogError("INITIAL  " + r.id + "     " + res.restaurantData.id);
+                    if (r.id == res.restaurantData.id)
+                    {
+
+
+                        statiConstructionPrefab.SetData(r.id, r.title, r.desc, r.levels[res.restaurantData.level].cost, res.restaurantData.level, r.levels[res.restaurantData.level].timer,
+                             r.levels[res.restaurantData.level].quantity, r.levels[res.restaurantData.level].cookTime);
+                    }
                 }
             }
         }

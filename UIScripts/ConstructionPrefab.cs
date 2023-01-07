@@ -71,6 +71,14 @@ public class ConstructionPrefab : MonoBehaviour
         costNumber = costText;
         cost.text = costText.ToString();
         currentLevel = levelText;
+        if(SocketMaster.instance.profileData.coins<costText)
+        {
+            buildButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            buildButton.gameObject.SetActive(true);
+        }
         Debug.LogError("UPGRADE START  "+level);
         icon.sprite = Resources.Load<Sprite>("Prefabs/RestaurantImage/" + id);
         if (level)
@@ -84,7 +92,7 @@ public class ConstructionPrefab : MonoBehaviour
         {
             buildButton.onClick.AddListener(Build);
         }
-        timer.text = "Build Time: "+timerText.ToString()+"s";
+        timer.text = timerText.ToString()+"s";
         cTime = timerText;
         if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count >= 10 && swapButton != null)
         {

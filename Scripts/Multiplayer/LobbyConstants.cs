@@ -49,4 +49,7 @@ public class LobbyConstants
     public static readonly string DICEROLLED = "DICEROLLED";
     public static readonly string DICEROLLEDCALLBACK = "DICEROLLEDCALLBACK";
     public static readonly string ROUNDTURN = "ROUNDTURN";
+    public static readonly string ADDTIMERPACK = "ADDTIMERPACK";
+    public static readonly string USETIMERPACK = "USETIMERPACK";
+    public static readonly string CANCELTIMER = "CANCELTIMER";
 }

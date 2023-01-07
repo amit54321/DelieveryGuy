@@ -11,7 +11,7 @@ namespace InGame
     {
         public static  UIManager Instance;
 
-        public BasePOpUp constructionPopUp,upgradePopUp,tasksPopUp, quitPopUp,winnerPopUp;
+        public BasePOpUp constructionPopUp,upgradePopUp,tasksPopUp, quitPopUp,winnerPopUp,canceltimerPopUp;
 
         public BasePOpUp currentPopUp;
 
@@ -71,6 +71,7 @@ namespace InGame
         }
         public void ShowInputs()
         {
+            if(!winnerPopUp.gameObject.activeSelf)
             inputImage.SetActive(true);
         }
         // Update is called once per frame

@@ -24,7 +24,12 @@ public class HomeScreen : MonoBehaviour
 
         private void OnEnable()
         {
-            coinsText.text =  SocketMaster.instance.profileData.coins.ToString();
+            SetCoinsText();
+        }
+
+        public void SetCoinsText()
+        {
+            coinsText.text = SocketMaster.instance.profileData.coins.ToString();
         }
         private void Start()
     {
@@ -41,11 +46,15 @@ public class HomeScreen : MonoBehaviour
         // Start is called before the first frame update
         public void SetPlayStatus()
         {
-          // if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count < 10)
+           if (RoomContoller.SocketMaster.instance.profileData.restaurants.Count < 10)
             {
-          //     UIManager.instance.ShowError("Construct all 10 buildings.");
+              UIManager.instance.ShowError("Construct all 10 restaurants.");
             }
-         //   else
+           else if (SocketMaster.instance.profileData.coins < 100)
+            {
+                UIManager.instance.ShowError("Coins should be greater than 100.");
+            }
+            else
             {
                 
                 SendAnalytics("play");

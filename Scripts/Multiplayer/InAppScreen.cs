@@ -1,4 +1,5 @@
 using Authentication;
+using RoomContoller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,17 @@ public class InAppScreen : WebRequest
     {
         
     }
+
+    public void AddTimerPacks()
+    {
+      
+
+        SocketMaster.instance.AddTimerPack();
+        Dictionary<string, object> d = new Dictionary<string, object>();
+        d.Add("cost", priceText.text);
+        d.Add("producId", productIdText.text);
+        Analytics.SendAnalytics(Analytics.InappBuy, d);
+    }
     public void AddCoins(int coins)
     {
         Dictionary<string, object> data = new Dictionary<string, object>()
@@ -23,13 +35,13 @@ public class InAppScreen : WebRequest
                {"coins", coins},
             };
        
-        StartCoroutine(PostNetworkRequest(AuthenticationConstants.ADDCOINS, data, RegisterCallBack, Error, false));
+        StartCoroutine(PostNetworkRequest(AuthenticationConstants.ADDCOINS, data, AddCoinsCallBack, Error, false));
         Dictionary<string, object> d = new Dictionary<string, object>();
         d.Add("cost", priceText.text);
         d.Add("producId", productIdText.text);
         Analytics.SendAnalytics(Analytics.InappBuy, d);
     }
-    public void RegisterCallBack(string callback)
+    public void AddCoinsCallBack(string callback)
     {
         Debug.Log("LOGIN CALLS" + callback);
        

@@ -160,5 +160,32 @@ namespace RoomContoller
                 internetConnectionPopUp.gameObject.SetActive(true);
             }
         }
+
+        public void GetDataCallBack(string callback)
+        {
+            RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);
+
+            if (data.status == 200)
+            {
+                RoomContoller.SocketMaster.instance.profileData = data.message;
+            }
+            RoomContoller.UIManager.instance.homeScreen.GetComponent<HomeScreen>().SetCoinsText();
+            //gameObject.SetActive(false);
+        }
+        public void Error(string error)
+        {
+
+        }
+        public void AdWatchedGift()
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>()
+        {
+            {"id", PlayerPrefs.GetString(PlayerPrefsData.ID)}
+
+        };
+            StartCoroutine(WebRequest.PostNetworkRequest(AuthenticationConstants.WATCHADS, data, GetDataCallBack, Error, false));
+        }
+
+
     }
 }

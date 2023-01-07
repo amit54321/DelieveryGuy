@@ -23,6 +23,7 @@ public class Restaurants : Plot
     SpriteRenderer sprite;
     [SerializeField]
     GameObject dish;
+    public int currentTimerValue;
   //  public int level,quantity,waitTime,restaurantId;
 
     public RestaurantCollider restaurantCollider;
@@ -67,6 +68,7 @@ public class Restaurants : Plot
         transform.GetComponent<Collider>().enabled = false;
         sprite.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
+        GameManager.Instance.ToggleCancelTimer(true);
         SetPositonOfRestaurant();
         if (this.forward)
         {
@@ -78,8 +80,9 @@ public class Restaurants : Plot
         //  text.transform.LookAt(GameManager.Instance.cityCamera.transform);
         for (int i=0;i<constructionTime;i++)
         {
+            currentTimerValue = (constructionTime - i);
            // sprite.transform.localScale = Vector3.one * (1 / ((float)constructionTime+1));
-            text.text = (constructionTime - i).ToString()+ " s";
+            text.text = currentTimerValue.ToString()+ " s";
             yield return new WaitForSeconds(1);
         }
         if (InGame.UIManager.Instance.tutorialUI.activeSelf)
@@ -137,8 +140,8 @@ public class Restaurants : Plot
             GameManager.Instance.allRestaurants.Add(this);
         }
 
-       
-       
+
+        GameManager.Instance.ToggleCancelTimer(false);
         sprite.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
         transform.GetComponent<Collider>().enabled = true;
