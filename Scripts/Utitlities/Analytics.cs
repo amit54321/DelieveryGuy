@@ -18,9 +18,9 @@ public class Analytics :MonoBehaviour
     {
         eventData.Add("user_id", PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID, "first"));
         eventData.Add("deviceId", SystemInfo.deviceUniqueIdentifier);
-        foreach (KeyValuePair<string, object> d in eventData)
+       // foreach (KeyValuePair<string, object> d in eventData)
             {
-                  Debug.Log(d.Key+"  "+d.Value);
+         //         Debug.Log(d.Key+"  "+d.Value);
             //       values.Add(d.Value);
                }
             UnityEngine.Analytics.Analytics.CustomEvent(customEventName, eventData);

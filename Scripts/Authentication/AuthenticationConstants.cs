@@ -90,5 +90,7 @@
        
         public static readonly string PASSWORD = "password";
         public static readonly string ALREADYLOGIN = "alreadylogin";
+
+        public static readonly string TASKSDONE = "TASKSDONE";
     }
 }

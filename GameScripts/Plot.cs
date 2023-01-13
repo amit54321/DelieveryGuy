@@ -18,6 +18,8 @@ public class Plot : MonoBehaviour, OnClick
         if (RoomContoller.SocketMaster.instance.profileData.timers.Count > 0)
         {
             //show warning one timer is running
+
+            InGame.UIManager.Instance.ShowError("Timer is already running.");
             return;
         }
         if (transform.GetComponent<Restaurants>()!=null)

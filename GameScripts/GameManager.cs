@@ -704,6 +704,8 @@ public class GameManager : MonoBehaviour
                     {
                         if (args != null && args.Length > 0)
                         {
+                            PlayerPrefs.SetInt(PlayerPrefsData.TASKSDONE, PlayerPrefs.GetInt(PlayerPrefsData.TASKSDONE, 0) + 1);
+                            Leaderboard.Instance.ReportScore(PlayerPrefs.GetInt(PlayerPrefsData.TASKSDONE));
                             Debug.LogError("joinroom" + JsonMapper.ToJson(args[0]));
                           
                            // JoinRoomCallBack(

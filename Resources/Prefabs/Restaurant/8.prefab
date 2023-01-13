@@ -230,7 +230,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 98387a5e673a6ab4dbed345505f5ca07, type: 2}
+  - {fileID: 2100000, guid: a27a21d1431414941813d6c1df63f768, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -290,6 +290,7 @@ MonoBehaviour:
   text: {fileID: 1212290685240951345}
   sprite: {fileID: 6983343526805456261}
   dish: {fileID: 6483448901842548714}
+  currentTimerValue: 0
   restaurantCollider: {fileID: 2663714036403873576}
 --- !u!1 &5989591012424085375
 GameObject:

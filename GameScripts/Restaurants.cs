@@ -119,7 +119,7 @@ public class Restaurants : Plot
 
     public void ConstructionFinished(bool newData,bool cons)
     {
-        Debug.LogWarning("CONSTRUCTION FINISHED NOW "+newData +"    "+cons);
+      //  Debug.LogWarning("CONSTRUCTION FINISHED NOW "+newData +"    "+cons);
         foreach(Restaurants r in GameManager.Instance.allRestaurants)
         {
             if (cons)
