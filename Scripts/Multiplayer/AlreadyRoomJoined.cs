@@ -19,6 +19,8 @@ namespace RoomContoller
 
         [SerializeField] private InputField roomCode;
         [SerializeField] List<Sprite> profilePictures;
+
+        public GameObject shareButton;
         // Start is called before the first frame update
         void OnEnable()
         {
@@ -68,9 +70,11 @@ namespace RoomContoller
             {
                 roomCode.gameObject.SetActive(false);
                 roomName.gameObject.SetActive(false);
+                shareButton.SetActive(false);
             }
             else
             {
+                shareButton.SetActive(true);
                 roomCode.gameObject.SetActive(true);
                 roomName.gameObject.SetActive(true);
             }
