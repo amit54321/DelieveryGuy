@@ -246,12 +246,16 @@ public class GameManager : MonoBehaviour
     }
 
     int opponentTasksDone = -1;
-    public void SetOpponentTasks()
+    public void SetOpponentTasks(int tasksDone)
     {
         opponentTasksDone++;
-        InGame.UIManager.Instance.screenUI.OpponentSetTasks(opponentTasksDone);
+        InGame.UIManager.Instance.screenUI.OpponentSetTasks(tasksDone);
     }
-
+    public void SetTasks(int tasksDone)
+    {
+     
+        InGame.UIManager.Instance.screenUI.SetTasks(tasksDone);
+    }
     public void SetInitialOpponentTasks()
     {
         foreach (LobbyData.TaskDoneData u in SocketMaster.instance.gamePlay.tasksDone)
@@ -286,7 +290,7 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        InGame.UIManager.Instance.screenUI.SetTasks(totalTasks - taskDatas.Count);
+       // InGame.UIManager.Instance.screenUI.SetTasks(totalTasks - taskDatas.Count);
         if (totalTasks - taskDatas.Count <= 0)
         {
             gameOver = true;
@@ -783,7 +787,8 @@ public class SendTaskDone
 [System.Serializable]
 public class TaskDoneRecieved
 {
-    public SendTaskDone message;
+    public int message;
     public int status;
-  
+    public SendTaskDone obj;
+
 }

@@ -278,11 +278,15 @@ namespace RoomContoller
         Debug.LogError(JsonMapper.ToJson(args[0]) + "  TaskDOne  ");
         TaskDoneRecieved resp = new TaskDoneRecieved();
         JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
-        SendTaskDone s = resp.message;
+        SendTaskDone s = resp.obj;
         if (!s.id.Equals(PlayerPrefs.GetString(PlayerPrefsData.ID)))
         {
-            GameManager.Instance.SetOpponentTasks();
+            GameManager.Instance.SetOpponentTasks(resp.message);
         }
+            else
+            {
+                GameManager.Instance.SetTasks(resp.message);
+            }
 
     }
     void SetCoin(Socket socket, Packet packet, params object[] args)

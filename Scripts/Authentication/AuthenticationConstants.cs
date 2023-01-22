@@ -5,11 +5,11 @@
        //   public static readonly string SOCKETURL = "https://7bb2-45-127-232-58.in.ngrok.io/";//"ws://localhost:5000/";
         //  public static readonly string URL = "https://7bb2-45-127-232-58.in.ngrok.io";//"localhost:5000";
 
-   //   public static readonly string SOCKETURL = "ws://localhost:5000/";
-   // public static readonly string URL = "localhost:5000";
+      public static readonly string SOCKETURL = "ws://localhost:5000/";
+    public static readonly string URL = "localhost:5000";
 
-      public static readonly string SOCKETURL = "http://54.173.83.60:5000/";
-       public static readonly string URL = "http://54.173.83.60:5000";
+     // public static readonly string SOCKETURL = "http://54.173.83.60:5000/";
+    //   public static readonly string URL = "http://54.173.83.60:5000";
        
 
         public static readonly string REGISTER = URL + "/users/register";
