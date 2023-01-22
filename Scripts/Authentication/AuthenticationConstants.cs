@@ -8,7 +8,7 @@
       public static readonly string SOCKETURL = "ws://localhost:5000/";
     public static readonly string URL = "localhost:5000";
 
-     // public static readonly string SOCKETURL = "http://54.173.83.60:5000/";
+   //   public static readonly string SOCKETURL = "http://54.173.83.60:5000/";
     //   public static readonly string URL = "http://54.173.83.60:5000";
        
 

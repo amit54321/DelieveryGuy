@@ -60,7 +60,8 @@ namespace Authentication
         public string role;
         public string token;
         public int  matches;
-        public int  wins;
+        public int delievery;
+        public int wins;
         public int tutorial;
         public int step;
         public int timerPacks;

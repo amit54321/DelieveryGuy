@@ -35,11 +35,13 @@ public class WinnerPopUpApi : WebRequest
         SocketMaster.instance.profileData.coins = deafultData.message.coins;
         SocketMaster.instance.profileData.matches = deafultData.message.matches;
         SocketMaster.instance.profileData.wins = deafultData.message.wins;
-      
-        if(coinsText!=null)
+        SocketMaster.instance.profileData.delievery = deafultData.message.delievery;
+
+        if (coinsText!=null)
         {
             coinsText.text = SocketMaster.instance.profileData.coins.ToString();
         }
-
+        
+        Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.delievery);
     }
 }

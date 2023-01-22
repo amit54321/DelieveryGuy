@@ -144,6 +144,7 @@ public class LobbyData
         public int matches;
         public int wins;
         public string avatar;
+        public int delievery;
 
     }
     [Serializable]
