@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using RoomContoller;
+using Authentication;
 
 public class WinnerPopUp : BasePOpUp
 {
@@ -33,6 +34,7 @@ public class WinnerPopUp : BasePOpUp
 
         }
     }
+    
 
     public void Lobby()
     {

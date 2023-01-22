@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     public int swapFirst = -1, swapSecond = -1;
     public GameObject portalButton,cancelTimer;
 
-
+    public GameObject followPlayer, followEnemy;
     public void CancelTimer()
     {
         InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.canceltimerPopUp);
@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void ToggleCancelTimer(bool toogle)
     {
+       
         if(!InGame.UIManager.Instance.tutorialUI.activeSelf &&  RoomContoller.SocketMaster.instance.profileData.restaurants.Count == 10)
         cancelTimer.SetActive(toogle);
        
@@ -188,7 +189,7 @@ public class GameManager : MonoBehaviour
     {
        
 
-      //  Debug.LogError(data.id + "  GETTING INFO "+data.message.x );
+        Debug.LogError(data.id + "  GETTING INFO "+ PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID));
         if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(data.id))
         {
             PlayerPosition player = data.message;
@@ -343,7 +344,10 @@ public class GameManager : MonoBehaviour
             StartCoroutine(PlayAI());
             SetInitialOpponentTasks();
 
-           // SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 0,1,2 }));
+            followEnemy.SetActive(true);
+            followPlayer.SetActive(true);
+
+            // SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 0,1,2 }));
 
             //  StartCoroutine(Testing());
 
@@ -357,7 +361,10 @@ public class GameManager : MonoBehaviour
             COnstructInitialBuildings();
             InGame.UIManager.Instance.restaurantPopUp.gameObject.SetActive(true);
             InGame.UIManager.Instance.restaurantPopUp.SetData();
-            if(SocketMaster.instance.profileData.tutorial==0)
+            followEnemy.SetActive(false);
+            followPlayer.SetActive(false);
+
+            if (SocketMaster.instance.profileData.tutorial==0)
             {
                 InGame.UIManager.Instance.tutorialUI.gameObject.SetActive(true);
             }
@@ -524,17 +531,37 @@ public class GameManager : MonoBehaviour
     }
     void COnstructInitialBuildings()
     {
+        TimersData t = null;
+        if (SocketMaster.instance.profileData.timers.Count > 0)
+        {
+             t = SocketMaster.instance.profileData.timers[0];
+        }
+        foreach (RestaurantsData r in SocketMaster.instance.profileData.restaurants)
+        {
+            if (t != null)
+            {
+                if (t.plot_id == r.plot_id && t.restaurant_id == r.restaurant_id)
+                {
+
+                }
+                else
+                    ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
+            }
+            else
+            {
+                ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
+            }
+        }
 
         foreach (TimersData r in SocketMaster.instance.profileData.timers)
         {
           int leftTime = Mathf.Abs((int)(r.end/1000 - GetCurrentTime()));
             Debug.LogError(GetCurrentTime() +"   NOW  " +  r.end/1000 +  "    "+leftTime);
-            ConstructBuilding(r.plot_id, r.restaurant_id, (int)leftTime, 10, 0, r.level);
+            GameManager.Instance.clickedPlotId = r.plot_id;
+           
+            ConstructBuilding(r.plot_id, r.restaurant_id, (int)leftTime, 10, 0, r.level,true);
         }
-        foreach (RestaurantsData r in SocketMaster.instance.profileData.restaurants)
-        {
-                 ConstructBuilding(r.plot_id, r.restaurant_id, 0, 10, 0, r.level);
-        }
+        
 
         //for (int i = 1; i <= 10; i++)
         //{
@@ -601,12 +628,13 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void ConstructBuilding(int plot_id, int building_id, int cTime, int quantity, int waitTime, int level)
+    public void ConstructBuilding(int plot_id, int building_id, int cTime, int quantity, int waitTime, int level,bool already = false)
     {
         Plot p = FindPlotById(plot_id);
         GameObject g = Instantiate(Resources.Load<GameObject>("Prefabs/Restaurant/" + building_id), p.transform);
         g.transform.localEulerAngles = p.eulerAngle;
-        
+     
+
         {
             g.GetComponent<Restaurants>().StartCoroutine(g.GetComponent<Restaurants>().StartConstruction(plot_id, cTime, level, quantity, waitTime, building_id));
         }
@@ -615,6 +643,8 @@ public class GameManager : MonoBehaviour
             g.GetComponent<Restaurants>().ConstructionFinished(false,true);
             return;
         }
+        if(already)
+        GameManager.Instance.allRestaurants.Add(g.GetComponent<Restaurants>());
         p.enabled = false;
         p.GetComponent<MeshRenderer>().enabled = false;
          //  allRestaurants.Add(g.GetComponent<Restaurants>());

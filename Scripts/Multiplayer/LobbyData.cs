@@ -130,6 +130,23 @@ public class LobbyData
     }
 
     [Serializable]
+    public class UserMinimumDataCallBack
+    {
+        public int status;
+        public UserMinimumData message;
+        
+    }
+    [Serializable]
+    public class UserMinimumData
+    {
+        public string name;
+        public int coins;
+        public int matches;
+        public int wins;
+        public string avatar;
+
+    }
+    [Serializable]
     public class DefaultAUth
     {
         public int status;

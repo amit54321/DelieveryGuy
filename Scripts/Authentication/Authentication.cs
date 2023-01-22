@@ -128,8 +128,9 @@ namespace Authentication
         {
            Dictionary<string, object> data = new Dictionary<string, object>()
            {
-              
-                 {"deviceId","gty1" }//SystemInfo.deviceUniqueIdentifier}
+             
+                 {"deviceId",SystemInfo.deviceUniqueIdentifier}
+               //   {"deviceId","gty1"}
 
             };
            
@@ -143,7 +144,8 @@ namespace Authentication
             Dictionary<string, object> data = new Dictionary<string, object>()
            {
 
-                 {"deviceId","gty1" },// SystemInfo.deviceUniqueIdentifier},
+                {"deviceId",SystemInfo.deviceUniqueIdentifier},
+              //     {"deviceId","gty1"},
                  {"name", name},
                  {"avatar", avatar}
 
@@ -154,6 +156,7 @@ namespace Authentication
         }
         public void RegisterCallBack(string callback)
         {
+            Debug.LogError(callback);
             UIManager.instance.ToggleLoadingPanel(false);
 
             RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);

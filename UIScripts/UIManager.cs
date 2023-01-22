@@ -79,7 +79,7 @@ namespace InGame
 
         public void Back()
         {
-            Debug.LogError("BACK STEPS  " + GameManager.Instance.tutorial.current);
+           
             if (RoomContoller.SocketMaster.instance.profileData.tutorial == 0
                 && GameManager.Instance.tutorial.current != 5)
             {

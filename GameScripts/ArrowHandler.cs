@@ -9,7 +9,7 @@ public class ArrowHandler : MonoBehaviour
     public GameObject cube;
     void Start()
     {
-
+        if(arrows!=null && Camera.main!=null)
         arrows.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 1));
     }
 

@@ -69,7 +69,11 @@ namespace RoomContoller
                 roomCode.gameObject.SetActive(false);
                 roomName.gameObject.SetActive(false);
             }
-
+            else
+            {
+                roomCode.gameObject.SetActive(true);
+                roomName.gameObject.SetActive(true);
+            }
             int numberOfPlayers = roomData.no_of_players;
             for (int i = 0; i < numberOfPlayers; i++)
             {

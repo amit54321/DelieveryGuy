@@ -20,18 +20,18 @@ namespace RoomContoller
                 {"id", PlayerPrefs.GetString(PlayerPrefsData.ID)}
             };
 
-            StartCoroutine(PostNetworkRequest(AuthenticationConstants.GETUSER, data, GetUserDataCallBack, Error,
+            StartCoroutine(PostNetworkRequest(AuthenticationConstants.GETUSERMINIMUMDATA, data, GetUserDataCallBack, Error,
                 false));
         }
 
         public void GetUserDataCallBack(string callback)
         {
-            LobbyData.DefaultAUth deafult = JsonUtility.FromJson<LobbyData.DefaultAUth>(callback);
-            LobbyData.UserProfile data = deafult.message;
-
-            name.text = data.name;
-            coins.text = data.coins.ToString();
-            StartCoroutine(DownloadImage.LoadRawImage(data.avatar, picture));
+          //  LobbyData.DefaultAUth deafult = JsonUtility.FromJson<LobbyData.DefaultAUth>(callback);
+       //     LobbyData.UserProfile data = deafult.message;
+            LobbyData.UserMinimumDataCallBack data = JsonUtility.FromJson<LobbyData.UserMinimumDataCallBack>(callback);
+            name.text = data.message.name;
+            coins.text = data.message.coins.ToString();
+            StartCoroutine(DownloadImage.LoadRawImage(data.message.avatar, picture));
         }
 
         private void OnDisable()

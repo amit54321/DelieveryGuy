@@ -15,8 +15,9 @@ public class CancelTimerPopUp : BasePOpUp
     public void OnEnable()
     {
          r = GameManager.Instance.FindRestaurantById(GameManager.Instance.clickedPlotId);
+        Debug.Log(r+  "   "+ " CURRENT VALUE " + r.currentTimerValue);
         if (r != null)
-        {         //  Debug.Log("CURRENT VALUE " + GameManager.Instance.timer.timerValue);
+        {         
             cost = r.currentTimerValue;
             costText.text = r.currentTimerValue.ToString();
             if (SocketMaster.instance.profileData.coins < cost)

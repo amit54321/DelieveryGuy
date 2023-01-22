@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: -5267181269032684788}
   - component: {fileID: -357124551103078797}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Vehicle_Pick up Truck_color02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

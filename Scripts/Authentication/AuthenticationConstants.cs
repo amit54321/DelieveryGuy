@@ -5,11 +5,11 @@
        //   public static readonly string SOCKETURL = "https://7bb2-45-127-232-58.in.ngrok.io/";//"ws://localhost:5000/";
         //  public static readonly string URL = "https://7bb2-45-127-232-58.in.ngrok.io";//"localhost:5000";
 
-        public static readonly string SOCKETURL = "ws://localhost:5000/";
-       public static readonly string URL = "localhost:5000";
+     // public static readonly string SOCKETURL = "ws://localhost:5000/";
+    //public static readonly string URL = "localhost:5000";
 
-      //  public static readonly string SOCKETURL = "https://delieveryguy.herokuapp.com/";
-        //public static readonly string URL = "https://delieveryguy.herokuapp.com/";
+      public static readonly string SOCKETURL = "http://54.173.83.60:5000/";
+        public static readonly string URL = "http://54.173.83.60:5000";
        
 
         public static readonly string REGISTER = URL + "/users/register";
@@ -20,6 +20,7 @@
         public static readonly string UPDATEUSER = URL + "/users/update";
         public static readonly string SIGNUP = URL + "/users/signup";
         public static readonly string GETUSER = URL + "/users/data";
+        public static readonly string GETUSERMINIMUMDATA = URL + "/users/minimumData";
         public static readonly string CURRENTSCREEN = URL + "/users/screen";
         public static readonly string WATCHADS = URL + "/users/watchads";
         public static readonly string DAILYREWARD = URL +"/users/dailyreward";

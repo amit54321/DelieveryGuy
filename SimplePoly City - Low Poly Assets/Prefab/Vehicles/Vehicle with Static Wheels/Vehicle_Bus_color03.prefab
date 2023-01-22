@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: -3089678321906285234}
   - component: {fileID: -2081141003456794715}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Vehicle_Bus_color03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

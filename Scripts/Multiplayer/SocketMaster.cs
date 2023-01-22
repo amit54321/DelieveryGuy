@@ -122,7 +122,7 @@ namespace RoomContoller
                 {
                     if (args != null && args.Length > 0)
                     {
-                        Debug.LogError("createroom" + JsonMapper.ToJson(args[0]));
+                      //  Debug.LogError("createroom" + JsonMapper.ToJson(args[0]));
                       //  LobbyData.TimerPackCallBack resp = new LobbyData.TimerPackCallBack();
                      //   JsonUtility.FromJsonOverwrite(JsonMapper.ToJson(args[0]), resp);
                       
@@ -263,7 +263,7 @@ namespace RoomContoller
             socketMaster.Socket.On(LobbyConstants.CONSTRUCTFINISH, ConstructionCompleted);
             socketMaster.Socket.On(LobbyConstants.UPGRADEFINISH, UpgradeCompleted);
             socketMaster.Socket.On(LobbyConstants.TASKRECEIVED, TaskReceived);
-            socketMaster.Socket.On(LobbyConstants.CHATSENDCALLBACK, ChatReceived);
+         //   socketMaster.Socket.On(LobbyConstants.CHATSENDCALLBACK, ChatReceived);
             socketMaster.Socket.On(LobbyConstants.SWAPFINISH, SwapFinish);
             #region Game
 

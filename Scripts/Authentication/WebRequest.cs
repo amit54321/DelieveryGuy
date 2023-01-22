@@ -28,7 +28,7 @@ namespace Authentication
                 {"screen", gameObject.name}
             };
 
-            StartCoroutine(PostNetworkRequest(AuthenticationConstants.CURRENTSCREEN, data, GetUserDataCallBack, Error, false));
+           // StartCoroutine(PostNetworkRequest(AuthenticationConstants.CURRENTSCREEN, data, GetUserDataCallBack, Error, false));
         }
 
         public void GetUserDataCallBack(string callback)

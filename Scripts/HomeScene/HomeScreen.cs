@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using LitJson;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,7 +22,45 @@ public class HomeScreen : MonoBehaviour
         [SerializeField] List<Sprite> profilePictures;
         [SerializeField]
         Text coinsText;
+        private void CheckRoom(Transform nextScreen)
+        {
+            UIManager.instance.ToggleLoader(true);
 
+            LobbyData.CheckRoom roomData;
+            SocketMaster.instance.socketMaster.Socket.Emit(
+                LobbyConstants.CHECKROOM,
+                (socket, packet, args) =>
+                {
+                    if (args != null && args.Length > 0)
+                    {
+                        Debug.LogError("checkroom" + JsonMapper.ToJson(args[0]));
+                        UIManager.instance.ToggleLoader(false);
+                        CheckRoomCallBack(
+                            JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])), nextScreen);
+                    }
+                },
+                roomData = new LobbyData.CheckRoom()
+                {
+                    _id = PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID)
+                });
+        }
+
+
+        private void CheckRoomCallBack(LobbyData.RoomDataCallBack callbackdata, Transform nextScreen)
+        {
+            if (callbackdata.status == 200)
+            {
+                SendAnalytics("set");
+                Authentication.Authentication.status = STATUS.SET;
+                ButtonSOund.instance.Play();
+                UIManager.instance.ToggleLoader(true);
+                SceneManager.LoadScene("GameScene");
+            }
+            else if (callbackdata.status == 400)
+            {
+                UIManager.instance.ShowError("Currently searching a match."); ;
+            }
+        }
         private void OnEnable()
         {
             SetCoinsText();
@@ -60,7 +99,7 @@ public class HomeScreen : MonoBehaviour
                 SendAnalytics("play");
                 ButtonSOund.instance.Play();
                 UIManager.instance.EnablePanel(UIManager.instance.createJoinScreen);
-               Authentication.Authentication.status = STATUS.PLAY;
+                Authentication.Authentication.status = STATUS.PLAY;
 
             }
                 //   SceneManager.LoadScene("GameScene");
@@ -68,12 +107,9 @@ public class HomeScreen : MonoBehaviour
 
             public void SetSetStatus()
     {
-          
-            SendAnalytics("set");
-            Authentication.Authentication.status = STATUS.SET;
-            ButtonSOund.instance.Play();
-            UIManager.instance.ToggleLoader(true);
-        SceneManager.LoadScene("GameScene");
+            CheckRoom(UIManager.instance.createRoomScreen);
+
+     
     }
 
         public void SendAnalytics(string typeOfRoom)

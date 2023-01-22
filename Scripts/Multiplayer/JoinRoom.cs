@@ -100,6 +100,7 @@ namespace RoomContoller
         public void GetUserDataCallBack(string callback)
         {
             LobbyData.DefaultAUth deafult = JsonUtility.FromJson<LobbyData.DefaultAUth>(callback);
+
             LobbyData.UserProfile data = deafult.message;
             List<int> bets = new List<int>();
             if (data.coins >= data.level * 100)

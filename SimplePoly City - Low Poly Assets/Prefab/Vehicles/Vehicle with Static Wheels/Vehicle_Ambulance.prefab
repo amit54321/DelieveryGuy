@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: -7474363458517235990}
   - component: {fileID: -5706585595972616957}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Vehicle_Ambulance
   m_TagString: Untagged
   m_Icon: {fileID: 0}

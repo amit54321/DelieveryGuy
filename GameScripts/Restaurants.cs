@@ -65,6 +65,7 @@ public class Restaurants : Plot
             }
 
         }
+       
         transform.GetComponent<Collider>().enabled = false;
         sprite.gameObject.SetActive(true);
         text.gameObject.SetActive(true);

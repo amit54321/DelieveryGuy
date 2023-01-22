@@ -84,7 +84,7 @@ public class RestaurantLevel
             {
                 foreach (RestaurantDataUI r in GameManager.Instance.data.data)
                 {
-                    UnityEngine.Debug.LogError("INITIAL  " + r.id + "     " + res.restaurantData.id);
+                 //   UnityEngine.Debug.LogError("INITIAL  " + r.id + "     " + res.restaurantData.id);
                     if (r.id == res.restaurantData.id)
                     {
 

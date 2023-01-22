@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: 8032367541612713623}
   - component: {fileID: -7302256508143475084}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Vehicle_SUV_color02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

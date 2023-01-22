@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_ANDROID
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 using GooglePlayGames.BasicApi;
-
+#endif
 public class Leaderboard : MonoBehaviour
 {
     public static Leaderboard Instance { get; private set; }
@@ -30,11 +31,13 @@ public class Leaderboard : MonoBehaviour
         Social.ShowLeaderboardUI();
     }
 
-
+#if UNITY_ANDROID
     public void Start()
     {
         DontDestroyOnLoad(this);
+
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+
     }
 
     internal void ProcessAuthentication(SignInStatus status)
@@ -50,5 +53,6 @@ public class Leaderboard : MonoBehaviour
             // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         }
     }
+#endif
 
 }
