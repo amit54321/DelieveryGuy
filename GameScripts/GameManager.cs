@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using static LobbyData;
 
 [System.Serializable]
 public class PlayerTeamData
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
     public Vector3 startingPoint;
 
     public bool gameOver;
-    int totalTasks;
+    public int totalTasks;
 
     public GameObject mapCube;
     public GameObject minimap;
@@ -87,11 +88,11 @@ public class GameManager : MonoBehaviour
   
     void EnableOrDisablePortalButton()
     {
-        if (PlayerPrefs.GetInt("PORTAL") == 1)
-            portalButton.SetActive(false);
-        else
+       // if (PlayerPrefs.GetInt("PORTAL") == 1)
+          //  portalButton.SetActive(false);
+       // else
         {
-            portalButton.SetActive(true);
+          //  portalButton.SetActive(true);
         }
     }
     void SetCars()
@@ -320,11 +321,31 @@ public class GameManager : MonoBehaviour
             taskDatas.Clear();
             foreach(TaskData t in SocketMaster.instance.gamePlay.tasks)
             {
+            
                 taskDatas.Add(t);
             }
+        foreach (TaskDoneData t1 in SocketMaster.instance.gamePlay.tasksDone)
+        {
+            if (t1.id == PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID))
+            {
+                foreach (int tasksDone in t1.taskDone)
+                {
+                    foreach (TaskData taskData in taskDatas)
+                    {
+                        if (tasksDone == taskData.id)
+                        {
+                            taskDatas.Remove(taskData);
+                            break;
+                        }
+                            }
+                }
+                break;
+            }
+
+        }
 
 
-                totalTasks = taskDatas.Count;
+        totalTasks = taskDatas.Count;
         }
     private void OnEnable()
     {

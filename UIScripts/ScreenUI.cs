@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.InteractiveTutorials.UnmaskedView;
 
 public class ScreenUI : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class ScreenUI : MonoBehaviour
     void Start()
     {
         timerText.text = timer.ToString();
-        SetTasks(0);
-      //  StartCoroutine(Timer());
+        SetTasks(10-GameManager.Instance.totalTasks );
+    
     }
 
     public void SetTasks(int tasks)
