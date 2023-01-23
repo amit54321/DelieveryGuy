@@ -32,16 +32,19 @@ public class WinnerPopUpApi : WebRequest
     {
        
         LobbyData.UserMinimumDataCallBack deafultData = JsonUtility.FromJson<LobbyData.UserMinimumDataCallBack>(callback);
-        SocketMaster.instance.profileData.coins = deafultData.message.coins;
-        SocketMaster.instance.profileData.matches = deafultData.message.matches;
-        SocketMaster.instance.profileData.wins = deafultData.message.wins;
-        SocketMaster.instance.profileData.delievery = deafultData.message.delievery;
-
-        if (coinsText!=null)
+        if (deafultData.status == 200)
         {
-            coinsText.text = SocketMaster.instance.profileData.coins.ToString();
+            SocketMaster.instance.profileData.coins = deafultData.message.coins;
+            SocketMaster.instance.profileData.matches = deafultData.message.matches;
+            SocketMaster.instance.profileData.wins = deafultData.message.wins;
+            SocketMaster.instance.profileData.delievery = deafultData.message.delievery;
+
+            if (coinsText != null)
+            {
+                coinsText.text = SocketMaster.instance.profileData.coins.ToString();
+            }
         }
         
-        Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.delievery);
+       // Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.delievery);
     }
 }

@@ -359,8 +359,11 @@ public class GameManager : MonoBehaviour
         {
             EnableOrDisablePortalButton();
             InitializeTasksData();
-            InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
-            InGame.UIManager.Instance.screenUI.gameObject.SetActive(true);
+            if (!InGame.UIManager.Instance.winnerPopUp.gameObject.activeSelf)
+            {
+                InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
+                InGame.UIManager.Instance.screenUI.gameObject.SetActive(true);
+            }
             EnablePlayerCamera();
            
             COnstructInitialBuildings();

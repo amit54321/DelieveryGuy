@@ -50,7 +50,10 @@ public class HouseCollider : MonoBehaviour
         GameManager.Instance.timer.ToggleTimer(false);
         GameManager.Instance.player.GetComponent<Rigidbody>().isKinematic = false;
         collider.enabled = false;
-        InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
-        GameManager.Instance.DisableMapCube();
+        if (!InGame.UIManager.Instance.winnerPopUp.gameObject.activeSelf)
+        {
+            InGame.UIManager.Instance.EnablePopUp(InGame.UIManager.Instance.tasksPopUp);
+            GameManager.Instance.DisableMapCube();
+        }
     }
 }

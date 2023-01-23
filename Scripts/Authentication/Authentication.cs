@@ -131,7 +131,7 @@ namespace Authentication
            {
              
                  {"deviceId",SystemInfo.deviceUniqueIdentifier}
-               //   {"deviceId","gty1"}
+                // {"deviceId","gty1"}
 
             };
            
@@ -146,7 +146,7 @@ namespace Authentication
            {
 
                 {"deviceId",SystemInfo.deviceUniqueIdentifier},
-              //     {"deviceId","gty1"},
+                //   {"deviceId","gty1"},
                  {"name", name},
                  {"avatar", avatar}
 

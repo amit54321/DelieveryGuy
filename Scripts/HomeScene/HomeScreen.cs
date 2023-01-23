@@ -68,6 +68,7 @@ public class HomeScreen : MonoBehaviour
 
         public void SetCoinsText()
         {
+            Debug.LogError("COINS  " + SocketMaster.instance.profileData.coins.ToString());
             coinsText.text = SocketMaster.instance.profileData.coins.ToString();
         }
         private void Start()
