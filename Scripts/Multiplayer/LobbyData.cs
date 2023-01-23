@@ -261,6 +261,13 @@ public class LobbyData
         public int restaurantId;
         public int customerId;
     }
+
+    [Serializable]
+    public class GamePlayEndCallBack
+    {
+        public int status;
+        public string winnerId;
+    }
     [Serializable]
     public class GamePlayCallBack
     {

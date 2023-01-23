@@ -15,8 +15,9 @@ public class WinnerPopUp : BasePOpUp
     // Start is called before the first frame update
     public void OnEnable()
     {
-        string id = RoomContoller.SocketMaster.instance.gamePlay.winnerId;
-        if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(id))
+        string id = SocketMaster.instance.gamePlay.winnerId;
+      
+        if (!string.IsNullOrEmpty(id) && !PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(id))
         {
             Dictionary<string, object> d = new Dictionary<string, object>();
             d.Add("status","lost");
@@ -28,7 +29,7 @@ public class WinnerPopUp : BasePOpUp
             Dictionary<string, object> d = new Dictionary<string, object>();
             d.Add("status", "win");
             Analytics.SendAnalytics(Analytics.GameEndStatus, d);
-            SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 8,9,10,11 }));
+           // SocketMaster.instance.StartCoroutine(SocketMaster.instance.SendMissions(new List<int>() { 8,9,10,11 }));
             
             winner.text = "YOU WIN";
 

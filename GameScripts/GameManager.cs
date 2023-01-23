@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         }
         gameOver = false;
         SetRestaurantStaticData();
-        Debug.LogError(GetCurrentTime());
+      //  Debug.LogError(GetCurrentTime());
         SetCars();
         swapFirst = -1;
         swapSecond = -1;
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        UnityEngine.Debug.LogError("SAPPING " + swapFirst + "  SAPPING   " + swapSecond);
+    //    UnityEngine.Debug.LogError("SAPPING " + swapFirst + "  SAPPING   " + swapSecond);
         Plot p1 = FindPlotById(swapFirst);
         Plot p2 = FindPlotById(swapSecond);
 
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
     {
        
 
-        Debug.LogError(data.id + "  GETTING INFO "+ PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID));
+      //  Debug.LogError(data.id + "  GETTING INFO "+ PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID));
         if (!PlayerPrefs.GetString(Authentication.PlayerPrefsData.ID).Equals(data.id))
         {
             PlayerPosition player = data.message;
@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
             {
               
                 opponentTasksDone = u.taskDone.Count;
-                Debug.LogError("OPPONENT TASK " + opponentTasksDone + "    " + u.taskDone.Count);
+             //   Debug.LogError("OPPONENT TASK " + opponentTasksDone + "    " + u.taskDone.Count);
                 
                 break;
             }
@@ -353,8 +353,9 @@ public class GameManager : MonoBehaviour
         }
     private void OnEnable()
     {
-        Debug.LogError("STATUS  " + Authentication.Authentication.status +"    "
-            + SocketMaster.instance.profileData.tutorial);
+       
+     //   Debug.LogError("STATUS  " + Authentication.Authentication.status +"    "
+        //    + SocketMaster.instance.profileData.tutorial);
         if (Authentication.Authentication.status ==STATUS.PLAY)
         {
             EnableOrDisablePortalButton();
@@ -433,10 +434,13 @@ public class GameManager : MonoBehaviour
         playerCamera.gameObject.SetActive(true);
         InGame.UIManager.Instance.ShowInputs();
     }
+
+    
     int frame = 0;
     private void Update()
     {
 
+       
         if (Input.GetKeyDown(KeyCode.P))
         {
             EnablePlayerCamera();
@@ -469,7 +473,7 @@ public class GameManager : MonoBehaviour
         }
 
         frame++;
-        if (frame % 6 == 0)
+        if (frame % 10 == 0)
         {
 
            
@@ -584,7 +588,7 @@ public class GameManager : MonoBehaviour
         foreach (TimersData r in SocketMaster.instance.profileData.timers)
         {
           int leftTime = Mathf.Abs((int)(r.end/1000 - GetCurrentTime()));
-            Debug.LogError(GetCurrentTime() +"   NOW  " +  r.end/1000 +  "    "+leftTime);
+           // Debug.LogError(GetCurrentTime() +"   NOW  " +  r.end/1000 +  "    "+leftTime);
             GameManager.Instance.clickedPlotId = r.plot_id;
            
             ConstructBuilding(r.plot_id, r.restaurant_id, (int)leftTime, 10, 0, r.level,true);
@@ -754,7 +758,7 @@ public class GameManager : MonoBehaviour
 
     public void SendTaskDone(int taskId,string id)
     {
-        Debug.LogError("SENDING TASk " + taskId);
+       // Debug.LogError("SENDING TASk " + taskId);
         SendTaskDone roomData;
         SocketMaster.instance.socketMaster.Socket.Emit(
             LobbyConstants.TASKDONE,
@@ -763,7 +767,7 @@ public class GameManager : MonoBehaviour
                         if (args != null && args.Length > 0)
                         {
                           
-                            Debug.LogError("joinroom" + JsonMapper.ToJson(args[0]));
+                         //   Debug.LogError("joinroom" + JsonMapper.ToJson(args[0]));
                           
                            // JoinRoomCallBack(
                              //   JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])));

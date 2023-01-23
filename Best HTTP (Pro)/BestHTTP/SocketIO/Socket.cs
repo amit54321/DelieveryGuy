@@ -392,6 +392,7 @@ namespace BestHTTP.SocketIO
                 case SocketIOEventTypes.Disconnect:
                     if (IsOpen)
                     {
+                      
                         IsOpen = false;
                         EventCallbacks.Call(EventNames.GetNameFor(SocketIOEventTypes.Disconnect), packet);
                         Disconnect();
