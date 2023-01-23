@@ -157,7 +157,7 @@ namespace Authentication
         }
         public void RegisterCallBack(string callback)
         {
-            Debug.LogError(callback);
+           // Debug.LogError(callback);
             UIManager.instance.ToggleLoadingPanel(false);
 
             RegisterCallback data = JsonUtility.FromJson<RegisterCallback>(callback);

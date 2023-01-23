@@ -83,25 +83,25 @@ namespace Authentication
             }
             sendingRequest = true;
             var json = JsonMapper.ToJson(data);
-            Debug.LogError("json  " + json);
+          //  Debug.LogError("json  " + json);
            
             using (var www = PostJson(uri, json))
             {
                 www.SetRequestHeader("authorization", PlayerPrefs.GetString(PlayerPrefsData.TOKEN));
                 www.timeout = 30;
 
-                Debug.Log("Sending request " + uri + ", " + json);
+           //     Debug.Log("Sending request " + uri + ", " + json);
                 yield return www.SendWebRequest();
                 sendingRequest = false;
                 if (www.isNetworkError)
                 {
                     error.Invoke(www.error);
-                    Debug.Log(": Error: " + www.error);
+                  //  Debug.Log(": Error: " + www.error);
                 }
                 else
                 {
                     callBack.Invoke(www.downloadHandler.text);
-                    Debug.Log(www.downloadHandler.text);
+                   // Debug.Log(www.downloadHandler.text);
                 }
             }
           //  yield return new WaitForSeconds(2);
