@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Authentication;
 using UnityEngine;
 using UnityEngine.UI;
 public class SettingsScreen : MonoBehaviour
@@ -8,19 +9,19 @@ public class SettingsScreen : MonoBehaviour
     Button sound, music;
     [SerializeField]
     Sprite on,off;
-
-
+   
+  
     // Start is called before the first frame update
     void Start()
     {
         ChangeSprites();
-
+      ;
 
       //  sound.onValueChanged.AddListener(delegate {
-       //     ToggleValueChanged(sound);
-       // });
-       // music.onValueChanged.AddListener(delegate {
-       // //    ToggleValueChangedMusic(music);
+      //     ToggleValueChanged(sound);
+      // });
+      // music.onValueChanged.AddListener(delegate {
+      // //    ToggleValueChangedMusic(music);
       //  });
 
         //Initialise the Text to say the first state of the Toggle
@@ -99,10 +100,11 @@ public class SettingsScreen : MonoBehaviour
         }
        
     }
-
+   
     public void PrivacyPolicy()
     {
-        Application.OpenURL("https://kissasian.land/kindaichi-shonen-no-jikenbo-5-2022-episode-5/");
+        RoomContoller.UIManager.instance.EnablePanel(RoomContoller.UIManager.instance.privacyPolicyPOpUP);
+     //   Application.OpenURL("https://kissasian.land/kindaichi-shonen-no-jikenbo-5-2022-episode-5/");
     }
     public void TermsAndCOnditions()
     {

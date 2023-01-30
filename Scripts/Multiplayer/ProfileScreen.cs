@@ -9,7 +9,7 @@ namespace RoomContoller
     public class ProfileScreen : WebRequest
     {
         [SerializeField] private Image picture;
-        [SerializeField] Text name,coins,matches,wins;
+        [SerializeField] Text name,coins,matches,wins,delievery;
         [SerializeField] List<Sprite> profilePictures;
         void OnEnable()
         {
@@ -23,6 +23,7 @@ namespace RoomContoller
                  matches.text= "Macthes : "+ SocketMaster.instance.profileData.matches.ToString();
             wins.text = "Wins : "+SocketMaster.instance.profileData.wins.ToString();
             coins.text = SocketMaster.instance.profileData.coins.ToString();
+            delievery.text = "Deliveries : " + SocketMaster.instance.profileData.delievery.ToString();
         }
 
 

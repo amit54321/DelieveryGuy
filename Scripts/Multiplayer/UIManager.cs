@@ -29,7 +29,8 @@ namespace RoomContoller
             missionCompleteScreen,
             settingsScreen,
             homeScreen,
-            quitPopUp;
+            quitPopUp,
+        privacyPolicyPOpUP;
 
         public WatchAdsPopUp watchAdsPopUp;
         public FullVersionPopUp fullVersionPopUp;

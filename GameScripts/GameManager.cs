@@ -473,7 +473,7 @@ public class GameManager : MonoBehaviour
         }
 
         frame++;
-        if (frame % 8 == 0)
+        if (frame % 6 == 0)
         {
 
            
