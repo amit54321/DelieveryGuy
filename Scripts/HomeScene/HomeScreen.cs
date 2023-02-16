@@ -33,7 +33,7 @@ public class HomeScreen : MonoBehaviour
                 {
                     if (args != null && args.Length > 0)
                     {
-                        Debug.LogError("checkroom" + JsonMapper.ToJson(args[0]));
+                   //     Debug.LogError("checkroom" + JsonMapper.ToJson(args[0]));
                         UIManager.instance.ToggleLoader(false);
                         CheckRoomCallBack(
                             JsonUtility.FromJson<LobbyData.RoomDataCallBack>(JsonMapper.ToJson(args[0])), nextScreen);
@@ -68,7 +68,7 @@ public class HomeScreen : MonoBehaviour
 
         public void SetCoinsText()
         {
-            Debug.LogError("COINS  " + SocketMaster.instance.profileData.coins.ToString());
+         //   Debug.LogError("COINS  " + SocketMaster.instance.profileData.coins.ToString());
             coinsText.text = SocketMaster.instance.profileData.coins.ToString();
         }
         private void Start()

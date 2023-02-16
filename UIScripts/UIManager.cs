@@ -23,6 +23,7 @@ namespace InGame
            loader, internetConnectionPopUp;
         public RestaurantPopUp restaurantPopUp;
         [SerializeField] private Text error;
+        [SerializeField] AudioSource music;
         public void EnablePopUp(BasePOpUp popUp)
         {
             if(currentPopUp!=null)
@@ -48,10 +49,14 @@ namespace InGame
                 Instance = this;
             }
            
-        }
+            }
 
         private void OnEnable()
         {
+            if (PlayerPrefs.GetInt("SOUNDVFX", 1) == 1)
+            {
+                music.Play();
+            }
             //keyboardInput =GameManager.Instance.player.transform.GetComponent<KeyboardInput>();
         }
         [SerializeField] public KeyboardInput keyboardInput;

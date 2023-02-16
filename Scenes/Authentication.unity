@@ -1233,10 +1233,12 @@ MonoBehaviour:
   resetPasswordpassword: {fileID: 628927538}
   resetPasswordOTP: {fileID: 0}
   profilePictures:
-  - {fileID: 21300000, guid: a772d349aec7245c28408366e13fa6a0, type: 3}
-  - {fileID: 21300000, guid: b86f92d3d135d427391d4cc215c873c4, type: 3}
-  - {fileID: 21300000, guid: 06cfebcbb5e054534b61237b85ee513d, type: 3}
-  - {fileID: 21300000, guid: bce738a300ca948fc9fa29eca157ae83, type: 3}
+  - {fileID: 21300000, guid: 35fda78f35a8f0b4c9a41a83a065fb1a, type: 3}
+  - {fileID: 21300000, guid: 9be5a74e7f371d14badcb5ef263e77ca, type: 3}
+  - {fileID: 21300000, guid: 05e5571242785544e9793a451033e8ea, type: 3}
+  - {fileID: 21300000, guid: d5b2f847f124022408ec7cfd30f74d82, type: 3}
+  - {fileID: 21300000, guid: a6921804e96516c4ba904d0f792a7a8b, type: 3}
+  - {fileID: 21300000, guid: d501d21ddf4668948bc595c30bce3c55, type: 3}
   avatarImage: {fileID: 939316208}
 --- !u!4 &474130423
 Transform:
@@ -3181,7 +3183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ff9a5ae43b6bef645bcce83e01027782, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35fda78f35a8f0b4c9a41a83a065fb1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3350,7 +3352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &987462828
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4085,7 +4087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1159605658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5118,6 +5120,7 @@ MonoBehaviour:
     role: 
     token: 
     matches: 0
+    delievery: 0
     wins: 0
     tutorial: 0
     step: 0

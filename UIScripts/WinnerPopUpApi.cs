@@ -44,7 +44,7 @@ public class WinnerPopUpApi : WebRequest
                 coinsText.text = SocketMaster.instance.profileData.coins.ToString();
             }
         }
-        
-       // Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.delievery);
+        Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.wins, "CgkIifiEkucOEAIQAQ");
+        Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.delievery, "CgkIifiEkucOEAIQAA");
     }
 }

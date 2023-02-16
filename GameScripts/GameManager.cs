@@ -440,6 +440,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
 
+
        
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -452,6 +453,9 @@ public class GameManager : MonoBehaviour
             EnableCityCamera();
             InGame.UIManager.Instance.HideInputs();
         }
+
+
+       
         //  mainArrow.transform.LookAt(mapCube.transform.position,Vector3.up);
 
         if (Authentication.Authentication.status == STATUS.SET)

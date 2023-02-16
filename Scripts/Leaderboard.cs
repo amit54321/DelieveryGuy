@@ -11,9 +11,9 @@ public class Leaderboard : MonoBehaviour
     public static Leaderboard Instance { get; private set; }
 
     // Start is called before the first frame update
-  public  void ReportScore(int score)
+  public  void ReportScore(int score,string leaderBoard)
     {
-        Social.ReportScore(score, "Cfji293fjsie_QA", (bool success) => {
+        Social.ReportScore(score, leaderBoard, (bool success) => {
             // handle success or failure
         });
 
