@@ -15342,7 +15342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 4
+  productId: com.delivery.100000
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -18219,9 +18219,7 @@ MonoBehaviour:
     any changes. We will notify you of any changes by posting the new Privacy Policy
     on this page. These changes are effective immediately after they are posted on
     this page.\r\nContact Us\r\nIf you have any questions or suggestions about our
-    Privacy Policy, do not hesitate to contact us at [App Contact informations].\r\nThis
-    privacy policy page was created at privacypolicytemplate.net and modified/generated
-    by App Privacy Policy Generator\r\n\r\n"
+    Privacy Policy, do not hesitate to contact us at crewjaipur@gmail.com.\r\n\n\r\n"
 --- !u!222 &1196145968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19259,28 +19257,26 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "built the Delivery Boy  app as an Ad Supported app. This SERVICE is provided
-    by at no cost and is intended for use as is.\r\nThis page is used to inform visitors
-    regarding our policies with the collection, use, and disclosure of Personal Information
-    if anyone decided to use our Service.\r\nIf you choose to use our Service, then
-    you agree to the collection and use of information in relation to this policy.
-    The Personal Information that we collect is used for providing and improving
-    the Service. We will not use or share your information with anyone except as
-    described in this Privacy Policy.\r\nThe terms used in this Privacy Policy have
-    the same meanings as in our Terms and Conditions, which is accessible at Delivery
-    Boy unless otherwise defined in this Privacy Policy.\r\nInformation Collection
-    and Use\r\nFor a better experience, while using our Service, we may require you
-    to provide us with certain personally identifiable information. The information
-    that we request will be retained by us and used as described in this privacy
-    policy.\r\nThe app does use third party services that may collect information
-    used to identify you.\r\nLink to privacy policy of third party service providers
-    used by the app\r\nGoogle Play Services\r\nUnity\r\nLog Data\r\nWe want to inform
-    you that whenever you use our Service, in a case of an error in the app we collect
-    data and information (through third party products) on your phone called Log
-    Data. This Log Data may include information such as your device Internet Protocol
-    (\u201CIP\u201D) address, device name, operating system version, the configuration
-    of the app when utilizing our Service, the time and date of your use of the Service,
-    and other statistics.\r\n"
+  m_Text: "\nThis page is used to inform visitors regarding our policies with the
+    collection, use, and disclosure of Personal Information if anyone decided to
+    use our Service.\r\nIf you choose to use our Service, then you agree to the collection
+    and use of information in relation to this policy. The Personal Information that
+    we collect is used for providing and improving the Service. We will not use or
+    share your information with anyone except as described in this Privacy Policy.\r\nThe
+    terms used in this Privacy Policy have the same meanings as in our Terms and
+    Conditions, which is accessible at Delivery Boy unless otherwise defined in this
+    Privacy Policy.\r\nInformation Collection and Use\r\nFor a better experience,
+    while using our Service, we may require you to provide us with certain personally
+    identifiable information. The information that we request will be retained by
+    us and used as described in this privacy policy.\r\nThe app does use third party
+    services that may collect information used to identify you.\r\nLink to privacy
+    policy of third party service providers used by the app\r\nGoogle Play Services\r\nUnity\r\nLog
+    Data\r\nWe want to inform you that whenever you use our Service, in a case of
+    an error in the app we collect data and information (through third party products)
+    on your phone called Log Data. This Log Data may include information such as
+    your device Internet Protocol (\u201CIP\u201D) address, device name, operating
+    system version, the configuration of the app when utilizing our Service, the
+    time and date of your use of the Service, and other statistics.\r\n"
 --- !u!222 &1250581816
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21421,7 +21417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 1
+  productId: com.delivery.1000
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -34200,7 +34196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 3
+  productId: com.delivery.50000
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -35853,7 +35849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 2
+  productId: com.delivery.10000
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:

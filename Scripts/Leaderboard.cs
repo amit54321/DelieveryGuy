@@ -14,6 +14,14 @@ public class Leaderboard : MonoBehaviour
   public  void ReportScore(int score,string leaderBoard)
     {
         Social.ReportScore(score, leaderBoard, (bool success) => {
+            if (success)
+            {
+             
+            }
+            else
+            {
+                Debug.Log("Add Score Fail");
+            }
             // handle success or failure
         });
 
@@ -23,12 +31,18 @@ public class Leaderboard : MonoBehaviour
         Instance = this;
     }
 
+    public void ShowLeaderboardEmpty()
+    {
+        ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI();
+        //  Social.ShowLeaderboardUI();
+    }
 
 
     // Update is called once per frame
-   public  void ShowLeaderboard()
+    public void ShowLeaderboard()
     {
-        Social.ShowLeaderboardUI();
+        ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI();
+      //  Social.ShowLeaderboardUI();
     }
 
 #if UNITY_ANDROID
@@ -44,6 +58,7 @@ public class Leaderboard : MonoBehaviour
     {
         if (status == SignInStatus.Success)
         {
+            PlayGamesPlatform.Activate();
             // Continue with Play Games Services
         }
         else

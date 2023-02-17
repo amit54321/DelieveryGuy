@@ -35,7 +35,7 @@ public class NativeAndroidScreenshotSharingInUnity : MonoBehaviour
 		shareSubject = "Play with me, download the game Delievery Boy";
 		shareMessage =
         "Get the Delievery Boy from the link below. \nCheers\n" +
-		"\nhttp://onelink.to/fireblock";
+        "\nhttps://play.google.com/store/apps/details?id=com.kaiser.delieveryboy";
 
 		if (code != null)
 		{
