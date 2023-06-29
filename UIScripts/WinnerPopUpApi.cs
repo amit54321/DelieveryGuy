@@ -14,6 +14,7 @@ public class WinnerPopUpApi : WebRequest
     // Start is called before the first frame update
     void OnEnable()
     {
+        Debug.Log("WINNER POPUP");
         GetUserData();
     }
 
@@ -43,8 +44,12 @@ public class WinnerPopUpApi : WebRequest
             {
                 coinsText.text = SocketMaster.instance.profileData.coins.ToString();
             }
+            else
+            {
+                Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.wins, "CgkIifiEkucOEAIQAQ");
+                Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.delievery, "CgkIifiEkucOEAIQAA");
+            }
         }
-        Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.wins, "CgkIifiEkucOEAIQAQ");
-        Leaderboard.Instance.ReportScore(SocketMaster.instance.profileData.delievery, "CgkIifiEkucOEAIQAA");
+       
     }
 }

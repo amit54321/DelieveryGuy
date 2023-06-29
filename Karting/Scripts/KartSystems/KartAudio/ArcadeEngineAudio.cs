@@ -34,7 +34,7 @@ namespace KartGame.KartSystems
             arcadeKart = GetComponentInParent<ArcadeKart>();
         }
 
-        void Update2()
+        void Updat2()
         {
             float kartSpeed = 0.0f;
             if (arcadeKart != null)

@@ -35,7 +35,7 @@ public class NativeAndroidScreenshotSharingInUnity : MonoBehaviour
 		shareSubject = "Play with me, download the game Delievery Boy";
 		shareMessage =
         "Get the Delievery Boy from the link below. \nCheers\n" +
-        "\nhttps://play.google.com/store/apps/details?id=com.kaiser.delieveryboy";
+        "";
 
 		if (code != null)
 		{
@@ -75,7 +75,7 @@ public class NativeAndroidScreenshotSharingInUnity : MonoBehaviour
 		Destroy(ss);
 
 		new NativeShare().AddFile(filePath)
-			.SetSubject(shareSubject).SetText(shareMessage).SetUrl("https://github.com/yasirkula/UnityNativeShare")
+			.SetSubject(shareSubject).SetText(shareMessage).SetUrl("https://play.google.com/store/apps/details?id=com.kaiser.delieveryboy")
 			.SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
 			.Share();
 

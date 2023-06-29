@@ -5,7 +5,7 @@ using UnityEngine;
 using LitJson;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
-
+using Mirror;
 
 namespace Authentication
 {
@@ -138,7 +138,20 @@ namespace Authentication
             StartCoroutine(PostNetworkRequest(AuthenticationConstants.REGISTER ,data, RegisterCallBack, Error, false));
             UIManager.instance.ToggleLoadingPanel(true);
         }
-       
+        void ConnectMirror()
+        {
+            if (!Application.isBatchMode)
+            { //Headless build
+                Debug.Log($"=== Client Build ===");
+                //networkManager.StartClient ();
+                NetworkManager.singleton.StartClient();
+            }
+            else
+            {
+                Debug.Log($"=== Server Build ===");
+                //  APIHandler.instance.DeleteAllMatches(DeleteaLLmatchesCallBack);
+            }
+        }
 
         public void UpdateName(string name,int avatar)
         {
@@ -185,13 +198,15 @@ namespace Authentication
                     }
                     else
                     {
-                        SceneManager.LoadScene("Lobby");
+                        ConnectMirror();
+                      //  SceneManager.LoadScene("Lobby");
                     }
                 }
             }
                 else
                 {
-                    SceneManager.LoadScene("Lobby");
+                ConnectMirror();
+              //  SceneManager.LoadScene("Lobby");
                 }
            
         }
@@ -214,7 +229,8 @@ namespace Authentication
                 }
                 else
                 {
-                    SceneManager.LoadScene("Lobby");
+                    ConnectMirror();
+                   // SceneManager.LoadScene("Lobby");
                 }
             }
             {

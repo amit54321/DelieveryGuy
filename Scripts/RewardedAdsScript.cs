@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class RewardedAdsScript : WebRequest//, IUnityAdsListener
 {
 
-   static string gameIdAndroid = "4165637";
-    static string gameIdIOS= "4165636";
-    static string mySurfacingId = "rewardedVideo";
+   static string gameIdAndroid = "5161687";
+    static string gameIdIOS= "5161686";
+    static string mySurfacingId = "Rewarded_Android";
     bool testMode = true;
 
     // Initialize the Ads listener and service:
